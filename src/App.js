@@ -1,12 +1,11 @@
-import Card from './components/Card';
-import NavBar from './components/NavBar';
-import AccordionSimple from './components/AccordionSimple'
-import { makeStyles } from '@material-ui/core/styles';
+import Card from './components/Card/Card';
+import NavBar from './components/NavBar/NavBar';
+import AccordionSimple from './components/Accordion/AccordionSimple'
 import imgBackground from './img/crumpled-white-paperboard.jpg';
+import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
-
-  bodyClass:{
+  container:{
     padding: 0,
     margin: 0,
     boxSizing: "border-box",
@@ -20,19 +19,17 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
+
 function App() {
   const classes = useStyles();
   return (
-    <>
-    <body className={classes.bodyClass}>
+    <div className={classes.container}>
         <NavBar />
         <AccordionSimple />
-        <div></div>
         <Card></Card>
         
         <button>BOTON</button>
-    </body>
-    </>
+    </div>
   );
 }
 

@@ -19,14 +19,14 @@ const NavBar = () => {
   return (
       <AppBar className={classes.root} position="fixed">
         <Toolbar className={classes.bar} variant="dense">
-          <navbar className={classes.navContainer}>
+          <nav className={classes.navContainer}>
               <ul className={classes.listClass}>
                 <li><Button color="inherit">Urbanas</Button></li>
                 <li><Button color="inherit">Training</Button></li>
                 <li><Button color="inherit">Basquet</Button></li>
                 <li><Button color="inherit">Tenis</Button></li>
               </ul>
-          </navbar>
+          </nav>
           {/* <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
             <MenuIcon />
           </IconButton> */}
