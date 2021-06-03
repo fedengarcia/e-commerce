@@ -27,6 +27,7 @@ function App() {
     <body className={classes.bodyClass}>
         <NavBar />
         <AccordionSimple />
+        <div></div>
         <Card></Card>
         
         <button>BOTON</button>
