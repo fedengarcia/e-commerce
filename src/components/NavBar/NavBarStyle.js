@@ -67,4 +67,7 @@ import {fade} from '@material-ui/core/styles';
         display: 'none',
       },
     },
+    navBarIcon:{
+      marginRight: '1em'
+    }
   });

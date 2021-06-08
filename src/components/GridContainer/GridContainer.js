@@ -1,8 +1,10 @@
-import React from 'react'
-import Button from '@material-ui/core/Button';
+import React from 'react';
+import { makeStyles } from '@material-ui/core/styles';
+import {GridStyle} from './GridStyle';
 import Grid from '@material-ui/core/Grid';
 import Card from '../Card/Card';
-
+import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
+import IconButton from '@material-ui/core/IconButton';
 
 const product = {
     model:"Nike Hypedunk 2020",
@@ -11,43 +13,50 @@ const product = {
     urlImage: ''
   }
 
-const GridContainer = () => {
+  
+const useStyles = makeStyles((theme) => GridStyle(theme));
 
+const GridContainer = () => {
+    const classes = useStyles();
     return(
         <>
         <Grid
-        container
-        direction="row"
-        justify="center"
-        alignItems="center"
-        spacing={2}
-      >
-        <Grid item sx={12} md={4} sm={6}>
-          <Card {...product}></Card>
+            container
+            direction="row"
+            justify="center"
+            alignItems="center"
+            spacing={3}
+        >
+        <Grid item sx={12} md={4} sm={6} > 
+        <div className={classes.cardItem}><Card {...product}></Card></div>
         </Grid>
-
-        <Grid item sx={12} md={4} sm={6}>
-          <Card {...product}></Card>
+        <Grid item sx={12} md={4} sm={6} > 
+        <div className={classes.cardItem}><Card {...product}></Card></div>
         </Grid>
-
-        <Grid item sx={12} md={4} sm={6} >
-          <Card {...product}></Card>
+        <Grid item sx={12} md={4} sm={6} > 
+        <div className={classes.cardItem}><Card {...product}></Card></div>
         </Grid>
-
-        <Grid item sx={12} md={4} sm={6}>
-          <Card {...product}></Card>
+        <Grid item sx={12} md={4} sm={6} > 
+        <div className={classes.cardItem}><Card {...product}></Card></div>
         </Grid>
-        
-        <Grid item sx={12} md={4} sm={6}>
-          <Card {...product}></Card>
+        <Grid item sx={12} md={4} sm={6} > 
+        <div className={classes.cardItem}><Card {...product}></Card></div>
         </Grid>
-
-        <Grid sx={12} md={4} sm={6}>
-          <Card {...product}></Card>
+        <Grid item sx={12} md={4} sm={6} > 
+        <div className={classes.cardItem}><Card {...product}></Card></div>
         </Grid>
 
         <Grid item xs={12}>
-          <Button>CARGAR MAS</Button>
+        <div className={classes.cardItem}>
+            
+            <IconButton
+                className={classes.iconAdd}
+            >
+                <AddCircleOutlineIcon className={classes.iconAdd}/>
+            </IconButton>
+            
+
+            </div>
         </Grid>
       
       </Grid>

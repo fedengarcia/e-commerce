@@ -2,7 +2,6 @@ import NavBar from './components/NavBar/NavBar';
 import imgBackground from './img/crumpled-white-paperboard.jpg';
 import { makeStyles } from '@material-ui/core/styles';
 import GridContainer from './components/GridContainer/GridContainer';
-import { findByLabelText } from '@testing-library/dom';
 
 const useStyles = makeStyles((theme) => ({
   container:{
@@ -20,10 +19,7 @@ const useStyles = makeStyles((theme) => ({
     // flexDirection: "column",
     // width:"auto",
   },
-  gridContainer:{
-    display:"flex",
-    justifyContent:"center"
-  }
+
 }));
 
 
@@ -34,9 +30,8 @@ function App() {
   return (
     <div className={classes.container}>
         <NavBar />
-        <div className={classes.gridContainer}>
-          <GridContainer />
-        </div>
+        <GridContainer />
+        
       
     </div>
   );
