@@ -12,6 +12,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import InputBase from '@material-ui/core/InputBase';
 // import NotificationsIcon from '@material-ui/icons/Notifications';
 import SearchIcon from '@material-ui/icons/Search';
+import Badge from '@material-ui/core/Badge';
 
 
 //IMPORT NEW NAVIGATION BAR
@@ -60,14 +61,7 @@ const NavBar = () => {
       <MenuItem onClick={handleMenuClose}>Addidas</MenuItem>
       
 
-      {/* <MenuItem>
-        <IconButton aria-label="show 4 new mails" color="inherit">
-          <Badge badgeContent={4} color="secondary">
-            <MailIcon />
-          </Badge>
-        </IconButton>
-        <p>Messages</p>
-      </MenuItem> */}
+
     </Menu>
   );
 
@@ -127,17 +121,6 @@ const NavBar = () => {
 
               <Typography className={classes.title}>Addidas</Typography>
             </IconButton>
-
-            {/* <IconButton
-              edge="end"
-              aria-label="account of current user"
-              aria-controls={menuId}
-              aria-haspopup="true"
-              onClick={handleProfileMenuOpen}
-              color="inherit"
-            >
-              <AccountCircle />
-            </IconButton> */}
           </div>
           
           <div className={classes.search}>
@@ -161,9 +144,11 @@ const NavBar = () => {
             aria-label="account of current user"
             aria-controls={menuId}
             aria-haspopup="true"
-            color="inherit">
-          
-            <AddShoppingCartIcon />
+            color="inherit"
+            >
+          <Badge badgeContent={17} color="secondary" >
+            <AddShoppingCartIcon style={{fontSize:"1.5em"}}/>
+          </Badge>
           </IconButton>
 
         

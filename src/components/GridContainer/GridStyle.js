@@ -6,8 +6,4 @@ export const GridStyle = (theme) => ({
         display: 'flex',
         justifyContent: 'center',
     },
-    iconAdd:{
-        fontSize:'1.5em',
-
-    }
 });

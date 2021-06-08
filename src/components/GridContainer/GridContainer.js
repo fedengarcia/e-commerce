@@ -52,7 +52,7 @@ const GridContainer = () => {
             <IconButton
                 className={classes.iconAdd}
             >
-                <AddCircleOutlineIcon className={classes.iconAdd}/>
+                <AddCircleOutlineIcon style={{fontSize:"1.5em"}}/>
             </IconButton>
             
 

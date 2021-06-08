@@ -14,10 +14,10 @@ const useStyles = makeStyles((theme) => CardStyle(theme));
 
 export default function ProductCard({price,model,urlImage,type}) {
   const classes = useStyles();
-  const [itemCompra, setItemCompra] = useState(0);
+  const [itemProduct, setItemProduct] = useState(0);
 
   const handleAddProduct = () => {
-    setItemCompra(itemCompra + 1);
+    setItemProduct(itemProduct + 1);
   };
 
   return (
@@ -42,6 +42,7 @@ export default function ProductCard({price,model,urlImage,type}) {
             className={classes.button}
             variant="contained"
             size="large"
+            onClick={handleAddProduct}
         >
             <Typography>Agregar al carrito</Typography>
         </Button>
