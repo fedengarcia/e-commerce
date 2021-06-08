@@ -1,8 +1,8 @@
-import Card from './components/Card/Card';
 import NavBar from './components/NavBar/NavBar';
-import AccordionSimple from './components/Accordion/AccordionSimple'
 import imgBackground from './img/crumpled-white-paperboard.jpg';
 import { makeStyles } from '@material-ui/core/styles';
+import GridContainer from './components/GridContainer/GridContainer';
+import { findByLabelText } from '@testing-library/dom';
 
 const useStyles = makeStyles((theme) => ({
   container:{
@@ -13,8 +13,16 @@ const useStyles = makeStyles((theme) => ({
     backgroundPosition: "center",
     backgroundSize: 'cover',
     backgroundRepeat: "no-repeat",
-    height: "100vh",
-
+    height: "auto",
+    // display:"flex",
+    // justifyContent:"center",
+    // alignItems: "center",
+    // flexDirection: "column",
+    // width:"auto",
+  },
+  gridContainer:{
+    display:"flex",
+    justifyContent:"center"
   }
 }));
 
@@ -22,13 +30,14 @@ const useStyles = makeStyles((theme) => ({
 
 function App() {
   const classes = useStyles();
+
   return (
     <div className={classes.container}>
         <NavBar />
-        <AccordionSimple />
-        <Card></Card>
-        
-        <button>BOTON</button>
+        <div className={classes.gridContainer}>
+          <GridContainer />
+        </div>
+      
     </div>
   );
 }
