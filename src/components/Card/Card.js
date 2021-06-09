@@ -33,7 +33,7 @@ export default function ProductCard({price,model,urlImage,type}) {
        
       />
       <CardContent>
-          <Typography variant="h4">${parseFloat(price)}</Typography>
+          <Typography variant="h4">${parseFloat(itemProduct)}</Typography>
       </CardContent>
       
       <div className={classes.actionContainer}>
@@ -44,7 +44,7 @@ export default function ProductCard({price,model,urlImage,type}) {
             size="large"
             onClick={handleAddProduct}
         >
-            <Typography>Agregar al carrito</Typography>
+            <Typography>Contador para la entrega</Typography>
         </Button>
       </CardActions>
       </div>

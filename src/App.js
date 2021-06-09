@@ -2,6 +2,7 @@ import NavBar from './components/NavBar/NavBar';
 import imgBackground from './img/crumpled-white-paperboard.jpg';
 import { makeStyles } from '@material-ui/core/styles';
 import GridContainer from './components/GridContainer/GridContainer';
+import ItemListContainer from './components/ItemListContainer/ItemListContainer'
 
 const useStyles = makeStyles((theme) => ({
   container:{
@@ -30,6 +31,7 @@ function App() {
   return (
     <div className={classes.container}>
         <NavBar />
+        <ItemListContainer/>
         <GridContainer />
         
       
