@@ -1,6 +1,6 @@
 import React,{useState} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import {CardStyle} from './CardStyle';
+import {ItemListStyle} from './ItemListStyle';
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
 import CardMedia from '@material-ui/core/CardMedia';
@@ -10,9 +10,9 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 
 
-const useStyles = makeStyles((theme) => CardStyle(theme));
+const useStyles = makeStyles((theme) => ItemListStyle(theme));
 
-export default function ProductCard({price,model,urlImage,type}) {
+export default function ItemList ({price,model,urlImage,type}) {
   const classes = useStyles();
   const [itemProduct, setItemProduct] = useState(0);
 
@@ -26,6 +26,7 @@ export default function ProductCard({price,model,urlImage,type}) {
         className={classes.media}
         image={urlImage}
         title="Imagen del Producto"
+        alt="Imagen del producto"
       />
       <CardHeader
         title={type}
@@ -33,21 +34,24 @@ export default function ProductCard({price,model,urlImage,type}) {
        
       />
       <CardContent>
-          <Typography variant="h4">${parseFloat(itemProduct)}</Typography>
+          <Typography variant="h4">${parseFloat(price)}</Typography>
       </CardContent>
       
       <div className={classes.actionContainer}>
       <CardActions disableSpacing>
+        
         <Button
             className={classes.button}
             variant="contained"
             size="large"
             onClick={handleAddProduct}
         >
-            <Typography>Contador para la entrega</Typography>
+            <Typography>Agregar al carrito</Typography>
         </Button>
       </CardActions>
       </div>
     </Card>
   );
 }
+
+

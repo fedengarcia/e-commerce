@@ -1,67 +1,47 @@
-import React,{useState} from 'react';
-import {makeStyles} from '@material-ui/core/styles';
-import {itemListContainerStyle} from './ItemListContainerStyle';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
-import Divider from '@material-ui/core/Divider';
-import InboxIcon from '@material-ui/icons/Inbox';
-import DraftsIcon from '@material-ui/icons/Drafts';
+import React from 'react';
+import { makeStyles } from '@material-ui/core/styles';
+import {ItemListContainerStyle} from './ItemListContainerStyle';
+import Grid from '@material-ui/core/Grid';
+import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
+import IconButton from '@material-ui/core/IconButton';
+import ItemList from '../ItemList/ItemList';
+
+const product = {
+    model:"Nike Hypedunk 2020",
+    price: 20,
+    type:"Zapatillas de Basquet",
+    urlImage: "../../img/d-rose-11-shoes.jpg",
+}
 
 
-const useStyles = makeStyles((theme) => itemListContainerStyle(theme));
+const useStyles = makeStyles((theme) => ItemListContainerStyle(theme));
 
-export default function ItemListContainer() {
+
+export default function ItemListContainer () {
     const classes = useStyles();
-    const [selectedIndex, setSelectedIndex] = useState(1);
-  
-    const handleListItemClick = (event, index) => {
-      setSelectedIndex(index);
-    };
-  
-    return (
-      <div className={classes.root}>
-        <List component="nav" aria-label="main mailbox folders">
-          <ListItem
-            button
-            selected={selectedIndex === 0}
-            onClick={(event) => handleListItemClick(event, 0)}
-          >
-            <ListItemIcon>
-              <InboxIcon />
-            </ListItemIcon>
-            <ListItemText primary="Inbox" />
-          </ListItem>
-          <ListItem
-            button
-            selected={selectedIndex === 1}
-            onClick={(event) => handleListItemClick(event, 1)}
-          >
-            <ListItemIcon>
-              <DraftsIcon />
-            </ListItemIcon>
-            <ListItemText primary="Drafts" />
-          </ListItem>
-        </List>
-        <Divider />
-        <List component="nav" aria-label="secondary mailbox folder">
-          <ListItem
-            button
-            selected={selectedIndex === 2}
-            onClick={(event) => handleListItemClick(event, 2)}
-          >
-            <ListItemText primary="Trash" />
-          </ListItem>
-          <ListItem
-            button
-            selected={selectedIndex === 3}
-            onClick={(event) => handleListItemClick(event, 3)}
-          >
-            <ListItemText primary="Spam" />
-          </ListItem>
-        </List>
-      </div>
+
+    return(
+            <Grid
+                container
+                direction="row"
+                justify="center"
+                alignItems="center"
+                spacing={3}
+            >
+                <Grid item sx={12} md={4} sm={6} > 
+                    <div className={classes.cardItem}>
+                        <ItemList {...product}></ItemList>
+                    </div>
+                </Grid>
+
+                <Grid item xs={12}>
+                    <div className={classes.cardItem}>
+                        <IconButton className={classes.iconAdd}>
+                            <AddCircleOutlineIcon style={{fontSize:"1.5em"}}/>
+                        </IconButton>
+                    </div>
+                </Grid>
+            </Grid> 
     );
-  }
+}
 

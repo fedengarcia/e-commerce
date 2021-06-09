@@ -1,5 +1,5 @@
 
-export const CardStyle = (theme) => ({
+export const ItemListStyle = (theme) => ({
     root: {
         width: '70%',
     },
