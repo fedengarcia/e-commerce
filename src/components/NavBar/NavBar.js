@@ -5,15 +5,13 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
-import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 import MenuIcon from '@material-ui/icons/Menu';
 import InputBase from '@material-ui/core/InputBase';
 // import NotificationsIcon from '@material-ui/icons/Notifications';
 import SearchIcon from '@material-ui/icons/Search';
-import Badge from '@material-ui/core/Badge';
-
+import CartWidget from '../CartWidget/CartWidget';
 
 //IMPORT NEW NAVIGATION BAR
 
@@ -139,18 +137,7 @@ const NavBar = () => {
 
           <div className={classes.grow} />
          
-          <IconButton
-            edge="end"
-            aria-label="account of current user"
-            aria-controls={menuId}
-            aria-haspopup="true"
-            color="inherit"
-            >
-          <Badge badgeContent={17} color="secondary" >
-            <AddShoppingCartIcon style={{fontSize:"1.5em"}}/>
-          </Badge>
-          </IconButton>
-
+          <CartWidget numProduct="12"/>
         
 
         </Toolbar>
