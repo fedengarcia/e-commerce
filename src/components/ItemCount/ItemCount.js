@@ -10,17 +10,21 @@ import { Typography } from '@material-ui/core';
 const useStyle = makeStyles((theme) => ItemCountStyle(theme));
 
 
-export default function ItemCount () {
+export default function ItemCount ({cantidad}) {
     const classes = useStyle();
     const [items, setItem] = useState(0);
 
 
     const handleAddItem = () => {
-        setItem(items + 1);
+        if(items <= cantidad){
+            setItem(items + 1);
+        }
     }
     
     const handleRemoveItem = () => {
-        setItem(items - 1);
+        if(items > 0){
+            setItem(items - 1);
+        }
     }
 
     return (

@@ -36,7 +36,7 @@ export default function ItemList ({price,model,urlImage,type}) {
       <CardContent>
           <Typography variant="h4">${parseFloat(price)}</Typography>
       </CardContent>
-      <ItemCount/>
+      <ItemCount cantidad="4"/>
       <div className={classes.actionContainer}>
 
       <CardActions disableSpacing>
