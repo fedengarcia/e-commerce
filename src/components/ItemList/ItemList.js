@@ -8,16 +8,16 @@ import CardContent from '@material-ui/core/CardContent';
 import CardActions from '@material-ui/core/CardActions';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
-
+import ItemCount from '../ItemCount/ItemCount';
 
 const useStyles = makeStyles((theme) => ItemListStyle(theme));
 
 export default function ItemList ({price,model,urlImage,type}) {
   const classes = useStyles();
-  const [itemProduct, setItemProduct] = useState(0);
+  const [itemList, setItemList] = useState(0);
 
   const handleAddProduct = () => {
-    setItemProduct(itemProduct + 1);
+    setItemList(itemList + 1);
   };
 
   return (
@@ -36,10 +36,10 @@ export default function ItemList ({price,model,urlImage,type}) {
       <CardContent>
           <Typography variant="h4">${parseFloat(price)}</Typography>
       </CardContent>
-      
+      <ItemCount/>
       <div className={classes.actionContainer}>
+
       <CardActions disableSpacing>
-        
         <Button
             className={classes.button}
             variant="contained"

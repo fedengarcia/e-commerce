@@ -11,6 +11,7 @@ const product = {
     price: 20,
     type:"Zapatillas de Basquet",
     urlImage: "../../img/d-rose-11-shoes.jpg",
+    cantidad: 5
 }
 
 
@@ -37,7 +38,7 @@ export default function ItemListContainer () {
 
             <Grid item xs={12}>
                 <div className={classes.cardItem}>
-                    <IconButton className={classes.iconAdd}>
+                    <IconButton>
                         <AddCircleOutlineIcon style={{fontSize:"1.5em"}}/>
                     </IconButton>
                 </div>
