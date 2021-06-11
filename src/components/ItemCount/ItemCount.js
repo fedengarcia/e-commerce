@@ -16,7 +16,7 @@ export default function ItemCount ({cantidad}) {
 
 
     const handleAddItem = () => {
-        if(items <= cantidad){
+        if(items < cantidad){
             setItem(items + 1);
         }
     }

@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useState} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import {ItemListContainerStyle} from './ItemListContainerStyle';
 import Grid from '@material-ui/core/Grid';
@@ -6,20 +6,17 @@ import ItemList from '../ItemList/ItemList';
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 import IconButton from '@material-ui/core/IconButton';
 
-const product = {
-    model:"Nike Hypedunk 2020",
-    price: 20,
-    type:"Zapatillas de Basquet",
-    urlImage: "../../img/d-rose-11-shoes.jpg",
-    cantidad: 5
-}
-
 
 const useStyles = makeStyles((theme) => ItemListContainerStyle(theme));
 
 
-export default function ItemListContainer () {
+export default function ItemListContainer ({data}) {
     const classes = useStyles();
+    const [flagId, setFlagId] = useState(6);
+
+    const handleAddButton = () => {
+        setFlagId(flagId * 2);
+    }
 
     return(
 
@@ -30,15 +27,14 @@ export default function ItemListContainer () {
             alignItems="center"
             spacing={3}
         >
-            <Grid item sx={12} md={4} sm={6} > 
-                <div className={classes.cardItem}>
-                    <ItemList {...product}></ItemList>
-                </div>
-            </Grid>
+
+            <ItemList data={data.data} flagId={flagId}/>
 
             <Grid item xs={12}>
                 <div className={classes.cardItem}>
-                    <IconButton>
+                    <IconButton
+                        onClick = {handleAddButton}
+                    >
                         <AddCircleOutlineIcon style={{fontSize:"1.5em"}}/>
                     </IconButton>
                 </div>
