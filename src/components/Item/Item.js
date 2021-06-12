@@ -9,10 +9,11 @@ import CardActions from '@material-ui/core/CardActions';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import ItemCount from '../ItemCount/ItemCount';
+import img from '../../img/d-rose-11-shoes.jpg';
 
 const useStyles = makeStyles((theme) => ItemStyle(theme));
 
-export default function Item ({data}) {
+export default function Item ({price,type,model,urlImg,cantidad}) {
   const classes = useStyles();
   // const [itemList, setItemList] = useState(0);
 
@@ -24,19 +25,19 @@ export default function Item ({data}) {
     <Card className={classes.root}>
         <CardMedia
         className={classes.media}
-        image={data.urlImg}
+        image={img}
         title="Imagen del Producto"
         alt="Imagen del producto"
       />
       <CardHeader
-        title={data.type}
-        subheader={data.model}
+        title={type}
+        subheader={model}
        
       />
       <CardContent>
-          <Typography variant="h4">${parseFloat(data.price)}</Typography>
+          <Typography variant="h4">${parseFloat(price)}</Typography>
       </CardContent>
-      <ItemCount cantidad={data.cantidad}/>
+      <ItemCount cantidad={cantidad}/>
       <div className={classes.actionContainer}>
 
       <CardActions disableSpacing>

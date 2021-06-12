@@ -5,7 +5,7 @@
             "price": 12000,
             "type": "Zapatillas de Basquet Nike",
             "model": "Hyperdunk 2017",
-            "urlImg": "./img/Hyperdunk-2017.jpg",
+            "urlImg": "../../img/Hyperdunk-2017.jpg",
             "cantidad": 4
         },
         {

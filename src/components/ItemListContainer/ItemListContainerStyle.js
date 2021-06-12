@@ -1,8 +1,8 @@
+
 export const ItemListContainerStyle = (theme) => ({
-    // cardItem:{ 
-    //     // width:'auto',
-    //     // heigth: 'auto',
-    //     display: 'flex',
-    //     justifyContent: 'center',
-    // },
+    girdContainer:{ 
+        display: 'flex',
+        justifyContent: 'center',
+        aligItems: 'center'
+    },
 });
