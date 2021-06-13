@@ -15,6 +15,7 @@ const useStyles = makeStyles((theme) => ItemStyle(theme));
 
 export default function Item ({price,type,model,urlImg,cantidad}) {
   const classes = useStyles();
+  
   // const [itemList, setItemList] = useState(0);
 
   // const handleAddProduct = () => {

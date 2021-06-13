@@ -18,17 +18,20 @@ export default function ItemList ({data}) {
         setFlagId(flagId * 2);
     }
 
-    const itemsGrid = data.map((item =>{
-        if(item.id <= flagId){
-            return(
-            <Grid item sx={12} md={4} sm={6} key={item.id}>
+
+    // const miPromise = new Promise ((resolve,reject) =>{
+
+    // })
+
+    const ItemsGrid = ({data}) =>{
+        return(
+            <Grid item sx={12} md={4} sm={6}>
                 <div className={classes.cardItem}>
-                    <Item {...item}></Item>
+                    <Item {...data}></Item>
                 </div>    
             </Grid>
-            )
-        }
-    }));
+            );
+    }
 
     return(
 
@@ -39,8 +42,10 @@ export default function ItemList ({data}) {
             alignItems="center"
             spacing={3}
         >
+            
 
-            {itemsGrid}
+            {data.filter((item) => item.id <= flagId).map((item) => <ItemsGrid data={item} key={item.id}/>)}
+
 
             <Grid item xs={12}>
                 <div className={classes.cardItem}>
