@@ -9,7 +9,6 @@ import CardActions from '@material-ui/core/CardActions';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import ItemCount from '../ItemCount/ItemCount';
-import img from '../../img/d-rose-11-shoes.jpg';
 
 const useStyles = makeStyles((theme) => ItemStyle(theme));
 
@@ -26,7 +25,7 @@ export default function Item ({price,type,model,urlImg,cantidad}) {
     <Card className={classes.root}>
         <CardMedia
         className={classes.media}
-        image={img}
+        image={urlImg}
         title="Imagen del Producto"
         alt="Imagen del producto"
       />

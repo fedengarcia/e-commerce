@@ -15,14 +15,18 @@ export default function ItemList ({data}) {
     const [flagId, setFlagId] = useState(6);
 
     const handleAddButton = () => {
-        setFlagId(flagId * 2);
+        setFlagId(flagId + 6);
     }
 
 
-    // const miPromise = new Promise ((resolve,reject) =>{
-
-    // })
-
+    // var loadItem = new Promise((resolve, reject) => {
+    //     setTimeout(function(){
+           
+    //       resolve("Salio todo bien"); // ¡Todo salió bien!
+    //     }, 250);
+    //   });
+      
+      
     const ItemsGrid = ({data}) =>{
         return(
             <Grid item sx={12} md={4} sm={6}>
@@ -43,8 +47,14 @@ export default function ItemList ({data}) {
             spacing={3}
         >
             
-
-            {data.filter((item) => item.id <= flagId).map((item) => <ItemsGrid data={item} key={item.id}/>)}
+        {data.filter((item) => item.id <= flagId).map((item) => <ItemsGrid data={item} key={item.id}/>)}
+            {/* {
+                loadItem.then((result) => {
+                    console.log(result);
+                }).catch((err) =>{
+                    console.log(err);
+                })
+            } */}
 
 
             <Grid item xs={12}>
