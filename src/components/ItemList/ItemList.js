@@ -11,21 +11,15 @@ const useStyles = makeStyles((theme) => ItemListStyle(theme));
 
 
 export default function ItemList ({data}) {
+    console.log("ESTOY EN ITEM LIST");
+    console.log("TU INFO DE ITEM LIST ------------------------->",data);
+
     const classes = useStyles();
     const [flagId, setFlagId] = useState(6);
 
     const handleAddButton = () => {
         setFlagId(flagId + 6);
     }
-
-
-    // var loadItem = new Promise((resolve, reject) => {
-    //     setTimeout(function(){
-           
-    //       resolve("Salio todo bien"); // ¡Todo salió bien!
-    //     }, 250);
-    //   });
-      
       
     const ItemsGrid = ({data}) =>{
         return(
@@ -48,13 +42,6 @@ export default function ItemList ({data}) {
         >
             
         {data.filter((item) => item.id <= flagId).map((item) => <ItemsGrid data={item} key={item.id}/>)}
-            {/* {
-                loadItem.then((result) => {
-                    console.log(result);
-                }).catch((err) =>{
-                    console.log(err);
-                })
-            } */}
 
 
             <Grid item xs={12}>

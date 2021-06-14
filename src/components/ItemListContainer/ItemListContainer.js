@@ -7,8 +7,23 @@ import {ItemListContainerStyle} from './ItemListContainerStyle';
 const useStyles = makeStyles((theme) => ItemListContainerStyle(theme));
 
 
-export default function ItemListContainer ({data}) {
+export default function ItemListContainer () {
     const classes = useStyles();
+    var data = []
+
+    const loadData = new Promise((resolve, reject) => {
+        setTimeout(function(){
+            var data1 = require('../../data');
+          resolve(data1.default); 
+        }, 250);
+      });
+
+    loadData.then((result) => {
+        data = result;
+    }).catch((err) =>{
+        console.log(err);
+    })
+      
 
     return(
         <div className={classes.gridContainer}>

@@ -3,7 +3,6 @@ import imgBackground from './img/crumpled-white-paperboard.jpg';
 import { makeStyles } from '@material-ui/core/styles';
 import ItemListContainer from './components/ItemListContainer/ItemListContainer';
 // import data from './data'
-const data = require('./data');
 
 const useStyles = makeStyles((theme) => ({
   container:{
@@ -31,7 +30,7 @@ function App() {
   return (
     <div className={classes.container}>
         <NavBar />
-        <ItemListContainer data={data.default}/>
+        <ItemListContainer/>
         
       
     </div>
