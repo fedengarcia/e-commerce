@@ -2,7 +2,7 @@ import React,{useState,useEffect} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import ItemDetail from '../ItemDetail/ItemDetail';
 import {ItemDetailContainerStyle} from './ItemDetailContainerStyle';
-const dataJS = require('../../data');
+import dataJS from '../../data';
 
 const useStyles = makeStyles((theme) => ItemDetailContainerStyle(theme));
 
@@ -15,13 +15,12 @@ export default function ItemDetailContainer () {
 
         const loadData = new Promise((resolve, reject) => {
             setTimeout(function(){
-              resolve(dataJS.default); 
+              resolve(dataJS); 
             }, 2000);
           });
     
         loadData.then((result) => {
             setData(result)
-            console.log(result[0]);
         }).catch((err) =>{
             console.log(err);
         })

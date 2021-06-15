@@ -1,8 +1,8 @@
-import React,{useState} from 'react';
+import React,{useState, useEffect} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import ItemList from '../ItemList/ItemList';
 import {ItemListContainerStyle} from './ItemListContainerStyle';
-const dataJS = require('../../data');
+import dataJS from '../../data';
 
 const useStyles = makeStyles((theme) => ItemListContainerStyle(theme));
 
@@ -11,17 +11,21 @@ export default function ItemListContainer () {
     const classes = useStyles();
     const [data,setData] = useState([]);
 
-    const loadData = new Promise((resolve, reject) => {
-        setTimeout(function(){
-          resolve(setData(dataJS.default)); 
-        }, 2000);
-      });
-
-    loadData.then((result) => {
-        console.log(result)
-    }).catch((err) =>{
-        console.log(err);
-    })
+    useEffect(() => {
+        const loadData = new Promise((resolve, reject) => {
+            setTimeout(function(){
+              resolve(dataJS); 
+            }, 2000);
+          });
+    
+        loadData.then((result) => {
+            setData(result);
+            console.log(result)
+        }).catch((err) =>{
+            console.log(err);
+        })
+    }, []);
+   
       
 
     return(
