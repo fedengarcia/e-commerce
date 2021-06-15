@@ -1,9 +1,8 @@
 import NavBar from './components/NavBar/NavBar';
 import imgBackground from './img/crumpled-white-paperboard.jpg';
 import { makeStyles } from '@material-ui/core/styles';
-// import ItemListContainer from './components/ItemListContainer/ItemListContainer';
+import ItemListContainer from './components/ItemListContainer/ItemListContainer';
 // import data from './data'
-import ItemDetailContainer from './components/ItemDetailContainer/ItemDetailContainer';
 
 const useStyles = makeStyles((theme) => ({
   container:{
@@ -14,7 +13,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundPosition: "center",
     backgroundSize: 'cover',
     backgroundRepeat: "no-repeat",
-    height: "100vh",
+    height: "auto",
     // display:"flex",
     // justifyContent:"center",
     // alignItems: "center",
@@ -31,7 +30,7 @@ function App() {
   return (
     <div className={classes.container}>
         <NavBar />
-        <ItemDetailContainer/>
+        <ItemListContainer/>
         
       
     </div>

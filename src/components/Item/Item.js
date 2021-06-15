@@ -8,6 +8,7 @@ import CardContent from '@material-ui/core/CardContent';
 import CardActions from '@material-ui/core/CardActions';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
+import ItemCount from '../ItemCount/ItemCount';
 
 const useStyles = makeStyles((theme) => ItemStyle(theme));
 
@@ -36,7 +37,7 @@ export default function Item ({price,type,model,urlImg,cantidad}) {
       <CardContent>
           <Typography variant="h4">${parseFloat(price)}</Typography>
       </CardContent>
-
+      <ItemCount cantidad={cantidad}/>
       <div className={classes.actionContainer}>
 
       <CardActions disableSpacing>
@@ -45,7 +46,7 @@ export default function Item ({price,type,model,urlImg,cantidad}) {
             variant="contained"
             size="large"
         >
-            <Typography>Ver detalle</Typography>
+            <Typography>Agregar al carrito</Typography>
         </Button>
       </CardActions>
       </div>
