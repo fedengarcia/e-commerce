@@ -11,8 +11,6 @@ const useStyles = makeStyles((theme) => ItemListStyle(theme));
 
 
 export default function ItemList ({data}) {
-    console.log("ESTOY EN ITEM LIST");
-    console.log("TU INFO DE ITEM LIST ------------------------->",data);
 
     const classes = useStyles();
     const [flagId, setFlagId] = useState(6);
