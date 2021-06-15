@@ -47,6 +47,7 @@ export default function ItemList ({data}) {
             <Grid item xs={12}>
                 <div className={classes.cardItem}>
                     <IconButton
+                        arial-label = "Show more"
                         onClick = {handleAddButton}
                     >
                         <AddCircleOutlineIcon style={{fontSize:"1.5em"}}/>
