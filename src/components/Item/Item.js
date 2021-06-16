@@ -8,6 +8,7 @@ import CardContent from '@material-ui/core/CardContent';
 import CardActions from '@material-ui/core/CardActions';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
+import {Link} from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ItemStyle(theme));
 
@@ -40,13 +41,13 @@ export default function Item ({price,type,model,urlImg}) {
       <div className={classes.actionContainer}>
 
       <CardActions disableSpacing>
-        <Button
+      <Link to="/ItemDetailContainer"><Button
             className={classes.button}
             variant="contained"
             size="large"
         >
             <Typography>Ver detalle</Typography>
-        </Button>
+        </Button></Link>
       </CardActions>
       </div>
     </Card>

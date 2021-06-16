@@ -1,8 +1,10 @@
 import NavBar from './components/NavBar/NavBar';
 import imgBackground from './img/crumpled-white-paperboard.jpg';
 import { makeStyles } from '@material-ui/core/styles';
+// import {BrowserRouter} from 'react-router-dom'
 // import ItemListContainer from './components/ItemListContainer/ItemListContainer';
-import ItemDetailContainer from './components/ItemDetailContainer/ItemDetailContainer';
+ import ItemDetailContainer from './components/ItemDetailContainer/ItemDetailContainer';
+// import Router from './components/Router/Router';
 
 const useStyles = makeStyles((theme) => ({
   container:{
@@ -13,7 +15,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundPosition: "center",
     backgroundSize: 'cover',
     backgroundRepeat: "no-repeat",
-    height: "100%",
+    height: "100vh",
     // display:"flex",
     // justifyContent:"center",
     // alignItems: "center",
@@ -31,8 +33,6 @@ function App() {
     <div className={classes.container}>
         <NavBar />
         <ItemDetailContainer/>
-        
-      
     </div>
   );
 }

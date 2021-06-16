@@ -93,7 +93,7 @@ const NavBar = () => {
               >
 
 
-              <Typography className={classes.title}>Nike</Typography>
+            <Typography className={classes.title}>Nike</Typography>
             </IconButton>
             <IconButton
               edge="end"

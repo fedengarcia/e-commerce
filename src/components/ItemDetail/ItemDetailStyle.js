@@ -4,8 +4,10 @@ export const ItemDetailStyle = (theme) => ({
         width: '30%',
         display: 'flex',
         flexDirection: 'column',
-        marginLeft: '1em',
-        marginBottom: '1em'
+        marginBottom: '1em',
+        '@media (max-width: 1500px)':{
+            width: '80%',
+        }
     },
     media: {
         height: 0,

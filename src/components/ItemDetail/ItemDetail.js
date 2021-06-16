@@ -43,7 +43,6 @@ export default function Item ({precio,marca,categoria,urlImg,cantidad,talle,desc
       </CardContent>
       <div className={classes.actionContainer}>
 
-      
 
       <ItemCount cantidad={cantidad}/>
 
