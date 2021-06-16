@@ -2,8 +2,8 @@
 export const ItemDetailContainerStyle = (theme) => ({
     itemDetailContainer:{ 
         display: 'flex',
-        justifyContent: 'flex-start',
+        justifyContent: 'center',
         aligItems: 'center',
-        marginLeft: '2em'
+        marginLeft: '2em',
     },
 });

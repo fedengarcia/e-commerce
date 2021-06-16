@@ -3,7 +3,9 @@ export const ItemDetailStyle = (theme) => ({
     root: {
         width: '30%',
         display: 'flex',
-        flexDirection: 'column'
+        flexDirection: 'column',
+        marginLeft: '1em',
+        marginBottom: '1em'
     },
     media: {
         height: 0,

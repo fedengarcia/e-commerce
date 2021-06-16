@@ -22,17 +22,18 @@ export default function Item ({price,type,model,urlImg}) {
 
   return (
     <Card className={classes.root}>
-        <CardMedia
+       
+      <CardMedia
         className={classes.media}
-        image={urlImg}
+        image = {urlImg}
         title="Imagen del Producto"
-        alt="Imagen del producto"
       />
+
       <CardHeader
         title={type}
-        subheader={model}
-       
+        subheader={model} 
       />
+      
       <CardContent>
           <Typography variant="h4">${parseFloat(price)}</Typography>
       </CardContent>

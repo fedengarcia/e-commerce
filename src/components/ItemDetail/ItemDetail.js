@@ -9,11 +9,14 @@ import CardActions from '@material-ui/core/CardActions';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import ItemCount from '../ItemCount/ItemCount';
+// import {useParams} from 'react-router-dom';
+
 
 const useStyles = makeStyles((theme) => ItemDetailStyle(theme));
 
-export default function Item ({price,type,model,urlImg,cantidad}) {
+export default function Item ({precio,marca,categoria,urlImg,cantidad,talle,descripcion,modelo}) {
   const classes = useStyles();
+  // const id = useParams();
   
   // const [itemList, setItemList] = useState(0);
 
@@ -30,17 +33,20 @@ export default function Item ({price,type,model,urlImg,cantidad}) {
         alt="Imagen del producto"
       />
       <CardHeader
-        title={type}
-        subheader={model}
+        title={"Zapatillas de " + categoria + " " + marca}
+        subheader={modelo}
        
       />
       <CardContent>
-          <Typography variant="h4">${parseFloat(price)}</Typography>
+          <Typography variant="h4">${parseFloat(precio)}</Typography>
+          <Typography variant="h6">{descripcion}</Typography>
       </CardContent>
       <div className={classes.actionContainer}>
 
-      <ItemCount cantidad={cantidad}/>
       
+
+      <ItemCount cantidad={cantidad}/>
+
       <CardActions disableSpacing>
         <Button
             className={classes.button}

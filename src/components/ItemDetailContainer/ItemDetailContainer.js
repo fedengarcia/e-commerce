@@ -9,7 +9,7 @@ const useStyles = makeStyles((theme) => ItemDetailContainerStyle(theme));
 
 export default function ItemDetailContainer () {
     const classes = useStyles();
-    const [data,setData] = useState([]);
+    const [data,setData] = useState(undefined);
 
     useEffect(() => {
 
@@ -31,7 +31,9 @@ export default function ItemDetailContainer () {
 
     return(
         <div className={classes.itemDetailContainer}>
-            <ItemDetail {...data[0]}/>
+            {/* SI DATA != undefined SUGAR SYNTAX*/}
+           {data && <ItemDetail {...data[0]}/>}
+
         </div>
     );
 }
