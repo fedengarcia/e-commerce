@@ -1,6 +1,13 @@
 import {fade} from '@material-ui/core/styles';
 // fade(theme.palette.common.white, 0.15)
   export const navBarStyle = (theme) => ({
+    navBarIcon:{
+      borderRadius: '1em',
+      '&:hover':{
+        backgroundColor: '#D5A17F',
+        // color:'#D5A17F'
+      }
+    },
     grow: {
       flexGrow: 1,
       marginBottom: '2em',
@@ -78,6 +85,9 @@ import {fade} from '@material-ui/core/styles';
       [theme.breakpoints.up('md')]: {
         display: 'flex',
       },
+      '&:hover':{
+        backgroundColor: 'transparent',
+      }
     },
 
   });

@@ -26,5 +26,10 @@ export const ItemDetailStyle = (theme) => ({
         justifyContent: 'center',
         alignItems: 'center'
     },
+    button:{
+        '&:hover':{
+            backgroundColor: '#D5A17F',
+        }
+    }
 
 });

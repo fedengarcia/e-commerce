@@ -22,5 +22,11 @@ export const ItemStyle = (theme) => ({
         display: 'flex',
         justifyContent: 'center',
     },
+    button:{
+        '&:hover':{
+            backgroundColor: '#D5A17F',
+        }
+    }
+
   
 });
