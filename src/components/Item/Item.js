@@ -47,7 +47,7 @@ export default function Item ({precio,marca,categoria,urlImg,id,modelo}) {
             className={classes.button}
             variant="contained"
             size="large"
-            onClick={() => history.push(`/item/${id}`)}
+            onClick={() => history.push(`/item/${id-1}`)}
         >
             <Typography>Ver detalle</Typography>
         </Button>

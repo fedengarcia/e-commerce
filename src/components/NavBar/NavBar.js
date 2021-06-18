@@ -30,8 +30,9 @@ const NavBar = () => {
     setMobileMoreAnchorEl(null);
   };
 
-  const handleMenuClose = () => {
+  const handleMenuClose = (e) => {
     handleMobileMenuClose();
+    history.push(`/category/${e}`)
   };
 
   const handleMenuOpen = (event) => {
@@ -56,9 +57,9 @@ const NavBar = () => {
     >
       
       
-      <MenuItem onClick={handleMenuClose}>Nike</MenuItem>
-      <MenuItem onClick={handleMenuClose}>Jordan</MenuItem>
-      <MenuItem onClick={handleMenuClose}>Adiddas</MenuItem>
+      <MenuItem onClick={() => handleMenuClose('Nike')}>Nike</MenuItem>
+      <MenuItem onClick={() => handleMenuClose('Jordan')}>Jordan</MenuItem>
+      <MenuItem onClick={() => handleMenuClose('Adiddas')}>Adiddas</MenuItem>
       
 
 
@@ -67,7 +68,7 @@ const NavBar = () => {
 
   return (
     <div className={classes.grow}>
-      <AppBar position="static">
+      <AppBar position="static" className={classes.appBarStyle}>
         <Toolbar className={classes.toolBar}>
         <IconButton
               edge="end"

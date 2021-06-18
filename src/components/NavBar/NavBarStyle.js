@@ -3,7 +3,10 @@ import {fade} from '@material-ui/core/styles';
   export const navBarStyle = (theme) => ({
     grow: {
       flexGrow: 1,
-      marginBottom: '2em'
+      marginBottom: '2em',
+    },
+    appBarStyle:{
+      background: 'linear-gradient(to right,#5499C7,#2980B9)'
     },
     menuButton: {
       marginLeft: theme.spacing(2),
@@ -42,7 +45,6 @@ import {fade} from '@material-ui/core/styles';
     },
     inputInput: {
       padding: theme.spacing(1, 1, 1, 0),
-      // vertical padding + font size from searchIcon
       paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
       transition: theme.transitions.create('width'),
       width: '100%',

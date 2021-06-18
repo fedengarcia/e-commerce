@@ -1,6 +1,6 @@
 import img_id1 from './img/Hyperdunk-2017.jpg';
 import img_id2 from './img/Kyrie-FlyTrap-III.jpg';
-import img_id3 from './img/Kyrie-FlyTrap-III.jpg';
+import img_id3 from './img/Kyrie-FlyTrap-4.jpg';
 import img_id4 from './img/Lebron-James-Soldier-12.jpg';
 import img_id5 from './img/Air-Jordan-Retro-12.jpg';
 import img_id6 from './img/Air-Jordan-Retro-1.jpg';
@@ -27,9 +27,9 @@ const data = [
             "id": "2",
             "precio": 18000,
             "marca": "Nike",
-            "categoria": "asquet",
+            "categoria": "basquet",
             "modelo": "Kyrie FlyTrap 4",
-            "urlImg":img_id2,
+            "urlImg":img_id3,
             "cantidad": 1,
             "talle": [11,11.5,12,12.5,13,13.5,14],
             "descripcion": "Zapatillas de basquet de Kyrie Irving."
@@ -40,7 +40,7 @@ const data = [
             "marca": "Nike",
             "categoria": "basquet",
             "modelo": "Kyrie FlyTrap III",
-            "urlImg": img_id3,
+            "urlImg": img_id2,
             "cantidad": 2,
             "talle": [11,11.5,12,12.5,13,13.5,14],
             "descripcion": "Zapatillas de basquet de Kyrie Irving."
