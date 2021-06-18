@@ -10,10 +10,10 @@ import IconButton from '@material-ui/core/IconButton';
 const useStyles = makeStyles((theme) => ItemListStyle(theme));
 
 
-export default function ItemList ({data}) {
-
+export default function ItemList ({data,marca}) {
     const classes = useStyles();
     const [flagId, setFlagId] = useState(6);
+
 
     const handleAddButton = () => {
         setFlagId(flagId + 6);
@@ -29,6 +29,21 @@ export default function ItemList ({data}) {
             );
     }
 
+    const handleItems = (data,marca) => {
+
+        if(marca){
+            return<>
+            {data.filter((item) => (marca === item.marca)).map((item) => <ItemsGrid data={item} key={item.id}/>)}           
+            </>
+        }else{
+            return <>
+            {data.filter((item) => (item.id <= flagId)).map((item) => <ItemsGrid data={item} key={item.id}/>)}
+            </>
+        }
+    }
+
+
+
     return(
 
         <Grid
@@ -38,9 +53,12 @@ export default function ItemList ({data}) {
             alignItems="center"
             spacing={3}
         >
-            
-        {data.filter((item) => item.id <= flagId).map((item) => <ItemsGrid data={item} key={item.id}/>)}
-
+        
+        {handleItems(data,marca)}
+        
+        {/* {data.filter((item) => (item.id <= flagId && marca === item.marca)).map((item) => <ItemsGrid data={item} key={item.id}/>)} */}
+        
+        
 
             <Grid item xs={12}>
                 <div className={classes.cardItem}>

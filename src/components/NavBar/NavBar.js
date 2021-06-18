@@ -12,6 +12,7 @@ import InputBase from '@material-ui/core/InputBase';
 // import NotificationsIcon from '@material-ui/icons/Notifications';
 import SearchIcon from '@material-ui/icons/Search';
 import CartWidget from '../CartWidget/CartWidget';
+import {useHistory} from 'react-router-dom';
 
 //IMPORT NEW NAVIGATION BAR
 
@@ -19,23 +20,25 @@ import CartWidget from '../CartWidget/CartWidget';
 const useStyles = makeStyles((theme) => navBarStyle(theme));
 
 const NavBar = () => {
+  const history = useHistory();
   const classes = useStyles();
-
+  
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = useState(null);
-
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
   const handleMobileMenuClose = () => {
     setMobileMoreAnchorEl(null);
   };
 
-  const handleMenuClose = () => {
+  const handleMenuClose = (marca) => {
     handleMobileMenuClose();
   };
 
   const handleMenuOpen = (event) => {
     setMobileMoreAnchorEl(event.currentTarget);
   };
+
+
 
   const menuId = 'primary-search-account-menu';
 
@@ -53,10 +56,9 @@ const NavBar = () => {
     >
       
       
-      {/* AGREGAR CARRITO DE COMPRAS PARA  */}
       <MenuItem onClick={handleMenuClose}>Nike</MenuItem>
       <MenuItem onClick={handleMenuClose}>Jordan</MenuItem>
-      <MenuItem onClick={handleMenuClose}>Addidas</MenuItem>
+      <MenuItem onClick={handleMenuClose}>Adiddas</MenuItem>
       
 
 
@@ -83,6 +85,20 @@ const NavBar = () => {
         </div>
           {/* DESKTOP SECTION */}
           <div className={classes.sectionDesktop}>
+          <IconButton
+              edge="end"
+              aria-label="account of current user"
+              aria-controls={menuId}
+              aria-haspopup="true"
+              color="inherit"
+              className={classes.navBarIcon}
+              onClick = {() => history.push('/')}
+              
+              >
+
+
+            <Typography variant="h4"className={classes.title}>Logo</Typography>
+            </IconButton>
             <IconButton
               edge="end"
               aria-label="account of current user"
@@ -90,6 +106,7 @@ const NavBar = () => {
               aria-haspopup="true"
               color="inherit"
               className={classes.navBarIcon}
+              onClick = {() => history.push('/category/Nike')}
               >
 
 
@@ -102,6 +119,7 @@ const NavBar = () => {
               aria-haspopup="true"
               color="inherit"
               className={classes.navBarIcon}
+              onClick = {() => history.push('/category/Jordan')}
               >
 
 
@@ -114,10 +132,11 @@ const NavBar = () => {
               aria-haspopup="true"
               color="inherit"
               className={classes.navBarIcon}
+              onClick = {() => history.push('/category/Adiddas')}
               >
 
 
-              <Typography className={classes.title}>Addidas</Typography>
+              <Typography className={classes.title}>Adiddas</Typography>
             </IconButton>
           </div>
           

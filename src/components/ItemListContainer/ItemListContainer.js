@@ -3,13 +3,15 @@ import { makeStyles } from '@material-ui/core/styles';
 import ItemList from '../ItemList/ItemList';
 import {ItemListContainerStyle} from './ItemListContainerStyle';
 import dataJS from '../../data';
+import {useParams} from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ItemListContainerStyle(theme));
 
 
 export default function ItemListContainer () {
     const classes = useStyles();
-    const [data,setData] = useState([]);
+    const [data,setData] = useState(undefined);
+    const {marca} = useParams();
 
     useEffect(() => {
         const loadData = new Promise((resolve, reject) => {
@@ -20,17 +22,15 @@ export default function ItemListContainer () {
     
         loadData.then((result) => {
             setData(result);
-            console.log(result)
         }).catch((err) =>{
             console.log(err);
         })
     }, []);
    
-      
 
     return(
         <div className={classes.gridContainer}>
-            <ItemList data={data}/>
+            {data && <ItemList data={data} marca={marca}/>}
         </div>
     );
 }

@@ -8,12 +8,14 @@ import CardContent from '@material-ui/core/CardContent';
 import CardActions from '@material-ui/core/CardActions';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
-import {Link} from 'react-router-dom';
+import {useHistory} from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ItemStyle(theme));
 
-export default function Item ({price,type,model,urlImg}) {
+export default function Item ({precio,marca,categoria,urlImg,id,modelo}) {
+
   const classes = useStyles();
+  const history = useHistory();
   
   // const [itemList, setItemList] = useState(0);
 
@@ -31,23 +33,24 @@ export default function Item ({price,type,model,urlImg}) {
       />
 
       <CardHeader
-        title={type}
-        subheader={model} 
+        title={"Zapatillas de " + categoria + " " + marca}
+        subheader={modelo} 
       />
       
       <CardContent>
-          <Typography variant="h4">${parseFloat(price)}</Typography>
+          <Typography variant="h4">${parseFloat(precio)}</Typography>
       </CardContent>
       <div className={classes.actionContainer}>
 
       <CardActions disableSpacing>
-      <Link to="/ItemDetailContainer"><Button
+      <Button
             className={classes.button}
             variant="contained"
             size="large"
+            onClick={() => history.push(`/item/${id}`)}
         >
             <Typography>Ver detalle</Typography>
-        </Button></Link>
+        </Button>
       </CardActions>
       </div>
     </Card>
