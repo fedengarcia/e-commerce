@@ -9,6 +9,8 @@ import CardActions from '@material-ui/core/CardActions';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import {useHistory} from 'react-router-dom';
+import {Animated} from "react-animated-css";
+
 
 const useStyles = makeStyles((theme) => ItemStyle(theme));
 
@@ -24,7 +26,9 @@ export default function Item ({precio,marca,categoria,urlImg,id,modelo}) {
   // };
 
   return (
-    <Card className={classes.root}>
+    <Animated animationIn="slideInUp" animationOut="fadeOut" isVisible={true} className={classes.root}>
+
+    <Card className={classes.cardContainer}>
        
       <CardMedia
         className={classes.media}
@@ -54,6 +58,7 @@ export default function Item ({precio,marca,categoria,urlImg,id,modelo}) {
       </CardActions>
       </div>
     </Card>
+    </Animated>
   );
 }
 

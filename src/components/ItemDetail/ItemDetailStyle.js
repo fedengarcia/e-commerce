@@ -8,8 +8,10 @@ export const ItemDetailStyle = (theme) => ({
         '@media (max-width: 1500px)':{
             width: '80%',
         },
+    },
+    cardContainer:{
         backgroundColor: '#A9CCE3',
-        borderRadius: '1em', 
+        borderRadius: '1em',
     },
     media: {
         height: 0,

@@ -2,12 +2,14 @@
 export const ItemStyle = (theme) => ({
     root: {
         width: '70%',
+        // transition: '1s',
+        // '&:hover':{
+        //     width:'75%'
+        // }
+    },
+    cardContainer:{
         backgroundColor: '#A9CCE3',
         borderRadius: '1em',
-        transition: '1s',
-        '&:hover':{
-            width:'75%'
-        }
     },
     media: {
         height: 0,
