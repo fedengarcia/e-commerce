@@ -30,7 +30,7 @@ const NavBar = () => {
     setMobileMoreAnchorEl(null);
   };
 
-  const handleMenuClose = (marca) => {
+  const handleMenuClose = () => {
     handleMobileMenuClose();
   };
 
@@ -68,8 +68,21 @@ const NavBar = () => {
   return (
     <div className={classes.grow}>
       <AppBar position="static">
-        <Toolbar>
+        <Toolbar className={classes.toolBar}>
+        <IconButton
+              edge="end"
+              aria-label="account of current user"
+              aria-controls={menuId}
+              aria-haspopup="true"
+              color="inherit"
+              className={classes.logo}
+              onClick = {() => history.push('/')}
+              
+              >
 
+
+            <Typography variant="h4"className={classes.title}>Logo</Typography>
+            </IconButton>
         {/* MOBILE SECTION */}
         <div className={classes.sectionMobile}>
           <IconButton
@@ -85,20 +98,7 @@ const NavBar = () => {
         </div>
           {/* DESKTOP SECTION */}
           <div className={classes.sectionDesktop}>
-          <IconButton
-              edge="end"
-              aria-label="account of current user"
-              aria-controls={menuId}
-              aria-haspopup="true"
-              color="inherit"
-              className={classes.navBarIcon}
-              onClick = {() => history.push('/')}
-              
-              >
-
-
-            <Typography variant="h4"className={classes.title}>Logo</Typography>
-            </IconButton>
+          
             <IconButton
               edge="end"
               aria-label="account of current user"

@@ -58,16 +58,24 @@ import {fade} from '@material-ui/core/styles';
       display: 'none',
       [theme.breakpoints.up('md')]: {
         display: 'flex',
+        justifyContent: 'space-around',
+        width: '20%',
+        marginRight: '1em',
       },
     },
   
     sectionMobile: {
       display: 'flex',
+      marginLeft: '-2em',
       [theme.breakpoints.up('md')]: {
         display: 'none',
       },
     },
-    navBarIcon:{
-      marginRight: '1em'
-    }
+    logo:{
+      display: 'none',
+      [theme.breakpoints.up('md')]: {
+        display: 'flex',
+      },
+    },
+
   });
