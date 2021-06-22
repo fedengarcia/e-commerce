@@ -13,7 +13,7 @@ import img_id10 from './img/Harden-Futurenatural-5.jpg';
 
 const data = [
         {
-            "id": "1",
+            "id": "0",
             "precio": 12000,
             "marca": "Nike",
             "categoria": "basquet",
@@ -24,7 +24,7 @@ const data = [
             "descripcion": "Zapatilla de basquet modelo 2017, muy comodas y confortables."
         },
         {
-            "id": "2",
+            "id": "1",
             "precio": 18000,
             "marca": "Nike",
             "categoria": "basquet",
@@ -35,7 +35,7 @@ const data = [
             "descripcion": "Zapatillas de basquet de Kyrie Irving."
         },
         {
-            "id": "3",
+            "id": "2",
             "precio": 13000,
             "marca": "Nike",
             "categoria": "basquet",
@@ -46,7 +46,7 @@ const data = [
             "descripcion": "Zapatillas de basquet de Kyrie Irving."
         },
         {
-            "id": "4",
+            "id": "3",
             "precio": 22000,
             "marca": "Nike",
             "categoria": "basquet",
@@ -57,7 +57,7 @@ const data = [
             "descripcion": "Zapatillas de basquet de Lebron James."
         },
         {
-            "id": "5",
+            "id": "4",
             "precio": 10000,
             "marca": "Jordan",
             "categoria": "basquet",
@@ -68,7 +68,7 @@ const data = [
             "descripcion": "Zapatillas de basquet de Michael Jordan, modeloo retro."
         },
         {
-            "id": "6",
+            "id": "5",
             "precio": 12300,
             "marca": "Jordan",
             "categoria": "basquet",
@@ -79,7 +79,7 @@ const data = [
             "descripcion": "Zapatillas de basquet de Michael Jordan, modeloo retro."
         },
         {
-            "id": "7",
+            "id": "6",
             "precio": 9000,
             "marca": "Adiddas",
             "categoria": "basquet",
@@ -90,7 +90,7 @@ const data = [
             "descripcion": "Zapatillas de basquet Adiddas, comodas y economicas"
         },
         {
-            "id": "8",
+            "id": "7",
             "precio": 18600,
             "marca": "Adiddas",
             "categoria": "basquet",
@@ -101,7 +101,7 @@ const data = [
             "descripcion": "Zapatillas de basquet de Derrick Rose."
         },
         {
-            "id": "9",
+            "id": "8",
             "precio": 13000,
             "marca": "Adiddas",
             "categoria": "basquet",
@@ -112,7 +112,7 @@ const data = [
             "descripcion": "Zapatillas de basquet de Damian Lillard."
         },
         {
-            "id": "10",
+            "id": "9",
             "precio": 15000,
             "marca": "Adiddas",
             "categoria": "basquet",

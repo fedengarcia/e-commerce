@@ -3,17 +3,17 @@ import {fade} from '@material-ui/core/styles';
   export const navBarStyle = (theme) => ({
     navBarIcon:{
       borderRadius: '1em',
-      '&:hover':{
-        backgroundColor: '#D5A17F',
-        // color:'#D5A17F'
-      }
+      // '&:hover':{
+      //   backgroundColor: '#D5A17F',
+      //   // color:'#D5A17F'
+      // }
     },
     grow: {
       flexGrow: 1,
       marginBottom: '2em',
     },
     appBarStyle:{
-      background: 'linear-gradient(to right,#5499C7,#2980B9)'
+      background: 'linear-gradient(to right,#7b4397,#dc2430)'
     },
     menuButton: {
       marginLeft: theme.spacing(2),
@@ -85,9 +85,11 @@ import {fade} from '@material-ui/core/styles';
       [theme.breakpoints.up('md')]: {
         display: 'flex',
       },
-      '&:hover':{
-        backgroundColor: 'transparent',
-      }
+      // '&:hover':{
+      //   backgroundColor: 'transparent',
+      // }
     },
-
+    imgNavBar:{
+      width: "2.5em",
+    }
   });

@@ -1,3 +1,27 @@
+### HOW TO CONFIGURE IT
+Para configurar tu ecommerce para vender zapatillas, solo hace falta que se modifique el archivo data.js
+Este archivo es el encargado de exportar la data de nuestro ecommerce. Esta es leida a traves de una Promise en nuestros "Componentes Contenedores". 
+Se exporta un array de objetos, donde cada objeto debe detallar la siguiente informacion:
+
+"id" //El id sera el correspondiente a la posicion del array
+
+"precio" //Indicar Precio
+
+"marca" //Nike, Jordan o Adiddas
+
+"categoria" // Indicar la actividad para la que se utilizaria la zapatilla
+
+"modelo" //Modelo de la zapatilla
+
+"urlImg" //La ruta de la imagen
+
+"cantidad" //Cantidad de productos disponibles
+
+"talle" // [] -> Con los alles disponibles
+
+"descripcion" // Una leve descripcion del producto.
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -68,3 +92,6 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
+

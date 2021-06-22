@@ -10,7 +10,6 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import ItemCount from '../ItemCount/ItemCount';
 // import {useParams} from 'react-router-dom';
-import {Animated} from "react-animated-css";
 
 
 const useStyles = makeStyles((theme) => ItemDetailStyle(theme));
@@ -26,7 +25,7 @@ export default function Item ({precio,marca,categoria,urlImg,cantidad,talle,desc
   // };
 
   return (
-    <Animated animationIn="slideInUp" animationOut="fadeOut" isVisible={true} className={classes.root}>
+    <div className={classes.root}>
       <Card className={classes.cardContainer}>
           <CardMedia
           className={classes.media}
@@ -59,7 +58,7 @@ export default function Item ({precio,marca,categoria,urlImg,cantidad,talle,desc
         </CardActions>
         </div>
       </Card>
-    </Animated>
+    </div>
   );
 }
 

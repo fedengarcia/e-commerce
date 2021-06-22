@@ -13,8 +13,10 @@ import InputBase from '@material-ui/core/InputBase';
 import SearchIcon from '@material-ui/icons/Search';
 import CartWidget from '../CartWidget/CartWidget';
 import {useHistory} from 'react-router-dom';
-
-//IMPORT NEW NAVIGATION BAR
+// import PopupState, { bindTrigger, bindMenu } from 'material-ui-popup-state';
+// import Button from '@material-ui/core/Button';
+// import ListIcon from '@material-ui/icons/List';
+import navBarLogo from '../../img/logo.png'
 
 
 const useStyles = makeStyles((theme) => navBarStyle(theme));
@@ -41,11 +43,38 @@ const NavBar = () => {
 
 
 
+
+
+
   const menuId = 'primary-search-account-menu';
 
 
   const mobileMenuId = 'primary-search-account-menu-mobile';
+  
   const renderMobileMenu = (
+    // <PopupState variant="popover" popupId="demo-popup-menu"
+    //   anchorEl={mobileMoreAnchorEl}
+    //   anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
+    //   id={mobileMenuId}
+    //   keepMounted
+    //   transformOrigin={{ vertical: 'top', horizontal: 'right' }}
+    //   open={isMobileMenuOpen}
+    //   onClose={handleMobileMenuClose}
+    // >
+    //   {(popupState) => (
+    //     <>
+    //     <Button variant="contained" color="primary" {...bindTrigger(popupState)}>
+    //         Open Menu
+    //       </Button>
+    //       <Menu {...bindMenu(popupState)}>
+    //           <MenuItem onClick={() => handleMenuClose('Nike')}>Nike</MenuItem>
+    //           <MenuItem onClick={() => handleMenuClose('Jordan')}>Jordan</MenuItem>
+    //           <MenuItem onClick={() => handleMenuClose('Adiddas')}>Adiddas</MenuItem>
+    //       </Menu>
+    //     </>
+    //   )}
+    // </PopupState>
+
     <Menu
       anchorEl={mobileMoreAnchorEl}
       anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
@@ -70,6 +99,7 @@ const NavBar = () => {
     <div className={classes.grow}>
       <AppBar position="static" className={classes.appBarStyle}>
         <Toolbar className={classes.toolBar}>
+        
         <IconButton
               edge="end"
               aria-label="account of current user"
@@ -82,7 +112,7 @@ const NavBar = () => {
               >
 
 
-            <Typography variant="h4"className={classes.title}>Logo</Typography>
+            <img src={navBarLogo} alt="logo" className={classes.imgNavBar}/>
             </IconButton>
         {/* MOBILE SECTION */}
         <div className={classes.sectionMobile}>
@@ -94,7 +124,8 @@ const NavBar = () => {
             aria-controls={mobileMenuId}
             onClick={handleMenuOpen}
           >
-            <MenuIcon />
+            <img src={navBarLogo} alt="logo" className={classes.imgNavBar}/>
+
           </IconButton>
         </div>
           {/* DESKTOP SECTION */}

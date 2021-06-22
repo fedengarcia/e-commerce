@@ -8,9 +8,11 @@ export const ItemDetailStyle = (theme) => ({
         '@media (max-width: 1500px)':{
             width: '80%',
         },
+        animationName: 'slideInUp',
+        animationDuration: '1s'
     },
     cardContainer:{
-        backgroundColor: '#A9CCE3',
+        backgroundColor: '#AF91F7',
         borderRadius: '1em',
     },
     media: {
@@ -28,7 +30,8 @@ export const ItemDetailStyle = (theme) => ({
     },
     button:{
         '&:hover':{
-            backgroundColor: '#D5A17F',
+            backgroundColor: '#dc2430',
+            color: 'white'
         }
     }
 

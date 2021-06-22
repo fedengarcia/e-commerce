@@ -1,3 +1,4 @@
+// import { fadeIn } from 'react-animations';
 
 export const ItemStyle = (theme) => ({
     root: {
@@ -6,9 +7,11 @@ export const ItemStyle = (theme) => ({
         // '&:hover':{
         //     width:'75%'
         // }
+        animationName: 'slideInUp',
+        animationDuration: '1s'
     },
     cardContainer:{
-        backgroundColor: '#A9CCE3',
+        backgroundColor: '#AF91F7',
         borderRadius: '1em',
     },
     media: {
@@ -24,7 +27,8 @@ export const ItemStyle = (theme) => ({
     },
     button:{
         '&:hover':{
-            backgroundColor: '#D5A17F',
+            backgroundColor: '#dc2430',
+            color: 'white'
         }
     }
 
