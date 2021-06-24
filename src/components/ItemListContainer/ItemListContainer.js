@@ -7,19 +7,18 @@ import {useParams} from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ItemListContainerStyle(theme));
 
+const loadData = new Promise((resolve, reject) => {
+    setTimeout(function(){
+      resolve(dataJS); 
+    }, 2000);
+  });
 
 export default function ItemListContainer () {
     const classes = useStyles();
     const [data,setData] = useState(undefined);
     const {marca} = useParams();
 
-    useEffect(() => {
-        const loadData = new Promise((resolve, reject) => {
-            setTimeout(function(){
-              resolve(dataJS); 
-            }, 2000);
-          });
-    
+    useEffect(() => {    
         loadData.then((result) => {
             setData(result);
         }).catch((err) =>{

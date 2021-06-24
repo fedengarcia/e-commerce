@@ -7,7 +7,11 @@ import {useParams} from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ItemDetailContainerStyle(theme));
 
-
+const loadData = new Promise((resolve, reject) => {
+    setTimeout(function(){
+      resolve(dataJS); 
+    }, 2000);
+  });
 
 export default function ItemDetailContainer () {
     const classes = useStyles();
@@ -16,12 +20,6 @@ export default function ItemDetailContainer () {
 
     useEffect(() => {
         
-        const loadData = new Promise((resolve, reject) => {
-            setTimeout(function(){
-              resolve(dataJS); 
-            }, 2000);
-          });
-    
         loadData.then((result) => {
             setData(result)
         }).catch((err) =>{

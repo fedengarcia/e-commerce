@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React,{useState, useEffect} from 'react'
 import { makeStyles } from '@material-ui/core/styles';
 import {ItemCountStyle} from './ItemCountStyle';
 import IconButton from '@material-ui/core/IconButton';
@@ -10,13 +10,16 @@ import { Typography } from '@material-ui/core';
 const useStyle = makeStyles((theme) => ItemCountStyle(theme));
 
 
-export default function ItemCount ({cantidad}) {
+export default function ItemCount ({stock, setAmount}) {
     const classes = useStyle();
     const [items, setItem] = useState(0);
 
+    useEffect(() => {
+        setAmount(items);
+    }, [items]);
 
     const handleAddItem = () => {
-        if(items < cantidad){
+        if(items < stock){
             setItem(items + 1);
         }
     }

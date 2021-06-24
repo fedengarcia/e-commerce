@@ -19,7 +19,7 @@ const data = [
             "categoria": "basquet",
             "modelo": "Hyperdunk 2017",
             "urlImg": img_id1,
-            "cantidad": 4,
+            "stock": 4,
             "talle": [11,11.5,12,12.5,13,13.5,14],
             "descripcion": "Zapatilla de basquet modelo 2017, muy comodas y confortables."
         },
@@ -30,7 +30,7 @@ const data = [
             "categoria": "basquet",
             "modelo": "Kyrie FlyTrap 4",
             "urlImg":img_id3,
-            "cantidad": 1,
+            "stock": 1,
             "talle": [11,11.5,12,12.5,13,13.5,14],
             "descripcion": "Zapatillas de basquet de Kyrie Irving."
         },
@@ -41,7 +41,7 @@ const data = [
             "categoria": "basquet",
             "modelo": "Kyrie FlyTrap III",
             "urlImg": img_id2,
-            "cantidad": 2,
+            "stock": 2,
             "talle": [11,11.5,12,12.5,13,13.5,14],
             "descripcion": "Zapatillas de basquet de Kyrie Irving."
         },
@@ -52,7 +52,7 @@ const data = [
             "categoria": "basquet",
             "modelo": "Lebron James Soldier 12",
             "urlImg": img_id4,
-            "cantidad": 4,
+            "stock": 4,
             "talle": [11,11.5,12,12.5,13,13.5,14],
             "descripcion": "Zapatillas de basquet de Lebron James."
         },
@@ -63,7 +63,7 @@ const data = [
             "categoria": "basquet",
             "modelo": "Air Jordan Retro 12",
             "urlImg": img_id5,
-            "cantidad": 4,
+            "stock": 4,
             "talle": [11,11.5,12,12.5,13,13.5,14],
             "descripcion": "Zapatillas de basquet de Michael Jordan, modeloo retro."
         },
@@ -74,7 +74,7 @@ const data = [
             "categoria": "basquet",
             "modelo": "Air Jordan Retro 1",
             "urlImg": img_id6,
-            "cantidad": 1,
+            "stock": 1,
             "talle": [11,11.5,12,12.5,13,13.5,14],
             "descripcion": "Zapatillas de basquet de Michael Jordan, modeloo retro."
         },
@@ -85,7 +85,7 @@ const data = [
             "categoria": "basquet",
             "modelo": "OWNTHEGAME",
             "urlImg": img_id7,
-            "cantidad": 2,
+            "stock": 2,
             "talle": [11,11.5,12,12.5,13,13.5,14],
             "descripcion": "Zapatillas de basquet Adiddas, comodas y economicas"
         },
@@ -96,7 +96,7 @@ const data = [
             "categoria": "basquet",
             "modelo": "D-Rose 11",
             "urlImg": img_id8,
-            "cantidad": 3,
+            "stock": 3,
             "talle": [11,11.5,12,12.5,13,13.5,14],
             "descripcion": "Zapatillas de basquet de Derrick Rose."
         },
@@ -107,7 +107,7 @@ const data = [
             "categoria": "basquet",
             "modelo": "Dame 7 Shoes",
             "urlImg": img_id9,
-            "cantidad": 1,
+            "stock": 1,
             "talle": [11,11.5,12,12.5,13,13.5,14],
             "descripcion": "Zapatillas de basquet de Damian Lillard."
         },
@@ -118,7 +118,7 @@ const data = [
             "categoria": "basquet",
             "modelo": "Harden Vol 5 FutureNatural",
             "urlImg": img_id10,
-            "cantidad": 3,
+            "stock": 3,
             "talle": [11,11.5,12,12.5,13,13.5,14],
             "descripcion": "Zapatillas de basquet de James Harden."
         }

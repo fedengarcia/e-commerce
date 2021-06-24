@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import {ItemDetailStyle} from './ItemDetailStyle';
 import Card from '@material-ui/core/Card';
@@ -14,15 +14,70 @@ import ItemCount from '../ItemCount/ItemCount';
 
 const useStyles = makeStyles((theme) => ItemDetailStyle(theme));
 
-export default function Item ({precio,marca,categoria,urlImg,cantidad,talle,descripcion,modelo}) {
+export default function Item ({precio,marca,categoria,urlImg,stock,talle,descripcion,modelo}) {
   const classes = useStyles();
-  // const id = useParams();
   
-  // const [itemList, setItemList] = useState(0);
+  const [addCart, setFinishButton] = useState(false);
+  const [amount, setAmount] = useState(0);
 
-  // const handleAddProduct = () => {
-  //   setItemList(itemList + 1);
-  // };
+
+  const handleAddCart = () => {
+    setFinishButton(true);
+  };
+
+  const handleEndBuying = () => {
+    console.log(amount);
+  }
+
+  const handleCancel = () => {
+    setFinishButton(false);
+  }
+
+
+  const renderFinishBuying = (stock,setAmount) => {
+    if (addCart === false){
+      return <ItemCount stock={stock} setAmount={setAmount}/>
+    }else{
+      return <>
+        <Button
+        className={classes.button}
+        variant="contained"
+        size="large"
+        onClick={handleEndBuying}
+        >
+          <Typography>Terminar mi compra</Typography>
+        </Button>
+    </>
+    }
+  }
+
+
+  const renderAddCart = (handleCancel,handleAddCart) => {
+    if (addCart === false){
+      return  <>
+          <Button
+            className={classes.button}
+            variant="contained"
+            size="large"
+            onClick={handleAddCart}
+          >
+            <Typography>Agregar al carrito</Typography>
+          </Button>
+          </>
+    }else{
+      return <Button
+        className={classes.button}
+        variant="contained"
+        size="large"
+        onClick={handleCancel}
+        >
+          <Typography>Cancelar</Typography>
+        </Button>
+  
+    }
+  }
+ 
+
 
   return (
     <div className={classes.root}>
@@ -41,21 +96,19 @@ export default function Item ({precio,marca,categoria,urlImg,cantidad,talle,desc
         <CardContent>
             <Typography variant="h4">${parseFloat(precio)}</Typography>
             <Typography variant="h6">{descripcion}</Typography>
+            <Typography variant="h6">Stock: {stock}</Typography>
         </CardContent>
         <div className={classes.actionContainer}>
 
 
-        <ItemCount cantidad={cantidad}/>
+        {renderFinishBuying(stock,setAmount)}
 
-        <CardActions disableSpacing>
-          <Button
-              className={classes.button}
-              variant="contained"
-              size="large"
-          >
-              <Typography>Agregar al carrito</Typography>
-          </Button>
+        <CardActions>
+        
+        {renderAddCart(handleCancel,handleAddCart)}
+
         </CardActions>
+        
         </div>
       </Card>
     </div>
