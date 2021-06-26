@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useContext, createContext} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import {ItemDetailStyle} from './ItemDetailStyle';
 import Card from '@material-ui/core/Card';
@@ -10,15 +10,29 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import ItemCount from '../ItemCount/ItemCount';
 // import {useParams} from 'react-router-dom';
+// import {useHistory} from 'react-router-dom';
 
+
+const ModeContext = createContext();
 
 const useStyles = makeStyles((theme) => ItemDetailStyle(theme));
 
-export default function Item ({precio,marca,categoria,urlImg,stock,talle,descripcion,modelo}) {
+export default function ItemDetail ({id,precio,marca,categoria,urlImg,stock,descripcion,modelo}) {
   const classes = useStyles();
-  
+  // const history = useHistory();
+  const {addItem,removeItem,clear,isInCart} = useContext(ModeContext);
+
   const [addCart, setFinishButton] = useState(false);
   const [amount, setAmount] = useState(0);
+
+  const [item, setItem] = useState({
+    "id": id,
+    "precio": precio,
+    "marca": marca,
+    "categoria": categoria,
+    "modelo": modelo,
+    "descripcion": descripcion
+  })
 
 
   const handleAddCart = () => {
@@ -26,11 +40,12 @@ export default function Item ({precio,marca,categoria,urlImg,stock,talle,descrip
   };
 
   const handleEndBuying = () => {
-    console.log(amount);
+    addItem(item,amount);
+    // history.push(`/cart`)
   }
 
   const handleCancel = () => {
-    setFinishButton(false);
+    clear();
   }
 
 
@@ -54,8 +69,7 @@ export default function Item ({precio,marca,categoria,urlImg,stock,talle,descrip
 
   const renderAddCart = (handleCancel,handleAddCart) => {
     if (addCart === false){
-      return  <>
-          <Button
+      return <Button
             className={classes.button}
             variant="contained"
             size="large"
@@ -63,7 +77,7 @@ export default function Item ({precio,marca,categoria,urlImg,stock,talle,descrip
           >
             <Typography>Agregar al carrito</Typography>
           </Button>
-          </>
+          
     }else{
       return <Button
         className={classes.button}
@@ -89,14 +103,14 @@ export default function Item ({precio,marca,categoria,urlImg,stock,talle,descrip
           alt="Imagen del producto"
         />
         <CardHeader
-          title={"Zapatillas de " + categoria + " " + marca}
+          title={`Zapatillas de ${categoria} ${marca}`}
           subheader={modelo}
         
         />
         <CardContent>
-            <Typography variant="h4">${parseFloat(precio)}</Typography>
+            <Typography variant="h4">{`$ ${parseFloat(precio)}`}</Typography>
             <Typography variant="h6">{descripcion}</Typography>
-            <Typography variant="h6">Stock: {stock}</Typography>
+            <Typography variant="h6">{`Cantidad: ${stock}`}</Typography>
         </CardContent>
         <div className={classes.actionContainer}>
 

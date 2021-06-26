@@ -39,7 +39,7 @@ export default function ItemCount ({stock, setAmount}) {
             </IconButton>
 
             <div className={classes.itemCountContainer}>
-                <Typography style={{fontSize:"0.8em"}}>Cantidad:{cantidad}</Typography>
+                <Typography style={{fontSize:"0.8em"}}>{`Cantidad: ${cantidad}`}</Typography>
             </div>
 
             <IconButton
