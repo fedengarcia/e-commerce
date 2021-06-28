@@ -1,4 +1,3 @@
-import { FormatColorResetTwoTone } from '@material-ui/icons';
 import React, {useState, createContext,useEffect} from 'react';
 
 export const ModeContext = createContext();
@@ -45,7 +44,9 @@ export const CartContext = (props) => {
         if(result === -1){
             setItem(items => [...items,item])
         }else{
-            items[result]["quantity"] += item.quantity
+            const newItems = [...items];
+            newItems[result]["quantity"] = newItems[result]["quantity"] + item.quantity;
+            setItem(newItems);
         }
         
     }

@@ -24,7 +24,7 @@ export default function ItemDetail (props) {
   //HOOKS
   const classes = useStyles();
   const history = useHistory();
-  const {addItem, getItems, isInCart, getItemQuantity} = useContext(ModeContext);
+  const {addItem} = useContext(ModeContext);
 
 
   const handleAddCart = () => {
@@ -39,7 +39,6 @@ export default function ItemDetail (props) {
     }
       addItem(itemCart);
       history.push(`/cart`);
-      //ACTUALIZAR CANTIDAD EN DATA.JS
   }
 
   

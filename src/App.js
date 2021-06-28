@@ -4,7 +4,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import {BrowserRouter,Switch,Route} from 'react-router-dom'
 import ItemListContainer from './components/ItemListContainer/ItemListContainer';
 import ItemDetailContainer from './components/ItemDetailContainer/ItemDetailContainer';
-import Cart from './components/Cart/Cart';
+import CartContainer from './components/CartContainer/CartContainer';
 import {CartContext} from './Context/CartContext'
 
 // import Router from './components/Router/Router';
@@ -54,7 +54,7 @@ function App() {
               </Route>
 
               <Route path="/cart">
-                  <Cart/>
+                  <CartContainer/>
               </Route>
           </Switch>
       </BrowserRouter>

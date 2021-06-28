@@ -1,15 +1,18 @@
 import React from 'react';
-// import {makeStyles} from '@material-ui/core/styles';
-// import { cartWidgetStyle } from './CartWidgetStyle';
+
 import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
 import Badge from '@material-ui/core/Badge';
 import IconButton from '@material-ui/core/IconButton';
+import { useHistory } from 'react-router-dom';
 
 
 
 // const useStyles = makeStyles ((theme) => cartWidgetStyle(theme));
 
 const CartWidget = ({numProduct}) => {
+  const history = useHistory();
+  
+
     return (
         <>
         <IconButton
@@ -18,6 +21,7 @@ const CartWidget = ({numProduct}) => {
             aria-controls="primary-search-account-menu"
             aria-haspopup="true"
             color="inherit"
+            onClick={() => history.push(`/cart`)}
             >
           <Badge badgeContent={numProduct} color="secondary" >
             <AddShoppingCartIcon style={{fontSize:"1.5em"}}/>

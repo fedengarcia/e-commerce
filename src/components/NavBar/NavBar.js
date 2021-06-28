@@ -194,6 +194,7 @@ const NavBar = () => {
 
           <div className={classes.grow} />
          
+         
           <CartWidget numProduct={getQuantity()}/>
         
 
