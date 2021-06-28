@@ -1,4 +1,4 @@
-import React, {useState, useContext, createContext} from 'react';
+import React, {useState} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import {ItemDetailStyle} from './ItemDetailStyle';
 import Card from '@material-ui/core/Card';
@@ -9,30 +9,29 @@ import CardActions from '@material-ui/core/CardActions';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import ItemCount from '../ItemCount/ItemCount';
+// import ModeContext from '../Context/CartContext';
 // import {useParams} from 'react-router-dom';
-// import {useHistory} from 'react-router-dom';
+import {useHistory} from 'react-router-dom';
 
-
-const ModeContext = createContext();
 
 const useStyles = makeStyles((theme) => ItemDetailStyle(theme));
 
 export default function ItemDetail ({id,precio,marca,categoria,urlImg,stock,descripcion,modelo}) {
   const classes = useStyles();
-  // const history = useHistory();
-  const {addItem,removeItem,clear,isInCart} = useContext(ModeContext);
+  const history = useHistory();
+  // const {addItem,removeItem,clear,isInCart} = useContext(ModeContext);
 
-  const [addCart, setFinishButton] = useState(false);
+  const [finishButton, setFinishButton] = useState(false);
   const [amount, setAmount] = useState(0);
 
-  const [item, setItem] = useState({
-    "id": id,
-    "precio": precio,
-    "marca": marca,
-    "categoria": categoria,
-    "modelo": modelo,
-    "descripcion": descripcion
-  })
+  // const [item, setItem] = useState({
+  //   "id": id,
+  //   "precio": precio,
+  //   "marca": marca,
+  //   "categoria": categoria,
+  //   "modelo": modelo,
+  //   "descripcion": descripcion
+  // })
 
 
   const handleAddCart = () => {
@@ -40,17 +39,20 @@ export default function ItemDetail ({id,precio,marca,categoria,urlImg,stock,desc
   };
 
   const handleEndBuying = () => {
-    addItem(item,amount);
-    // history.push(`/cart`)
+    // addItem(item,amount);
+    console.log(`CANTIDAD AGREGADA AL CARRITO: ${amount}`)
+    history.push(`/cart`);
   }
 
+  
   const handleCancel = () => {
-    clear();
+    setFinishButton(false);
+    // clear();
   }
 
 
   const renderFinishBuying = (stock,setAmount) => {
-    if (addCart === false){
+    if (finishButton === false){
       return <ItemCount stock={stock} setAmount={setAmount}/>
     }else{
       return <>
@@ -68,7 +70,7 @@ export default function ItemDetail ({id,precio,marca,categoria,urlImg,stock,desc
 
 
   const renderAddCart = (handleCancel,handleAddCart) => {
-    if (addCart === false){
+    if (finishButton === false){
       return <Button
             className={classes.button}
             variant="contained"

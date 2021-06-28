@@ -1,8 +1,8 @@
 import React, {useState, createContext,useEffect} from 'react';
 
-const ModeContext = createContext();
+export const ModeContext = createContext();
 
-export default function CartContext (props) {
+export const CartContext = (props) => {
     const [items,setItems] = useState([]);
 
     useEffect(() => {
@@ -37,4 +37,10 @@ export default function CartContext (props) {
     return <ModeContext.Provider value={{addItem,removeItem,clear,isInCart}}>
         {props.children}
     </ModeContext.Provider>
+}
+
+
+export module {
+    ModeContext: ModeContext;
+    CartContext: CartContext;
 }
