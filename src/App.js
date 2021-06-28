@@ -5,7 +5,7 @@ import {BrowserRouter,Switch,Route} from 'react-router-dom'
 import ItemListContainer from './components/ItemListContainer/ItemListContainer';
 import ItemDetailContainer from './components/ItemDetailContainer/ItemDetailContainer';
 import Cart from './components/Cart/Cart';
-// import CartContext from './components/Context/CartContext'
+import {CartContext} from './Context/CartContext'
 
 // import Router from './components/Router/Router';
 
@@ -46,7 +46,9 @@ function App() {
 
             
             <Route path="/item/:id">
+                <CartContext>
                   <ItemDetailContainer/>
+                </CartContext>
             </Route>
             
             <Route path="/category/:marca">
@@ -54,7 +56,9 @@ function App() {
             </Route>
 
             <Route path="/cart">
-              <Cart/>
+              <CartContext>
+                <Cart/>
+              </CartContext>
             </Route>
            
             

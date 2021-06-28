@@ -34,13 +34,14 @@ export const CartContext = (props) => {
         }
     }
 
+
+    const getItems = () => {
+        return items;
+    }
+
     return <ModeContext.Provider value={{addItem,removeItem,clear,isInCart}}>
         {props.children}
     </ModeContext.Provider>
 }
 
 
-export module {
-    ModeContext: ModeContext;
-    CartContext: CartContext;
-}
