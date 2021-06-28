@@ -35,35 +35,30 @@ function App() {
   return (
     <div className={classes.container}>
       
-        
+      <CartContext>
         <BrowserRouter> 
-        <NavBar />
-        <Switch>
-            
-            <Route exact path="/">
-                <ItemListContainer/>
-            </Route>
+          <NavBar />
+          <Switch>
+              
+              <Route exact path="/">
+                  <ItemListContainer/>
+              </Route>
 
-            
-            <Route path="/item/:id">
-                <CartContext>
-                  <ItemDetailContainer/>
-                </CartContext>
-            </Route>
-            
-            <Route path="/category/:marca">
-                <ItemListContainer/>
-            </Route>
+              
+              <Route path="/item/:id">
+                    <ItemDetailContainer/>
+              </Route>
+              
+              <Route path="/category/:marca">
+                  <ItemListContainer/>
+              </Route>
 
-            <Route path="/cart">
-              <CartContext>
-                <Cart/>
-              </CartContext>
-            </Route>
-           
-            
-        </Switch>
-    </BrowserRouter>
+              <Route path="/cart">
+                  <Cart/>
+              </Route>
+          </Switch>
+      </BrowserRouter>
+    </CartContext>
     </div>
   );
 }

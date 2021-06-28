@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState,useContext, useEffect} from 'react';
 import {navBarStyle} from './NavBarStyle'
 import {makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
@@ -17,16 +17,27 @@ import {useHistory} from 'react-router-dom';
 // import Button from '@material-ui/core/Button';
 // import ListIcon from '@material-ui/icons/List';
 import navBarLogo from '../../img/logo.png'
-
+import {ModeContext} from '../../Context/CartContext'
 
 const useStyles = makeStyles((theme) => navBarStyle(theme));
 
 const NavBar = () => {
   const history = useHistory();
   const classes = useStyles();
+  const {getQuantity} = useContext(ModeContext);
   
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = useState(null);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
+
+
+  // const handleQuantityItemsCart = () => {
+  //   var items = getQuantity();
+  //   for (var index = 0; index < items.length; index++) {
+  //     var quantity = items[index]["quantity"] + quantity;
+  //   }
+  //   return quantity;
+  // }
+
 
   const handleMobileMenuClose = () => {
     setMobileMoreAnchorEl(null);
@@ -40,11 +51,6 @@ const NavBar = () => {
   const handleMenuOpen = (event) => {
     setMobileMoreAnchorEl(event.currentTarget);
   };
-
-
-
-
-
 
   const menuId = 'primary-search-account-menu';
 
@@ -188,7 +194,7 @@ const NavBar = () => {
 
           <div className={classes.grow} />
          
-          <CartWidget numProduct="12"/>
+          <CartWidget numProduct={getQuantity()}/>
         
 
         </Toolbar>

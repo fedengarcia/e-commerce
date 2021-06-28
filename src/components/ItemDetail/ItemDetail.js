@@ -15,37 +15,36 @@ import {useHistory} from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ItemDetailStyle(theme));
 
-export default function ItemDetail ({id,precio,marca,categoria,urlImg,stock,descripcion,modelo}) {
-  const classes = useStyles();
-  const history = useHistory();
-  const {addItem,removeItem,clear,isInCart} = useContext(ModeContext);
-
+export default function ItemDetail (props) {
+  //STATES
   const [finishButton, setFinishButton] = useState(false);
   const [amount, setAmount] = useState(0);
+  const [item, setItem] = useState(props)
 
-  const [item, setItem] = useState({
-    "id": id,
-    "precio": precio,
-    "marca": marca,
-    "categoria": categoria,
-    "modelo": modelo,
-    "descripcion": descripcion
-  })
+  //HOOKS
+  const classes = useStyles();
+  const history = useHistory();
+  const {addItem, getItems, isInCart, getItemQuantity} = useContext(ModeContext);
 
 
   const handleAddCart = () => {
     setFinishButton(true);
   };
 
-  const handleEndBuying = () => {
-    addItem(item,amount);
-    history.push(`/cart`);
+
+  const handleEndBuying = (item,amount) => {
+    const itemCart = {
+      "item": item,
+      "quantity": amount,
+    }
+      addItem(itemCart);
+      history.push(`/cart`);
+      //ACTUALIZAR CANTIDAD EN DATA.JS
   }
 
   
   const handleCancel = () => {
     setFinishButton(false);
-    clear();
   }
 
 
@@ -58,7 +57,7 @@ export default function ItemDetail ({id,precio,marca,categoria,urlImg,stock,desc
         className={classes.button}
         variant="contained"
         size="large"
-        onClick={handleEndBuying}
+        onClick={() => handleEndBuying(item,amount)}
         >
           <Typography>Terminar mi compra</Typography>
         </Button>
@@ -98,24 +97,24 @@ export default function ItemDetail ({id,precio,marca,categoria,urlImg,stock,desc
       <Card className={classes.cardContainer}>
           <CardMedia
           className={classes.media}
-          image={urlImg}
+          image={props.urlImg}
           title="Imagen del Producto"
           alt="Imagen del producto"
         />
         <CardHeader
-          title={`Zapatillas de ${categoria} ${marca}`}
-          subheader={modelo}
+          title={`Zapatillas de ${props.categoria} ${props.marca}`}
+          subheader={props.modelo}
         
         />
         <CardContent>
-            <Typography variant="h4">{`$ ${parseFloat(precio)}`}</Typography>
-            <Typography variant="h6">{descripcion}</Typography>
-            <Typography variant="h6">{`Cantidad: ${stock}`}</Typography>
+            <Typography variant="h4">{`$ ${parseFloat(props.precio)}`}</Typography>
+            <Typography variant="h6">{props.descripcion}</Typography>
+            <Typography variant="h6">{`Cantidad: ${props.stock}`}</Typography>
         </CardContent>
         <div className={classes.actionContainer}>
 
 
-        {renderFinishBuying(stock,setAmount)}
+        {renderFinishBuying(props.stock,setAmount)}
 
         <CardActions>
         

@@ -1,45 +1,68 @@
+import { FormatColorResetTwoTone } from '@material-ui/icons';
 import React, {useState, createContext,useEffect} from 'react';
 
 export const ModeContext = createContext();
 
 export const CartContext = (props) => {
-    const [items,setItems] = useState([]);
-
+    const [items,setItem] = useState([]);
+    
     useEffect(() => {
-       console.log('Se actualizo el context', items);
+       console.log('Se actualizo el CartContext', items);
     });
 
-    const addItem = (item,quantity) => {
-        setItems(items.push(
-            {
-                "item": item,
-                "quantity": quantity
+    const isInCart = (id) =>{
+        for(var i = 0; i < items.length; i++) {
+            if(items[i]["item"]["id"] === id) {
+                return true;
             }
-        ));
+        }
+        return false; 
+    }
+
+    const getQuantity = () => {
+        var quantity = 0;
+        for(var i = 0; i < items.length; i++) {
+            quantity = items[i]["quantity"] + quantity;
+        }
+        return quantity; 
+    }
+
+
+    const getIndex = (id) =>{
+        for(var i = 0; i < items.length; i++) {
+            if(items[i]["item"]["id"] === id) {
+                return i;
+            }
+        }
+        return -1; 
+    }
+
+    // Spread operator, wrapper function (recommended)
+    // setItem(items => [...items,item])
+
+    const addItem = (item) => {
+        var result = getIndex(item.item.id);
+        if(result === -1){
+            setItem(items => [...items,item])
+        }else{
+            items[result]["quantity"] += item.quantity
+        }
+        
     }
 
     const removeItem = (id) => {
-        delete items[id]
+        setItem(items.filter(item => item.item.id !== id));
     }
 
     const clear = () => {
-        setItems([]);
+        setItem([])
     }
-
-    const isInCart = (id) => {
-        if(items.length <= id){
-            return true;
-        }else{
-            return false;
-        }
-    }
-
 
     const getItems = () => {
         return items;
     }
 
-    return <ModeContext.Provider value={{addItem,removeItem,clear,isInCart}}>
+    return <ModeContext.Provider value={{addItem, getItems, clear, isInCart, getQuantity, removeItem}}>
         {props.children}
     </ModeContext.Provider>
 }
