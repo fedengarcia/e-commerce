@@ -195,9 +195,9 @@ const NavBar = () => {
           <div className={classes.grow} />
          
          
-          <CartWidget numProduct={getQuantity()}/>
-        
-
+        <CartWidget numProduct={getQuantity()}/>
+       
+       
         </Toolbar>
       </AppBar>
       {renderMobileMenu}
