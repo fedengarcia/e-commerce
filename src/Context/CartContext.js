@@ -9,6 +9,16 @@ export const CartContext = (props) => {
        console.log('Se actualizo el CartContext', items);
     });
 
+
+    const getTotalPrice = () =>{
+        var totalPrice = 0
+        for (var index = 0; index < items.length; index++) {
+            totalPrice = totalPrice + (items[index]['item']['precio'] * items[index]['quantity']);
+        }
+        return totalPrice;
+    }
+
+
     const isInCart = (id) =>{
         for(var i = 0; i < items.length; i++) {
             if(items[i]["item"]["id"] === id) {
@@ -63,7 +73,7 @@ export const CartContext = (props) => {
         return items;
     }
 
-    return <ModeContext.Provider value={{addItem, getItems, clear, isInCart, getQuantity, removeItem}}>
+    return <ModeContext.Provider value={{addItem, getItems, clear, isInCart, getQuantity, removeItem, getTotalPrice}}>
         {props.children}
     </ModeContext.Provider>
 }

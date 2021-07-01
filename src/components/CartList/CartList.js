@@ -11,7 +11,7 @@ const useStyle = makeStyles ((theme) => CartListStyle(theme));
 
 export default function CartList ({items}) {
     const classes = useStyle();
-    const {clear} = useContext(ModeContext);
+    const {clear,getTotalPrice} = useContext(ModeContext);
     const history = useHistory();
 
     const handleCleanCart = () => {
@@ -31,6 +31,9 @@ export default function CartList ({items}) {
         if (items.length > 0){
             return <>
                 {items.map((item) => <ItemsGrid item={item} key={item.id}/>)}
+                <div style={{margin:'1em'}}>
+                    {`Total: $${getTotalPrice()}`}
+                </div>
             </>
         }else{
             return <Grid item sx={12}>
@@ -102,10 +105,11 @@ export default function CartList ({items}) {
             direction="column"
             justify="center"
             alignItems="center"
-            spacing={3}
         >
 
         {handleItems(items)}
+
+
 
         {handleCartButtons(items)}
 
