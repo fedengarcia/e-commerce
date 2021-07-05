@@ -1,6 +1,6 @@
 import firebase from 'firebase/app';
-import 'firebase/firestore';
-import 'firebase/storage';
+import '@firebase/firestore';
+import '@firebase/storage';
 
 var firebaseConfig = {
   apiKey: "AIzaSyBdpinfgHDW7FgjRHDa-SPFGXUvyzyzFHU",
@@ -15,7 +15,8 @@ const fb =  firebase.initializeApp(firebaseConfig);
 
 
 export const getStorageRef = () => {
-  var storage = firebase.storage;
+  var storage = fb.storage();
+
   return storage.ref('shoes-garcia');
 }
 
