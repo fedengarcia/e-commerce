@@ -16,7 +16,8 @@ export default function ItemListContainer () {
 
     useEffect(() => {  
 
-        setLoading(true)  
+        setLoading(true);
+
         const itemCollection = dataBase.collection("items");
 
         itemCollection.get().then((querySnapshot) => {
@@ -29,20 +30,16 @@ export default function ItemListContainer () {
             })
 
             setItems(myItems);
-
         }).catch(err => {
             console.log("Ocurrio un error", err);
-        }).finally (() => {
-            setLoading(false);
         })
-
 
     }, []);
    
 
     return(
         <div className={classes.gridContainer}>
-            
+            {!loading && <span>Cargando...</span>}
             {loading && <ItemList data={items} marca={marca}/>}
         </div>
     );

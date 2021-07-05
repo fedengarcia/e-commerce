@@ -53,6 +53,7 @@ export default function CartList ({items}) {
             justify="center"
             alignItems="center"
             direction="column"
+            container
 
         >
             <div className = {classes.actionContainer}>

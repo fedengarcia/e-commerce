@@ -1,4 +1,4 @@
-import React, {useState,useContext, useEffect} from 'react';
+import React, {useState,useContext} from 'react';
 import {navBarStyle} from './NavBarStyle'
 import {makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
@@ -28,15 +28,6 @@ const NavBar = () => {
   
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = useState(null);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
-
-
-  // const handleQuantityItemsCart = () => {
-  //   var items = getQuantity();
-  //   for (var index = 0; index < items.length; index++) {
-  //     var quantity = items[index]["quantity"] + quantity;
-  //   }
-  //   return quantity;
-  // }
 
 
   const handleMobileMenuClose = () => {

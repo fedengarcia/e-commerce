@@ -36,11 +36,12 @@ export default function ItemList ({data,marca}) {
             </>
         }else{
             return <>
-            {data.filter((item) => (item.id <= flagId)).map((item) => <ItemsGrid data={item} key={item.id}/>)}
+            {data.filter((item) => (data.indexOf(item) <= flagId)).map((item) => <ItemsGrid data={item} key={item.id}/>)}
             </>
         }
     }
 
+    
 
 
     return(
