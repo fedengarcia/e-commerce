@@ -1,124 +1,101 @@
-import img_id1 from './img/Hyperdunk-2017.jpg';
-import img_id2 from './img/Kyrie-FlyTrap-III.jpg';
-import img_id3 from './img/Kyrie-FlyTrap-4.jpg';
-import img_id4 from './img/Lebron-James-Soldier-12.jpg';
-import img_id5 from './img/Air-Jordan-Retro-12.jpg';
-import img_id6 from './img/Air-Jordan-Retro-1.jpg';
-import img_id7 from './img/Ownthegame.jpg';
-import img_id8 from './img/d-rose-11-shoes.jpg';
-import img_id9 from './img/Dame-7-shoes.jpg';
-import img_id10 from './img/Harden-Futurenatural-5.jpg';
-
-
-
 const data = [
         {
-            "id": "0",
             "precio": 12000,
             "marca": "Nike",
             "categoria": "basquet",
             "modelo": "Hyperdunk 2017",
-            "urlImg": img_id1,
-            "stock": 4,
+            "urlImg": "Hyperdunk-2017.jpg",
+            "stock": 27,
             "talle": [11,11.5,12,12.5,13,13.5,14],
             "descripcion": "Zapatilla de basquet modelo 2017, muy comodas y confortables."
         },
         {
-            "id": "1",
             "precio": 18000,
             "marca": "Nike",
             "categoria": "basquet",
             "modelo": "Kyrie FlyTrap 4",
-            "urlImg":img_id3,
-            "stock": 1,
+            "urlImg":"Kyrie-FlyTrap-4.jpg",
+            "stock": 5,
             "talle": [11,11.5,12,12.5,13,13.5,14],
             "descripcion": "Zapatillas de basquet de Kyrie Irving."
         },
         {
-            "id": "2",
             "precio": 13000,
             "marca": "Nike",
             "categoria": "basquet",
             "modelo": "Kyrie FlyTrap III",
-            "urlImg": img_id2,
-            "stock": 2,
+            "urlImg": "Kyrie-FlyTrap-III.jpg",
+            "stock": 80,
             "talle": [11,11.5,12,12.5,13,13.5,14],
             "descripcion": "Zapatillas de basquet de Kyrie Irving."
         },
         {
-            "id": "3",
             "precio": 22000,
             "marca": "Nike",
             "categoria": "basquet",
             "modelo": "Lebron James Soldier 12",
-            "urlImg": img_id4,
-            "stock": 4,
+            "urlImg": "Lebron-James-Soldier-12.jpg",
+            "stock": 100,
             "talle": [11,11.5,12,12.5,13,13.5,14],
             "descripcion": "Zapatillas de basquet de Lebron James."
         },
         {
-            "id": "4",
             "precio": 10000,
             "marca": "Jordan",
             "categoria": "basquet",
             "modelo": "Air Jordan Retro 12",
-            "urlImg": img_id5,
-            "stock": 4,
+            "urlImg": "Air-Jordan-Retro-12.jpg",
+            "stock": 78,
             "talle": [11,11.5,12,12.5,13,13.5,14],
             "descripcion": "Zapatillas de basquet de Michael Jordan, modeloo retro."
         },
         {
-            "id": "5",
             "precio": 12300,
             "marca": "Jordan",
             "categoria": "basquet",
             "modelo": "Air Jordan Retro 1",
-            "urlImg": img_id6,
-            "stock": 1,
+            "urlImg": "Air-Jordan-Retro-1.jpg",
+            "stock": 55,
             "talle": [11,11.5,12,12.5,13,13.5,14],
             "descripcion": "Zapatillas de basquet de Michael Jordan, modeloo retro."
         },
         {
-            "id": "6",
             "precio": 9000,
             "marca": "Adiddas",
             "categoria": "basquet",
             "modelo": "OWNTHEGAME",
-            "urlImg": img_id7,
-            "stock": 2,
+            "urlImg": "Ownthegame.jpg",
+            "stock": 32,
             "talle": [11,11.5,12,12.5,13,13.5,14],
             "descripcion": "Zapatillas de basquet Adiddas, comodas y economicas"
         },
         {
-            "id": "7",
             "precio": 18600,
             "marca": "Adiddas",
             "categoria": "basquet",
             "modelo": "D-Rose 11",
-            "urlImg": img_id8,
-            "stock": 3,
+            "urlImg": "d-rose-11-shoes.jpg",
+            "stock": 41,
             "talle": [11,11.5,12,12.5,13,13.5,14],
             "descripcion": "Zapatillas de basquet de Derrick Rose."
         },
         {
-            "id": "8",
             "precio": 13000,
             "marca": "Adiddas",
             "categoria": "basquet",
             "modelo": "Dame 7 Shoes",
-            "urlImg": img_id9,
-            "stock": 1,
+            "urlImg": "Dame-7-shoes.jpg",
+            "stock": 36,
             "talle": [11,11.5,12,12.5,13,13.5,14],
             "descripcion": "Zapatillas de basquet de Damian Lillard."
         },
         {
-            "id": "9",
             "precio": 15000,
             "marca": "Adiddas",
             "categoria": "basquet",
             "modelo": "Harden Vol 5 FutureNatural",
-            "urlImg": img_id10,
-            "stock": 3,
+            "urlImg": "Harden-Futurenatural-5.jpg",
+            "stock": 60,
             "talle": [11,11.5,12,12.5,13,13.5,14],
             "descripcion": "Zapatillas de basquet de James Harden."
         }

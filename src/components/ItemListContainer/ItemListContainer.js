@@ -2,34 +2,48 @@ import React,{useState, useEffect} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import ItemList from '../ItemList/ItemList';
 import {ItemListContainerStyle} from './ItemListContainerStyle';
-import dataJS from '../../data';
 import {useParams} from 'react-router-dom';
+import {dataBase} from '../../Firebase/firebase';
 
 const useStyles = makeStyles((theme) => ItemListContainerStyle(theme));
 
-const loadData = new Promise((resolve, reject) => {
-    setTimeout(function(){
-      resolve(dataJS); 
-    }, 2000);
-  });
 
 export default function ItemListContainer () {
     const classes = useStyles();
-    const [data,setData] = useState(undefined);
+    const [loading, setLoading] = useState(false);
+    const [items,setItems] = useState([]);
     const {marca} = useParams();
 
-    useEffect(() => {    
-        loadData.then((result) => {
-            setData(result);
-        }).catch((err) =>{
-            console.log(err);
+    useEffect(() => {  
+
+        setLoading(true)  
+        const itemCollection = dataBase.collection("items");
+
+        itemCollection.get().then((querySnapshot) => {
+            if(querySnapshot === 0){
+                console.log("no results");
+            }
+
+            const myItems = querySnapshot.docs.map(doc => {
+                return {...doc.data(),id:doc.id}
+            })
+
+            setItems(myItems);
+
+        }).catch(err => {
+            console.log("Ocurrio un error", err);
+        }).finally (() => {
+            setLoading(false);
         })
+
+
     }, []);
    
 
     return(
         <div className={classes.gridContainer}>
-            {data && <ItemList data={data} marca={marca}/>}
+            
+            {loading && <ItemList data={items} marca={marca}/>}
         </div>
     );
 }

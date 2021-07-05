@@ -14,7 +14,6 @@ export default function ItemList ({data,marca}) {
     const classes = useStyles();
     const [flagId, setFlagId] = useState(6);
 
-
     const handleAddButton = () => {
         setFlagId(flagId + 6);
     }
@@ -54,10 +53,7 @@ export default function ItemList ({data,marca}) {
             spacing={3}
         >
         
-        {handleItems(data,marca)}
-        
-        {/* {data.filter((item) => (item.id <= flagId && marca === item.marca)).map((item) => <ItemsGrid data={item} key={item.id}/>)} */}
-        
+        {handleItems(data,marca)}        
         
 
             <Grid item xs={12}>
