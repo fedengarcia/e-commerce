@@ -10,7 +10,7 @@ import IconButton from '@material-ui/core/IconButton';
 const useStyles = makeStyles((theme) => ItemListStyle(theme));
 
 
-export default function ItemList ({data,marca}) {
+export default function ItemList ({data}) {
     const classes = useStyles();
     const [flagId, setFlagId] = useState(6);
 
@@ -28,21 +28,6 @@ export default function ItemList ({data,marca}) {
             );
     }
 
-    const handleItems = (data,marca) => {
-
-        if(marca){
-            return<>
-            {data.filter((item) => (marca === item.marca)).map((item) => <ItemsGrid data={item} key={item.id}/>)}           
-            </>
-        }else{
-            return <>
-            {data.filter((item) => (data.indexOf(item) <= flagId)).map((item) => <ItemsGrid data={item} key={item.id}/>)}
-            </>
-        }
-    }
-
-    
-
 
     return(
 
@@ -54,7 +39,7 @@ export default function ItemList ({data,marca}) {
             spacing={3}
         >
         
-        {handleItems(data,marca)}        
+        {data.filter((item) => (data.indexOf(item) <= flagId)).map((item) => <ItemsGrid data={item} key={item.id}/>)}
         
 
             <Grid item xs={12}>

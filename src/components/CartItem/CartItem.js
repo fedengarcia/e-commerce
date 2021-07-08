@@ -1,5 +1,4 @@
-import React, {useContext,useEffect,useState} from 'react';
-import {ModeContext} from '../../Context/CartContext';
+import React, {useEffect,useState} from 'react';
 import { makeStyles } from '@material-ui/core';
 import {CartItemStyle} from './CartItemStyle';
 import Typography from '@material-ui/core/Typography';
@@ -11,10 +10,8 @@ const useStyle = makeStyles ((theme) => CartItemStyle(theme));
 
 export default function CartItem ({item, setOpenTrashDialog, setItemTrashId}) {
     const [imgRef,setImgRef] = useState(null);
-    const {removeItem} = useContext(ModeContext);
     const classes = useStyle();
 
-    console.log("ESTE ES TU ITEM",item);
 
     useEffect(() => {
         if(item.item.urlImg){

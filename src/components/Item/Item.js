@@ -43,6 +43,7 @@ export default function Item ({precio,marca,categoria,urlImg,id,modelo}) {
         className={classes.media}
         image = {imgRef}
         title="Imagen del Producto"
+        src={imgRef}
       />
 
       <CardHeader

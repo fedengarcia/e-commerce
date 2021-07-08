@@ -19,8 +19,15 @@ export default function ItemListContainer () {
         setLoading(true);
 
         const itemCollection = dataBase.collection("items");
+        
+        if(marca !== undefined){
+            var itemToRender = itemCollection.where("marca", "==", marca).limit(20);
+        }else{
+            var itemToRender = itemCollection;
+        }
+       
 
-        itemCollection.get().then((querySnapshot) => {
+        itemToRender.get().then((querySnapshot) => {
             if(querySnapshot === 0){
                 console.log("no results");
             }
@@ -30,17 +37,18 @@ export default function ItemListContainer () {
             })
 
             setItems(myItems);
+
         }).catch(err => {
             console.log("Ocurrio un error", err);
         })
 
-    }, []);
+    }, [marca]);
    
 
     return(
         <div className={classes.gridContainer}>
             {!loading && <span>Cargando...</span>}
-            {loading && <ItemList data={items} marca={marca}/>}
+            {loading && <ItemList data={items}/>}
         </div>
     );
 }

@@ -115,7 +115,7 @@ export default function ItemDetail (props) {
  
 
 
-  const renderItemDetail = (openCountAlertDialog) => {
+  const renderItemDetail = (openCountAlertDialog,openCleanCartDialog) => {
     if(openCountAlertDialog){
       return <DialogComponent
       open={openCountAlertDialog}

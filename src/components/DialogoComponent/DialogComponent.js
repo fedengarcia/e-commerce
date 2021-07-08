@@ -1,13 +1,13 @@
-import React,{useContext} from 'react'
-import { makeStyles } from '@material-ui/core/styles';
+import React from 'react'
 import { Dialog, DialogContent, DialogTitle, DialogActions } from '@material-ui/core';
 import { Button } from '@material-ui/core';
 
 // const useStyles = makeStyles ((theme) => DialogComponentStyle(theme));
 
 export default function DialogComponent (props) {
+    console.log("ENTRO PAPA AL DIALOG COMPONENTE")
 
-    const {title, open, firstButton, secondButton, children, handleConfirm, closeDialog, openDialog, removeItem} = props;
+    const {title, open, firstButton, secondButton, children, handleConfirm, closeDialog, openDialog, removeItem, clearCart} = props;
 
 
     const handleClose = () => {
@@ -21,6 +21,11 @@ export default function DialogComponent (props) {
     const handleAccept = () => {
         if(removeItem){
             removeItem();
+        }
+        if(clearCart){
+            console.log("SE VACIA EL CARROOO")
+
+            clearCart();
         }
         handleConfirm();
     }

@@ -9,19 +9,16 @@ import {useHistory} from 'react-router-dom';
 
 const useStyle = makeStyles ((theme) => CartListStyle(theme));
 
-export default function CartList ({items, setOpenTrashDialog,setItemTrashId}) {
+export default function CartList ({items, setOpenTrashDialog,setItemTrashId,setOpenCleanCartDialog}) {
     const classes = useStyle();
-    const {clear,getTotalPrice} = useContext(ModeContext);
+    const {getTotalPrice} = useContext(ModeContext);
     const history = useHistory();
 
-    const handleCleanCart = () => {
-        clear();
-    }
 
-    const ItemsGrid = ({item,setOpenTrashDialog,setItemTrashId}) =>{
+    const ItemsGrid = ({item,setOpenTrashDialog,setItemTrashId,setOpenCleanCartDialog}) =>{
         return(
             <Grid item sx={12}>
-                <CartItem item={item} setOpenTrashDialog={setOpenTrashDialog} setItemTrashId={setItemTrashId}></CartItem>
+                <CartItem item={item} setOpenTrashDialog={setOpenTrashDialog} setItemTrashId={setItemTrashId} ></CartItem>
             </Grid>
             );
     }
@@ -47,7 +44,7 @@ export default function CartList ({items, setOpenTrashDialog,setItemTrashId}) {
     }
 
 
-    const handleCartButtons = (items) => { 
+    const handleCartButtons = (items,setOpenCleanCartDialog) => { 
         if (items.length > 0){
             return <Grid item sx={12}
             justify="center"
@@ -69,7 +66,7 @@ export default function CartList ({items, setOpenTrashDialog,setItemTrashId}) {
                 variant="contained"
                 size="large"
                 className = {classes.buttonStyle}
-                onClick = {handleCleanCart}
+                onClick = {setOpenCleanCartDialog}
                 >
                     Vaciar Carrito
                 </Button>
@@ -112,7 +109,7 @@ export default function CartList ({items, setOpenTrashDialog,setItemTrashId}) {
 
 
 
-        {handleCartButtons(items)}
+        {handleCartButtons(items,setOpenCleanCartDialog)}
 
 
         

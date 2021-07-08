@@ -9,16 +9,14 @@ const useStyle = makeStyles ((theme) => CartContainerStyle(theme));
 
 
 export default function CartContainer  () {
-    const {getItems,removeItem} = useContext(ModeContext);
+    const {getItems,removeItem,clear} = useContext(ModeContext);
     const [openTrashDialog, setOpenTrashDialog] = useState(false);
     const [itemTrashId, setItemTrashId] = useState(undefined);
     const [openFormDialog, setOpenFormDialog] = useState (false);
+    const [openCleanCartDialog, setOpenCleanCartDialog] = useState (false);
 
     const items = getItems();
     const classes = useStyle();
-
-    console.log("CART CONTAINER TRASH =", openTrashDialog);
-    console.log("ID DE ELEMENTO A ELIMINAR =", itemTrashId);
 
     const renderTrashDialog = (openTrashDialog,itemTrashId) => {
         return <DialogComponent
@@ -36,6 +34,23 @@ export default function CartContainer  () {
         
     }
 
+    const renderCleanCartDialog = (openCleanCartDialog) => {
+        console.log("ENTRO PAPA AL CLEAN CART")
+        return <DialogComponent
+            open={openCleanCartDialog}
+            openDialog={setOpenCleanCartDialog}
+            closeDialog= {()=> setOpenCleanCartDialog(false)}
+            handleConfirm={()=> setOpenCleanCartDialog(false)}
+            title="Vaciar Carrito"
+            firstButton="Aceptar"
+            secondButton="Cancelar"
+            clearCart={() => clear()}
+            >
+              Estas seguro que deseas vaciar el carrito?
+            </DialogComponent>
+
+    }
+
     const renderFormDialog = (openFormDialog) => {
         <DialogComponent>
             
@@ -43,7 +58,7 @@ export default function CartContainer  () {
     }
 
 
-    const renderCartContainer = (openTrashDialog,openFormDialog,itemTrashId) => {
+    const renderCartContainer = (openTrashDialog,openCleanCartDialog,openFormDialog,itemTrashId) => {
         if(openTrashDialog){
             return <>
                 {renderTrashDialog(openTrashDialog,itemTrashId)}
@@ -52,14 +67,18 @@ export default function CartContainer  () {
             return <>
                 {renderFormDialog(openFormDialog)}
             </> 
+        }else if (openCleanCartDialog) {
+            return <>
+                {renderCleanCartDialog(openCleanCartDialog)}
+            </>
         }else{
-            return <CartList items={items} setOpenTrashDialog={setOpenTrashDialog} setItemTrashId={setItemTrashId}/>
+            return <CartList items={items} setOpenTrashDialog={setOpenTrashDialog} setItemTrashId={setItemTrashId} setOpenCleanCartDialog={setOpenCleanCartDialog}/>
         }
     }
 
     return <div className={classes.gridContainer}>
         
-        {renderCartContainer(openTrashDialog,openFormDialog,itemTrashId)}
+        {renderCartContainer(openTrashDialog,openCleanCartDialog,openFormDialog,itemTrashId,)}
 
     </div>
 }

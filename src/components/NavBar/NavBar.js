@@ -49,28 +49,6 @@ const NavBar = () => {
   const mobileMenuId = 'primary-search-account-menu-mobile';
   
   const renderMobileMenu = (
-    // <PopupState variant="popover" popupId="demo-popup-menu"
-    //   anchorEl={mobileMoreAnchorEl}
-    //   anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
-    //   id={mobileMenuId}
-    //   keepMounted
-    //   transformOrigin={{ vertical: 'top', horizontal: 'right' }}
-    //   open={isMobileMenuOpen}
-    //   onClose={handleMobileMenuClose}
-    // >
-    //   {(popupState) => (
-    //     <>
-    //     <Button variant="contained" color="primary" {...bindTrigger(popupState)}>
-    //         Open Menu
-    //       </Button>
-    //       <Menu {...bindMenu(popupState)}>
-    //           <MenuItem onClick={() => handleMenuClose('Nike')}>Nike</MenuItem>
-    //           <MenuItem onClick={() => handleMenuClose('Jordan')}>Jordan</MenuItem>
-    //           <MenuItem onClick={() => handleMenuClose('Adiddas')}>Adiddas</MenuItem>
-    //       </Menu>
-    //     </>
-    //   )}
-    // </PopupState>
 
     <Menu
       anchorEl={mobileMoreAnchorEl}
