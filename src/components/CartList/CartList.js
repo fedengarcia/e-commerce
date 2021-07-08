@@ -15,10 +15,10 @@ export default function CartList ({items, setOpenTrashDialog,setItemTrashId,setO
     const history = useHistory();
 
 
-    const ItemsGrid = ({item,setOpenTrashDialog,setItemTrashId,setOpenCleanCartDialog}) =>{
+    const ItemsGrid = ({item,setOpenTrashDialog,setItemTrashId, key}) =>{
         return(
             <Grid item sx={12}>
-                <CartItem item={item} setOpenTrashDialog={setOpenTrashDialog} setItemTrashId={setItemTrashId} ></CartItem>
+                <CartItem item={item} setOpenTrashDialog={setOpenTrashDialog} setItemTrashId={setItemTrashId} key={key}></CartItem>
             </Grid>
             );
     }
@@ -77,6 +77,7 @@ export default function CartList ({items, setOpenTrashDialog,setItemTrashId,setO
                 justify="center"
                 alignItems="center"
                 direction="column"
+                container
             >
 
             <div className = {classes.actionContainer}>

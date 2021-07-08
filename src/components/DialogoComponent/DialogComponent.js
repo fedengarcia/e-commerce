@@ -5,7 +5,6 @@ import { Button } from '@material-ui/core';
 // const useStyles = makeStyles ((theme) => DialogComponentStyle(theme));
 
 export default function DialogComponent (props) {
-    console.log("ENTRO PAPA AL DIALOG COMPONENTE")
 
     const {title, open, firstButton, secondButton, children, handleConfirm, closeDialog, openDialog, removeItem, clearCart} = props;
 
@@ -23,8 +22,6 @@ export default function DialogComponent (props) {
             removeItem();
         }
         if(clearCart){
-            console.log("SE VACIA EL CARROOO")
-
             clearCart();
         }
         handleConfirm();
