@@ -9,10 +9,12 @@ import { getStorageRef } from '../../Firebase/firebase';
 
 const useStyle = makeStyles ((theme) => CartItemStyle(theme));
 
-export default function CartItem (item) {
+export default function CartItem ({item, setOpenTrashDialog, setItemTrashId}) {
     const [imgRef,setImgRef] = useState(null);
     const {removeItem} = useContext(ModeContext);
     const classes = useStyle();
+
+    console.log("ESTE ES TU ITEM",item);
 
     useEffect(() => {
         if(item.item.urlImg){
@@ -29,13 +31,18 @@ export default function CartItem (item) {
     
       }, [item.item.urlImg]);
 
+
+    const handleTrashDialog = () => {
+      setItemTrashId(item.item.id)
+      setOpenTrashDialog(true);
+    }
+
     return <div className={classes.cartItemContainer}>
         <div style={{width: 'auto'}}>
             <img src={imgRef} alt="Imagen pequena del producto" style={{width: '4em'}}/>
         </div>
         
         <Typography className={classes.cartItem}>{`Zapatillas de ${item.item.categoria} ${item.item.marca}`}</Typography>
-
 
         <Typography className={classes.cartItem}>{`Cantidad: ${item.quantity}`}</Typography>
 
@@ -46,7 +53,7 @@ export default function CartItem (item) {
               aria-haspopup="true"
               color="inherit"
               className={classes.cartItem}
-              onClick = {() => removeItem(item.item.id)}
+              onClick = {handleTrashDialog}
               
         >
             <DeleteIcon/>

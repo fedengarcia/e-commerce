@@ -12,16 +12,19 @@ import ItemCount from '../ItemCount/ItemCount';
 import {ModeContext} from '../../Context/CartContext';
 import {useHistory} from 'react-router-dom';
 import {getStorageRef} from '../../Firebase/firebase';
+import DialogComponent from '../DialogoComponent/DialogComponent';
+
 
 const useStyles = makeStyles((theme) => ItemDetailStyle(theme));
 
 export default function ItemDetail (props) {
-  console.log(props);
   //STATES
   const [finishButton, setFinishButton] = useState(false);
   const [amount, setAmount] = useState(0);
   const [item, setItem] = useState(props)
   const [imgRef,setImgRef] = useState(null);
+  const [openCountAlertDialog, setOpenCountAlertDialog] = useState(false);
+
 
   const classes = useStyles();
   const history = useHistory();
@@ -43,17 +46,24 @@ export default function ItemDetail (props) {
   }, [props.urlImg]);
 
   const handleAddCart = () => {
+    
     setFinishButton(true);
   };
 
 
   const handleEndBuying = (item,amount) => {
-    const itemCart = {
-      "item": item,
-      "quantity": amount,
+    if(amount > 0){
+      const itemCart = {
+        "item": item,
+        "quantity": amount,
+      }
+        addItem(itemCart);
+        history.push(`/cart`);
+    }else{
+      setOpenCountAlertDialog(true);
+      setFinishButton(false);
     }
-      addItem(itemCart);
-      history.push(`/cart`);
+    
   }
 
   
@@ -62,20 +72,19 @@ export default function ItemDetail (props) {
   }
 
 
+
   const renderFinishBuying = (stock,setAmount) => {
     if (finishButton === false){
       return <ItemCount stock={stock} setAmount={setAmount}/>
     }else{
-      return <>
-        <Button
-        className={classes.button}
-        variant="contained"
-        size="large"
-        onClick={() => handleEndBuying(item,amount)}
-        >
-          <Typography>Terminar mi compra</Typography>
-        </Button>
-    </>
+      return <Button
+      className={classes.button}
+      variant="contained"
+      size="large"
+      onClick={() => handleEndBuying(item,amount)}
+      >
+        <Typography>Terminar mi compra</Typography>
+      </Button>
     }
   }
 
@@ -106,14 +115,25 @@ export default function ItemDetail (props) {
  
 
 
-  return (
-    <div className={classes.root}>
-      <Card className={classes.cardContainer}>
-          <CardMedia
-          className={classes.media}
-          image={imgRef}
-          title="Imagen del Producto"
-          alt="Imagen del producto"
+  const renderItemDetail = (openCountAlertDialog) => {
+    if(openCountAlertDialog){
+      return <DialogComponent
+      open={openCountAlertDialog}
+      openDialog={setOpenCountAlertDialog}
+      closeDialog={() => setOpenCountAlertDialog(false)}
+      handleConfirm={() => setOpenCountAlertDialog(false)}
+      firstButton="Aceptar"
+      >
+      
+      Se requiere comprar al menos un producto para poder continuar...
+    </DialogComponent>
+    }else{
+      return <Card className={classes.cardContainer}>
+        <CardMedia
+        className={classes.media}
+        image={imgRef}
+        title="Imagen del Producto"
+        alt="Imagen del producto"
         />
         <CardHeader
           title={`Zapatillas de ${props.categoria} ${props.marca}`}
@@ -125,19 +145,21 @@ export default function ItemDetail (props) {
             <Typography variant="h6">{props.descripcion}</Typography>
             <Typography variant="h6">{`Cantidad: ${props.stock}`}</Typography>
         </CardContent>
-        <div className={classes.actionContainer}>
-
-
+      
+      <div className={classes.actionContainer}>
         {renderFinishBuying(props.stock,setAmount)}
-
         <CardActions>
-        
-        {renderAddCart(handleCancel,handleAddCart)}
-
+          {renderAddCart(handleCancel,handleAddCart)}
         </CardActions>
-        
-        </div>
+      </div>
       </Card>
+    }
+}
+
+  return (
+    <div className={classes.root}>
+      {renderItemDetail(openCountAlertDialog)}
+      
     </div>
   );
 }

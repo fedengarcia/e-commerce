@@ -1,4 +1,4 @@
-import React, {useContext,useState} from 'react';
+import React, {useContext} from 'react';
 import { makeStyles } from '@material-ui/core';
 import {CartListStyle} from './CartListStyle';
 import Grid from '@material-ui/core/Grid';
@@ -9,7 +9,7 @@ import {useHistory} from 'react-router-dom';
 
 const useStyle = makeStyles ((theme) => CartListStyle(theme));
 
-export default function CartList ({items}) {
+export default function CartList ({items, setOpenTrashDialog,setItemTrashId}) {
     const classes = useStyle();
     const {clear,getTotalPrice} = useContext(ModeContext);
     const history = useHistory();
@@ -18,10 +18,10 @@ export default function CartList ({items}) {
         clear();
     }
 
-    const ItemsGrid = ({item}) =>{
+    const ItemsGrid = ({item,setOpenTrashDialog,setItemTrashId}) =>{
         return(
             <Grid item sx={12}>
-                <CartItem {...item}></CartItem>
+                <CartItem item={item} setOpenTrashDialog={setOpenTrashDialog} setItemTrashId={setItemTrashId}></CartItem>
             </Grid>
             );
     }
@@ -30,7 +30,7 @@ export default function CartList ({items}) {
     const handleItems = (items) => {
         if (items.length > 0){
             return <>
-                {items.map((item) => <ItemsGrid item={item} key={item.id}/>)}
+                {items.map((item) => <ItemsGrid item={item} setOpenTrashDialog={setOpenTrashDialog} setItemTrashId={setItemTrashId} key={item.id}/>)}
                 <div style={{margin:'1em'}}>
                     {`Total: $${getTotalPrice()}`}
                 </div>

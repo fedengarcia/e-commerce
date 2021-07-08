@@ -16,7 +16,6 @@ export default function ItemDetailContainer () {
 
     useEffect(() => {
         
-        console.log("ID DEL ITEM A MOSTRAR ES...............", id);
         const itemCollection = dataBase.collection("items");
         const idItem = itemCollection.doc(id);
 
