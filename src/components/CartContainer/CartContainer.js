@@ -4,6 +4,8 @@ import {CartContainerStyle} from './CartContainerStyle';
 import {ModeContext} from '../../Context/CartContext';
 import CartList from '../CartList/CartList';
 import DialogComponent from '../DialogoComponent/DialogComponent';
+import Form from '../Form/Form';
+
 
 const useStyle = makeStyles ((theme) => CartContainerStyle(theme));
 
@@ -35,7 +37,6 @@ export default function CartContainer  () {
     }
 
     const renderCleanCartDialog = (openCleanCartDialog) => {
-        console.log("ENTRO PAPA AL CLEAN CART")
         return <DialogComponent
             open={openCleanCartDialog}
             openDialog={setOpenCleanCartDialog}
@@ -52,8 +53,18 @@ export default function CartContainer  () {
     }
 
     const renderFormDialog = (openFormDialog) => {
-        <DialogComponent>
-            
+        return <DialogComponent
+        open={openFormDialog}
+        openDialog={setOpenFormDialog}
+        closeDialog={()=> setOpenFormDialog(false)}
+        handleConfirm={()=> setOpenFormDialog(false)}
+        title="Completa el formulario para continuar"
+        firstButton="Comprar"
+        secondButton="Cancelar"
+        clearCart={() => clear()}
+
+        >
+            <Form/>
         </DialogComponent>
     }
 
@@ -72,7 +83,7 @@ export default function CartContainer  () {
                 {renderCleanCartDialog(openCleanCartDialog)}
             </>
         }else{
-            return <CartList items={items} setOpenTrashDialog={setOpenTrashDialog} setItemTrashId={setItemTrashId} setOpenCleanCartDialog={setOpenCleanCartDialog}/>
+            return <CartList items={items} setOpenFormDialog={setOpenFormDialog} setOpenTrashDialog={setOpenTrashDialog} setItemTrashId={setItemTrashId} setOpenCleanCartDialog={setOpenCleanCartDialog}/>
         }
     }
 

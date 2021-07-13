@@ -130,6 +130,7 @@ export default function ItemDetail (props) {
     }else{
       return <Card className={classes.cardContainer}>
         <CardMedia
+        component="img"
         className={classes.media}
         image={imgRef}
         title="Imagen del Producto"

@@ -6,7 +6,7 @@ import { Button } from '@material-ui/core';
 
 export default function DialogComponent (props) {
 
-    const {title, open, firstButton, secondButton, children, handleConfirm, closeDialog, openDialog, removeItem, clearCart} = props;
+    const {title, open, firstButton, secondButton, children, handleConfirm, closeDialog, openDialog, removeItem, clearCart, saveBuy} = props;
 
 
     const handleClose = () => {
@@ -23,6 +23,9 @@ export default function DialogComponent (props) {
         }
         if(clearCart){
             clearCart();
+        }
+        if(saveBuy){
+            saveBuy();
         }
         handleConfirm();
     }

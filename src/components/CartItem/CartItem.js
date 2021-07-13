@@ -26,7 +26,7 @@ export default function CartItem ({item, setOpenTrashDialog, setItemTrashId}) {
     
         }
     
-      }, [item.item.urlImg]);
+      }, [item]);
 
 
     const handleTrashDialog = () => {

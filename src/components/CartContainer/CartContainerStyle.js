@@ -1,6 +1,6 @@
 
 export const CartContainerStyle = (theme) => ({
-    girdContainer:{ 
+    gridContainer:{ 
         display: 'flex',
         justifyContent: 'center',
         aligItems: 'center',

@@ -9,7 +9,7 @@ import {useHistory} from 'react-router-dom';
 
 const useStyle = makeStyles ((theme) => CartListStyle(theme));
 
-export default function CartList ({items, setOpenTrashDialog,setItemTrashId,setOpenCleanCartDialog}) {
+export default function CartList ({items, setOpenTrashDialog,setItemTrashId,setOpenCleanCartDialog, setOpenFormDialog}) {
     const classes = useStyle();
     const {getTotalPrice} = useContext(ModeContext);
     const history = useHistory();
@@ -18,7 +18,7 @@ export default function CartList ({items, setOpenTrashDialog,setItemTrashId,setO
     const ItemsGrid = ({item,setOpenTrashDialog,setItemTrashId, key}) =>{
         return(
             <Grid item sx={12}>
-                <CartItem item={item} setOpenTrashDialog={setOpenTrashDialog} setItemTrashId={setItemTrashId} key={key}></CartItem>
+                <CartItem item={item} setOpenTrashDialog={setOpenTrashDialog} setItemTrashId={setItemTrashId}></CartItem>
             </Grid>
             );
     }
@@ -38,8 +38,6 @@ export default function CartList ({items, setOpenTrashDialog,setItemTrashId,setO
             </Grid>
 
         }
-
-        
         
     }
 
@@ -58,6 +56,7 @@ export default function CartList ({items, setOpenTrashDialog,setItemTrashId,setO
                 variant="contained"
                 size="large"
                 className = {classes.buttonStyle}
+                onClick={setOpenFormDialog}
                 >
                     Finalizar Compra
                 </Button>
@@ -108,14 +107,7 @@ export default function CartList ({items, setOpenTrashDialog,setItemTrashId,setO
 
         {handleItems(items)}
 
-
-
         {handleCartButtons(items,setOpenCleanCartDialog)}
-
-
-        
-
-            
 
         </Grid>
     )

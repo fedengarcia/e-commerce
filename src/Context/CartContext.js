@@ -4,11 +4,16 @@ export const ModeContext = createContext();
 
 export const CartContext = (props) => {
     const [items,setItem] = useState([]);
+    const [infoBuyer,setBuyer] = useState({});
     
     useEffect(() => {
-       console.log('Se actualizo el CartContext', items);
+       console.log('Se actualizo el CartContext infoBuy', infoBuyer);
     });
 
+    const saveBuy = (buyer) => {
+        console.log(buyer)
+        setBuyer({buyer: buyer});
+    }
 
     const getTotalPrice = () =>{
         var totalPrice = 0
@@ -73,7 +78,7 @@ export const CartContext = (props) => {
         return items;
     }
 
-    return <ModeContext.Provider value={{addItem, getItems, clear, isInCart, getQuantity, removeItem, getTotalPrice}}>
+    return <ModeContext.Provider value={{addItem, getItems, clear, isInCart, getQuantity, removeItem, getTotalPrice, saveBuy}}>
         {props.children}
     </ModeContext.Provider>
 }
