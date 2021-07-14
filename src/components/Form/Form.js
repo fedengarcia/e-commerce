@@ -14,7 +14,6 @@ export default function Form () {
     const {saveBuy} = useContext(ModeContext);
 
     useEffect(() => {
-        console.log(buyerInfo);
         saveBuy(buyerInfo);
     }, [buyerInfo]);
 

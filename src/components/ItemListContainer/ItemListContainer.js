@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import ItemList from '../ItemList/ItemList';
 import {ItemListContainerStyle} from './ItemListContainerStyle';
 import {useParams} from 'react-router-dom';
-import {dataBase} from '../../Firebase/firebase';
+import {dataBase, loadItemsListData} from '../../Firebase/firebase';
 
 const useStyles = makeStyles((theme) => ItemListContainerStyle(theme));
 
@@ -15,32 +15,10 @@ export default function ItemListContainer () {
     const {marca} = useParams();
 
     useEffect(() => {  
-
+        
         setLoading(true);
-
         const itemCollection = dataBase.collection("items");
-
-        if(marca !== undefined){
-            var itemToRender = itemCollection.where("marca", "==", marca).limit(20);
-        }else{
-            var itemToRender = itemCollection;
-        }
-       
-
-        itemToRender.get().then((querySnapshot) => {
-            if(querySnapshot === 0){
-                console.log("no results");
-            }
-
-            const myItems = querySnapshot.docs.map(doc => {
-                return {...doc.data(),id:doc.id}
-            })
-
-            setItems(myItems);
-
-        }).catch(err => {
-            console.log("Ocurrio un error", err);
-        })
+        loadItemsListData(itemCollection,setItems,marca);
 
     }, [marca]);
    

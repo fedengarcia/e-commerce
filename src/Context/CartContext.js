@@ -1,6 +1,6 @@
 import React, {useState, createContext,useEffect} from 'react';
-import firebase from 'firebase/app';
-import '@firebase/firestore';
+// import firebase from 'firebase/app';
+// import '@firebase/firestore';
 
 
 export const ModeContext = createContext();
@@ -14,7 +14,7 @@ export const CartContext = (props) => {
         const order = {
             items: items,
             buyer: buyer,
-            date: firebase.firestore.Timestamp.fromDate(new Date()),
+            date: new Date().toLocaleString() + "",
             price: getTotalPrice(),
         }
         setNewOrder(order);

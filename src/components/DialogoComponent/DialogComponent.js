@@ -1,7 +1,7 @@
 import React from 'react'
 import { Dialog, DialogContent, DialogTitle, DialogActions } from '@material-ui/core';
 import { Button } from '@material-ui/core';
-import {dataBase} from '../../Firebase/firebase';
+import {dataBase, updateStock} from '../../Firebase/firebase';
 
 // const useStyles = makeStyles ((theme) => DialogComponentStyle(theme));
 
@@ -30,10 +30,12 @@ export default function DialogComponent (props) {
             dataBase.collection("orders").add(newOrder)
             .then((docRef) => {
                 console.log("Document written with ID: ", docRef.id);
+                updateStock(newOrder);
             })
             .catch((error) => {
                 console.error("Error adding document: ", error);
             });
+
             
         }
         handleConfirm();
