@@ -15,7 +15,7 @@ export default function CartList ({items, setOpenTrashDialog,setItemTrashId,setO
     const history = useHistory();
 
 
-    const ItemsGrid = ({item,setOpenTrashDialog,setItemTrashId, key}) =>{
+    const ItemsGrid = ({item,setOpenTrashDialog,setItemTrashId}) =>{
         return(
             <Grid item sx={12}>
                 <CartItem item={item} setOpenTrashDialog={setOpenTrashDialog} setItemTrashId={setItemTrashId}></CartItem>
@@ -27,7 +27,7 @@ export default function CartList ({items, setOpenTrashDialog,setItemTrashId,setO
     const handleItems = (items) => {
         if (items.length > 0){
             return <>
-                {items.map((item) => <ItemsGrid item={item} setOpenTrashDialog={setOpenTrashDialog} setItemTrashId={setItemTrashId} key={item.id}/>)}
+                {items.map((item) => <ItemsGrid item={item} setOpenTrashDialog={setOpenTrashDialog} setItemTrashId={setItemTrashId} key={item.item.id}/>)}
                 <div style={{margin:'1em'}}>
                     {`Total: $${getTotalPrice()}`}
                 </div>

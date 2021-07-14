@@ -19,19 +19,19 @@ export default function Form () {
 
 
     const handleNameData = (e) => {
-        setBuyerInfo({buyerInfo,...{name: e.target.value}})
+        setBuyerInfo({name: e.target.value})
     }
 
     const handleApellidoData = (e) => {
-        setBuyerInfo({buyerInfo,...{apellido: e.target.value}})
+        setBuyerInfo({apellido: e.target.value})
     }
 
     const handleEmailData = (e) => {
-        setBuyerInfo({buyerInfo,...{email: e.target.value}})
+        setBuyerInfo({email: e.target.value})
     }
 
     const handlePhoneData = (e) => {
-        setBuyerInfo({buyerInfo,...{phone: e.target.value}})
+        setBuyerInfo({phone: e.target.value})
     }
 
 
