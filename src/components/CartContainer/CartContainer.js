@@ -11,7 +11,7 @@ const useStyle = makeStyles ((theme) => CartContainerStyle(theme));
 
 
 export default function CartContainer  () {
-    const {getItems,removeItem,clear} = useContext(ModeContext);
+    const {getItems,removeItem,clear,newOrder} = useContext(ModeContext);
     const [openTrashDialog, setOpenTrashDialog] = useState(false);
     const [itemTrashId, setItemTrashId] = useState(undefined);
     const [openFormDialog, setOpenFormDialog] = useState (false);
@@ -52,7 +52,7 @@ export default function CartContainer  () {
 
     }
 
-    const renderFormDialog = (openFormDialog) => {
+    const renderFormDialog = (openFormDialog,newOrder) => {
         return <DialogComponent
         open={openFormDialog}
         openDialog={setOpenFormDialog}
@@ -61,6 +61,7 @@ export default function CartContainer  () {
         title="Completa el formulario para continuar"
         firstButton="Comprar"
         secondButton="Cancelar"
+        newOrder = {newOrder}
         clearCart={() => clear()}
 
         >
@@ -69,14 +70,14 @@ export default function CartContainer  () {
     }
 
 
-    const renderCartContainer = (openTrashDialog,openCleanCartDialog,openFormDialog,itemTrashId) => {
+    const renderCartContainer = (openTrashDialog,openCleanCartDialog,openFormDialog,itemTrashId,newOrder) => {
         if(openTrashDialog){
             return <>
                 {renderTrashDialog(openTrashDialog,itemTrashId)}
             </>
         }else if (openFormDialog) {
             return <>
-                {renderFormDialog(openFormDialog)}
+                {renderFormDialog(openFormDialog,newOrder)}
             </> 
         }else if (openCleanCartDialog) {
             return <>
@@ -89,7 +90,7 @@ export default function CartContainer  () {
 
     return <div className={classes.gridContainer}>
         
-        {renderCartContainer(openTrashDialog,openCleanCartDialog,openFormDialog,itemTrashId,)}
+        {renderCartContainer(openTrashDialog,openCleanCartDialog,openFormDialog,itemTrashId,newOrder)}
 
     </div>
 }

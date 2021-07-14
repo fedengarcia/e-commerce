@@ -14,24 +14,25 @@ export default function Form () {
     const {saveBuy} = useContext(ModeContext);
 
     useEffect(() => {
-        saveBuy(buyerInfo)
+        console.log(buyerInfo);
+        saveBuy(buyerInfo);
     }, [buyerInfo]);
 
 
     const handleNameData = (e) => {
-        setBuyerInfo({name: e.target.value})
+        setBuyerInfo({...buyerInfo,name: e.target.value})
     }
 
     const handleApellidoData = (e) => {
-        setBuyerInfo({apellido: e.target.value})
+        setBuyerInfo({...buyerInfo,apellido: e.target.value})
     }
 
     const handleEmailData = (e) => {
-        setBuyerInfo({email: e.target.value})
+        setBuyerInfo({...buyerInfo,email: e.target.value})
     }
 
     const handlePhoneData = (e) => {
-        setBuyerInfo({phone: e.target.value})
+        setBuyerInfo({...buyerInfo,phone: e.target.value})
     }
 
 

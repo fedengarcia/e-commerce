@@ -1,19 +1,25 @@
 import React, {useState, createContext,useEffect} from 'react';
+import firebase from 'firebase/app';
+import '@firebase/firestore';
+
 
 export const ModeContext = createContext();
 
 export const CartContext = (props) => {
     const [items,setItem] = useState([]);
-    const [infoBuyer,setBuyer] = useState({});
-    
-    useEffect(() => {
-       console.log('Se actualizo el CartContext infoBuy', infoBuyer);
-    });
+    const [newOrder,setNewOrder] = useState({});
+
 
     const saveBuy = (buyer) => {
-        console.log(buyer)
-        setBuyer({buyer: buyer});
+        const order = {
+            items: items,
+            buyer: buyer,
+            date: firebase.firestore.Timestamp.fromDate(new Date()),
+            price: getTotalPrice(),
+        }
+        setNewOrder(order);
     }
+
 
     const getTotalPrice = () =>{
         var totalPrice = 0
@@ -78,7 +84,7 @@ export const CartContext = (props) => {
         return items;
     }
 
-    return <ModeContext.Provider value={{addItem, getItems, clear, isInCart, getQuantity, removeItem, getTotalPrice, saveBuy}}>
+    return <ModeContext.Provider value={{addItem, getItems, clear, isInCart, getQuantity, removeItem, getTotalPrice, saveBuy, newOrder}}>
         {props.children}
     </ModeContext.Provider>
 }

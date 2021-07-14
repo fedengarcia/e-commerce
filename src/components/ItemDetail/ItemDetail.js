@@ -21,7 +21,7 @@ export default function ItemDetail (props) {
   //STATES
   const [finishButton, setFinishButton] = useState(false);
   const [amount, setAmount] = useState(0);
-  const [item, setItem] = useState(props)
+  const [item, setItem] = useState(props);
   const [imgRef,setImgRef] = useState(null);
   const [openCountAlertDialog, setOpenCountAlertDialog] = useState(false);
 
@@ -54,7 +54,16 @@ export default function ItemDetail (props) {
   const handleEndBuying = (item,amount) => {
     if(amount > 0){
       const itemCart = {
-        "item": item,
+        "item": {
+          categoria:item.categoria,
+          descripcion: item.descripcion,
+          id:item.id,
+          marca:item.marca,
+          modelo:item.modelo,
+          precio:item.precio,
+          urlImg:item.urlImg,
+
+        },
         "quantity": amount,
       }
         addItem(itemCart);
