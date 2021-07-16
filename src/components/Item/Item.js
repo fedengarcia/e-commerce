@@ -26,9 +26,7 @@ export default function Item (props) {
       const finalRef = storageRef.child(props.urlImg);
     
       finalRef.getDownloadURL().then((URL) => {
-        console.log("URL from FIREBASE ---->",URL);
         setImgRef(URL);
-        console.log("URL from STATE --->",imgRef);
       }).catch(err => {
         console.log(err);
       });
@@ -44,11 +42,10 @@ export default function Item (props) {
     <Card className={classes.cardContainer}>
        
       <CardMedia
-        component="img"
         className={classes.media}
         image = {imgRef}
         title="Imagen del Producto"
-        src={imgRef}
+        alt="Imagen del producto"
       />
 
       <CardHeader
