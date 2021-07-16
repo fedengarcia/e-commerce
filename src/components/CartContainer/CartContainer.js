@@ -16,6 +16,8 @@ export default function CartContainer  () {
     const [itemTrashId, setItemTrashId] = useState(undefined);
     const [openFormDialog, setOpenFormDialog] = useState (false);
     const [openCleanCartDialog, setOpenCleanCartDialog] = useState (false);
+    const [openEndBuying,setOpenEndBuying] = useState(false);
+    const [idCompra,setIdCompra] = useState("");
 
     const items = getItems();
     const classes = useStyle();
@@ -58,11 +60,13 @@ export default function CartContainer  () {
         openDialog={setOpenFormDialog}
         closeDialog={()=> setOpenFormDialog(false)}
         handleConfirm={()=> setOpenFormDialog(false)}
+        handleEndBuying={()=> setOpenEndBuying(true)}
         title="Completa el formulario para continuar"
         firstButton="Comprar"
         secondButton="Cancelar"
         newOrder = {newOrder}
         clearCart={() => clear()}
+        setIdCompra={(idCompra) => setIdCompra(idCompra)}
 
         >
             <Form/>
@@ -70,7 +74,21 @@ export default function CartContainer  () {
     }
 
 
-    const renderCartContainer = (openTrashDialog,openCleanCartDialog,openFormDialog,itemTrashId,newOrder) => {
+    const renderOpenEndBuying = (openEndBuying,idCompra) => {
+        return <DialogComponent
+        open={openEndBuying}
+        openDialog={setOpenEndBuying}
+        closeDialog={()=> setOpenEndBuying(false)}
+        handleConfirm={()=> setOpenEndBuying(false)}
+        title="Compra Finalizada"
+        firstButton="Aceptar"
+
+        >
+            {`Tu compra fue procesada con exito, tu ID de compra es: ${idCompra}`}
+        </DialogComponent>
+    }
+
+    const renderCartContainer = (openTrashDialog,openCleanCartDialog,openFormDialog,itemTrashId,newOrder,openEndBuying,idCompra) => {
         if(openTrashDialog){
             return <>
                 {renderTrashDialog(openTrashDialog,itemTrashId)}
@@ -83,6 +101,10 @@ export default function CartContainer  () {
             return <>
                 {renderCleanCartDialog(openCleanCartDialog)}
             </>
+        }else if (openEndBuying) {
+            return <>
+                {renderOpenEndBuying(openEndBuying,idCompra)}
+            </>
         }else{
             return <CartList items={items} setOpenFormDialog={setOpenFormDialog} setOpenTrashDialog={setOpenTrashDialog} setItemTrashId={setItemTrashId} setOpenCleanCartDialog={setOpenCleanCartDialog}/>
         }
@@ -90,7 +112,7 @@ export default function CartContainer  () {
 
     return <div className={classes.gridContainer}>
         
-        {renderCartContainer(openTrashDialog,openCleanCartDialog,openFormDialog,itemTrashId,newOrder)}
+        {renderCartContainer(openTrashDialog,openCleanCartDialog,openFormDialog,itemTrashId,newOrder,openEndBuying,idCompra)}
 
     </div>
 }

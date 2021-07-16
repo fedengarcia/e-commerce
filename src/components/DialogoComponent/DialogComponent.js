@@ -7,7 +7,7 @@ import {dataBase} from '../../Firebase/firebase';
 
 export default function DialogComponent (props) {
 
-    const {title, open, firstButton, secondButton, children, handleConfirm, closeDialog, openDialog, removeItem, clearCart, newOrder} = props;
+    const {title, open, firstButton, secondButton, children, handleConfirm, closeDialog, openDialog, removeItem, clearCart, newOrder,setIdCompra,handleEndBuying} = props;
 
 
     const handleClose = () => {
@@ -27,10 +27,9 @@ export default function DialogComponent (props) {
         }
         if(newOrder){
             console.log("CARGANDO NUEVA ORDEN", newOrder); 
-            dataBase.collection("orders").add(newOrder)
-            .then((docRef) => {
+            dataBase.collection("orders").add(newOrder).then((docRef) => {
                 console.log("Document written with ID: ", docRef.id);
-
+                setIdCompra(docRef.id);
                 for (let index = 0; index < newOrder.items.length; index++) {
                     const id = newOrder.items[index].item.id
                     const quantity = newOrder.items[index].quantity
@@ -57,6 +56,10 @@ export default function DialogComponent (props) {
 
             
         }
+        if(handleEndBuying){
+            handleEndBuying();
+        }
+        
         handleConfirm();
     }
 
