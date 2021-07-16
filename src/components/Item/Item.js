@@ -17,16 +17,18 @@ export default function Item (props) {
 
   const classes = useStyles();
   const history = useHistory();
-  const [imgRef,setImgRef] = useState("");
+  const [imgRef,setImgRef] = useState(null);
   
   useEffect(() => {
-    
+
     if(props.urlImg){
       const storageRef = getStorageRef();
       const finalRef = storageRef.child(props.urlImg);
     
       finalRef.getDownloadURL().then((URL) => {
+        console.log("URL from FIREBASE ---->",URL);
         setImgRef(URL);
+        console.log("URL from STATE --->",imgRef);
       }).catch(err => {
         console.log(err);
       });
