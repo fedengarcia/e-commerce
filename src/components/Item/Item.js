@@ -13,16 +13,17 @@ import {getStorageRef} from '../../Firebase/firebase';
 
 const useStyles = makeStyles((theme) => ItemStyle(theme));
 
-export default function Item ({precio,marca,categoria,urlImg,id,modelo}) {
+export default function Item (props) {
 
   const classes = useStyles();
   const history = useHistory();
-  const [imgRef,setImgRef] = useState(null);
+  const [imgRef,setImgRef] = useState("");
   
   useEffect(() => {
-    if(urlImg){
+    
+    if(props.urlImg){
       const storageRef = getStorageRef();
-      const finalRef = storageRef.child(urlImg);
+      const finalRef = storageRef.child(props.urlImg);
     
       finalRef.getDownloadURL().then((URL) => {
         setImgRef(URL);
@@ -32,7 +33,8 @@ export default function Item ({precio,marca,categoria,urlImg,id,modelo}) {
 
     }
 
-  }, [urlImg]);
+  }, [props.urlImg]);
+
 
   return (
     <div className={classes.root}>
@@ -48,12 +50,12 @@ export default function Item ({precio,marca,categoria,urlImg,id,modelo}) {
       />
 
       <CardHeader
-        title={"Zapatillas de " + categoria + " " + marca}
-        subheader={modelo} 
+        title={"Zapatillas de " + props.categoria + " " + props.marca}
+        subheader={props.modelo} 
       />
       
       <CardContent>
-          <Typography variant="h4">${parseFloat(precio)}</Typography>
+          <Typography variant="h4">${parseFloat(props.precio)}</Typography>
       </CardContent>
       <div className={classes.actionContainer}>
 
@@ -62,7 +64,7 @@ export default function Item ({precio,marca,categoria,urlImg,id,modelo}) {
             className={classes.button}
             variant="contained"
             size="large"
-            onClick={() => history.push(`/item/${id}`)}
+            onClick={() => history.push(`/item/${props.id}`)}
         >
             <Typography>Ver detalle</Typography>
         </Button>

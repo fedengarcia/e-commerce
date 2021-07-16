@@ -20,59 +20,52 @@ export const getStorageRef = () => {
   return storage.ref('shoes-garcia');
 }
 
-export const updateStock = (newOrder) => {
-  for (let index = 0; index < newOrder.items.length; index++) {
-    const id = newOrder.items[index].item.id
-    const quantity = newOrder.items[index].quantity
-    console.log("Item ID para actualizar ---->", id);
-    console.log("Cantidad a eliminar del item ---->", quantity);
+// export const updateStock = (newOrder) => {
+//   for (let index = 0; index < newOrder.items.length; index++) {
+//     const id = newOrder.items[index].item.id
+//     const quantity = newOrder.items[index].quantity
     
-    const item = dataBase.collection("items").doc(id);
+//     const item = dataBase.collection("items").doc(id);
 
-    item.update({
-      stock: item.stock - quantity
-    }).then(() => {
-      console.log("Stock actualizado");
-    }).catch(err => {
-      console.log("Ocurrio un error", err);
-    })
-  }
-}
-
-export const loadItemDetailData = (documentId,setItem,setLoading) => {
-    
-  documentId.get().then((querySnapshot) => {
-      setItem({id: querySnapshot.id,...querySnapshot.data()});
-      setLoading(true);
-  }).catch(err => {
-      console.log("Ocurrio un error", err);
-  })
-}
-
-export const loadItemsListData = (itemCollection,setItems,marca) => {
-    if(marca !== undefined){
-      var itemToRender = itemCollection.where("marca", "==", marca).limit(20);
-    }else{
-        var itemToRender = itemCollection;
-    }
+//     item.get().then((doc) => {
+//         if (doc.exists) {
+//             const item_stock = doc.data().stock;
+//             item.update({stock: item_stock - quantity});
+//         } else {
+//             console.log("Document not exist!");
+//         }
+//     }).catch(function(error) {
+//         console.log("Error get document:", error);
+//     });
+//   }
+// }
 
 
-  itemToRender.get().then((querySnapshot) => {
-      if(querySnapshot === 0){
-          console.log("no results");
-      }
 
-      const myItems = querySnapshot.docs.map(doc => {
-          return {...doc.data(),id:doc.id}
-      })
+// export const loadItemsListData = (itemCollection,setItems,marca) => {
+//     if(marca !== undefined){
+//       var itemToRender = itemCollection.where("marca", "==", marca).limit(20);
+//     }else{
+//         var itemToRender = itemCollection;
+//     }
 
-      setItems(myItems);
 
-  }).catch(err => {
-      console.log("Ocurrio un error", err);
-  })
+//   itemToRender.get().then((querySnapshot) => {
+//       if(querySnapshot === 0){
+//           console.log("no results");
+//       }
 
-}
+//       const myItems = querySnapshot.docs.map(doc => {
+//           return {...doc.data(),id:doc.id}
+//       })
+
+//       setItems(myItems);
+
+//   }).catch(err => {
+//       console.log("Ocurrio un error", err);
+//   })
+
+// }
 
 
 export const dataBase = fb.firestore();
