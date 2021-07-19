@@ -32,7 +32,7 @@ export default function ItemDetailContainer () {
 
     return(
         <div className={classes.itemDetailContainer}>
-            {!loading && <span>Cargando...</span>}
+            {!loading && <span>Se esta cargando la pagina</span>}
             {loading && <ItemDetail {...item}/>}
 
         </div>
