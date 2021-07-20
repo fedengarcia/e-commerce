@@ -17,7 +17,7 @@ export default function CartContainer  () {
     const [openFormDialog, setOpenFormDialog] = useState (false);
     const [openCleanCartDialog, setOpenCleanCartDialog] = useState (false);
     const [openEndBuying,setOpenEndBuying] = useState(false);
-    const [idCompra,setIdCompra] = useState("");
+    const [idCompra,setIdCompra] = useState(undefined);
 
     const items = getItems();
     const classes = useStyle();
@@ -106,7 +106,7 @@ export default function CartContainer  () {
                 {renderOpenEndBuying(openEndBuying,idCompra)}
             </>
         }else{
-            return <CartList items={items} setOpenFormDialog={setOpenFormDialog} setOpenTrashDialog={setOpenTrashDialog} setItemTrashId={setItemTrashId} setOpenCleanCartDialog={setOpenCleanCartDialog}/>
+            return <CartList className={classes.cartListStyle} items={items} setOpenFormDialog={setOpenFormDialog} setOpenTrashDialog={setOpenTrashDialog} setItemTrashId={setItemTrashId} setOpenCleanCartDialog={setOpenCleanCartDialog}/>
         }
     }
 

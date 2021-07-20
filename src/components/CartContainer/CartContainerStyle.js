@@ -4,5 +4,9 @@ export const CartContainerStyle = (theme) => ({
         display: 'flex',
         justifyContent: 'center',
         aligItems: 'center',
+        flexDirection: 'row',
+        boxSizing: "border-box",
+
     },
+
 });

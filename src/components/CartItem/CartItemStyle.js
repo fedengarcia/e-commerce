@@ -8,6 +8,6 @@ export const CartItemStyle = (theme) => ({
         alignItems: 'center'
     },
     cartItem:{
-        margin: '1em'
+        marginBottom: '0.5em'
     }
 })

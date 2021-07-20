@@ -28,73 +28,55 @@ export default function CartList ({items, setOpenTrashDialog,setItemTrashId,setO
         if (items.length > 0){
             return <>
                 {items.map((item) => <ItemsGrid item={item} setOpenTrashDialog={setOpenTrashDialog} setItemTrashId={setItemTrashId} key={item.item.id}/>)}
-                <div style={{margin:'1em'}}>
-                    {`Total: $${getTotalPrice()}`}
-                </div>
+                <Grid item sx={12} style={{margin:'1em'}}>
+                     {`Total: $${getTotalPrice()}`}
+                </Grid>
+
+                <Grid item sx={12}>
+                    <Button
+                    variant="contained"
+                    size="large"
+                    className = {classes.buttonStyle}
+                    onClick={setOpenFormDialog}
+                    >
+                        Finalizar Compra
+                    </Button>
+                </Grid>
+
+                <Grid item sx={12}>
+                    <Button
+                        variant="contained"
+                        size="large"
+                        className = {classes.buttonStyle}
+                        onClick = {setOpenCleanCartDialog}
+                    >
+                        Vaciar Carrito
+                    </Button>
+                </Grid>
             </>
         }else{
-            return <Grid item sx={12}>
+            return <>
+                <Grid item sx={12}>
                     <h1> Su carrito esta vacio</h1>
-            </Grid>
-
+                </Grid>
+                
+                <Grid item sx={12}>
+                    <Button
+                        variant="contained"
+                        size="large"
+                        className = {classes.buttonStyle}
+                        onClick = {() => history.push('/')}
+                        >
+                            Ver Tienda
+                    </Button>
+                </Grid>
+            </>
         }
         
     }
 
 
-    const handleCartButtons = (items,setOpenCleanCartDialog) => { 
-        if (items.length > 0){
-            return <Grid item sx={12}
-            justify="center"
-            alignItems="center"
-            direction="column"
-            container
-
-        >
-            <div className = {classes.actionContainer}>
-                <Button
-                variant="contained"
-                size="large"
-                className = {classes.buttonStyle}
-                onClick={setOpenFormDialog}
-                >
-                    Finalizar Compra
-                </Button>
-                
-                <Button
-                variant="contained"
-                size="large"
-                className = {classes.buttonStyle}
-                onClick = {setOpenCleanCartDialog}
-                >
-                    Vaciar Carrito
-                </Button>
-            </div>
-        </Grid>
-        }else{
-            return <Grid item sx={12}
-                justify="center"
-                alignItems="center"
-                direction="column"
-                container
-            >
-
-            <div className = {classes.actionContainer}>
-                <Button
-                variant="contained"
-                size="large"
-                className = {classes.buttonStyle}
-                onClick = {() => history.push('/')}
-                >
-                    Ver Tienda
-                </Button>
-            </div>
-
-            </Grid>
-
-        }
-    }
-
+ 
 
 
     return(
@@ -107,7 +89,6 @@ export default function CartList ({items, setOpenTrashDialog,setItemTrashId,setO
 
         {handleItems(items)}
 
-        {handleCartButtons(items,setOpenCleanCartDialog)}
 
         </Grid>
     )

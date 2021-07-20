@@ -9,5 +9,5 @@ export const CartListStyle = (theme) => ({
     },
     buttonStyle:{
         margin: '0.5em'
-    }
+    },
 })
