@@ -7,15 +7,8 @@ import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
-// import MenuIcon from '@material-ui/icons/Menu';
-import InputBase from '@material-ui/core/InputBase';
-// import NotificationsIcon from '@material-ui/icons/Notifications';
-import SearchIcon from '@material-ui/icons/Search';
 import CartWidget from '../CartWidget/CartWidget';
 import {useHistory} from 'react-router-dom';
-// import PopupState, { bindTrigger, bindMenu } from 'material-ui-popup-state';
-// import Button from '@material-ui/core/Button';
-// import ListIcon from '@material-ui/icons/List';
 import navBarLogo from '../../img/logo.png'
 import {ModeContext} from '../../Context/CartContext'
 
@@ -147,19 +140,6 @@ const NavBar = () => {
             </IconButton>
           </div>
           
-          <div className={classes.search}>
-            <div className={classes.searchIcon}>
-              <SearchIcon />
-            </div>
-            <InputBase
-              placeholder="Search…"
-              classes={{
-                root: classes.inputRoot,
-                input: classes.inputInput,
-              }}
-              inputProps={{ 'aria-label': 'search' }}
-            />
-          </div>
 
           <div className={classes.grow} />
          

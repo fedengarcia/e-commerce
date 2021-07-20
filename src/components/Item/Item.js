@@ -40,14 +40,15 @@ export default function Item (props) {
     <div className={classes.root}>
 
     <Card className={classes.cardContainer}>
-       
-      <CardMedia
+
+      {imgRef && <CardMedia
         className={classes.media}
         image = {imgRef}
         title="Imagen del Producto"
         alt="Imagen del producto"
-      />
+      />}
 
+      <div>
       <CardHeader
         title={"Zapatillas de " + props.categoria + " " + props.marca}
         subheader={props.modelo} 
@@ -68,6 +69,7 @@ export default function Item (props) {
             <Typography>Ver detalle</Typography>
         </Button>
       </CardActions>
+      </div>
       </div>
     </Card>
     </div>

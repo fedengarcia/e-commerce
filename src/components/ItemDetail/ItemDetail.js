@@ -138,12 +138,12 @@ export default function ItemDetail (props) {
     </DialogComponent>
     }else{
       return <Card className={classes.cardContainer}>
-        <CardMedia
+        {imgRef && <CardMedia
         className={classes.media}
         image={imgRef}
         title="Imagen del Producto"
         alt="Imagen del producto"
-        />
+        />}
         <CardHeader
           title={`Zapatillas de ${props.categoria} ${props.marca}`}
           subheader={props.modelo}
