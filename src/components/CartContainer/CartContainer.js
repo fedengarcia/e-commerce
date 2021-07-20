@@ -80,11 +80,11 @@ export default function CartContainer  () {
         openDialog={setOpenEndBuying}
         closeDialog={()=> setOpenEndBuying(false)}
         handleConfirm={()=> setOpenEndBuying(false)}
-        title="Compra Finalizada"
+        title={idCompra === undefined ? "Procesando compra..." : "Compra Finalizada"}
         firstButton="Aceptar"
 
         >
-            {`Tu compra fue procesada con exito, tu ID de compra es: ${idCompra}`}
+            {idCompra && `Tu compra fue procesada con exito, tu ID de compra es: ${idCompra}`}
         </DialogComponent>
     }
 

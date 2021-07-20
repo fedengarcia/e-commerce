@@ -26,7 +26,6 @@ export default function DialogComponent (props) {
             clearCart();
         }
         if(newOrder){
-            console.log("CARGANDO NUEVA ORDEN", newOrder); 
             dataBase.collection("orders").add(newOrder).then((docRef) => {
                 console.log("Document written with ID: ", docRef.id);
                 setIdCompra(docRef.id);

@@ -39,7 +39,7 @@ export default function CartItem ({item, setOpenTrashDialog, setItemTrashId}) {
             <img src={imgRef} alt="Imagen pequena del producto" style={{width: '4em'}}/>
         </div>
         
-        <Typography className={`${classes.cartItem} ${classes.renderDescription}`}>{`Zapatillas de ${item.item.categoria} ${item.item.marca}`}</Typography>
+        <Typography className={classes.cartItem}>{`Zapatillas de ${item.item.categoria} ${item.item.marca}`}</Typography>
 
         <Typography className={classes.cartItem}>{`Cantidad: ${item.quantity}`}</Typography>
 

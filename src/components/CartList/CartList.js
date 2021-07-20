@@ -68,7 +68,7 @@ export default function CartList ({items, setOpenTrashDialog,setItemTrashId,setO
                         onClick = {() => history.push('/')}
                         >
                             Ver Tienda
-                    </Button>
+                        </Button>
                 </Grid>
             </>
         }
