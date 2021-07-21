@@ -1,5 +1,4 @@
-import {fade} from '@material-ui/core/styles';
-// fade(theme.palette.common.white, 0.15)
+
   export const navBarStyle = (theme) => ({
     navBarIcon:{
       borderRadius: '1em',

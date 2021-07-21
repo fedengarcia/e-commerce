@@ -2,12 +2,26 @@ import React from 'react'
 import { Dialog, DialogContent, DialogTitle, DialogActions } from '@material-ui/core';
 import { Button } from '@material-ui/core';
 import {dataBase} from '../../Firebase/firebase';
+import {useHistory} from 'react-router-dom';
 
 // const useStyles = makeStyles ((theme) => DialogComponentStyle(theme));
 
 export default function DialogComponent (props) {
+    const history = useHistory();
 
-    const {title, open, firstButton, secondButton, children, handleConfirm, closeDialog, openDialog, removeItem, clearCart, newOrder,setIdCompra,handleEndBuying} = props;
+    const {title, 
+        open, 
+        firstButton, 
+        secondButton, 
+        children, 
+        handleConfirm, 
+        closeDialog, 
+        openDialog, 
+        removeItem, 
+        clearCart, 
+        newOrder,
+        setIdCompra,
+        handleEndBuying} = props;
 
 
     const handleClose = () => {
@@ -15,15 +29,18 @@ export default function DialogComponent (props) {
             closeDialog();
         }
         openDialog(false);
+        history.push('/cart');
     }
 
 
     const handleAccept = () => {
         if(removeItem){
             removeItem();
+            history.push('/cart');
         }
         if(clearCart){
             clearCart();
+            history.push('/cart');
         }
         if(newOrder){
             dataBase.collection("orders").add(newOrder).then((docRef) => {
@@ -69,8 +86,8 @@ export default function DialogComponent (props) {
             {children}
         </DialogContent>
         <DialogActions style={{display:"flex", justifyContent:"center"}}>
-            <Button onClick={() => handleAccept()} color="primary">{firstButton}</Button>
-            <Button onClick={handleClose} color="primary">{secondButton}</Button>
+            <Button onClick={handleClose} color="primary">{firstButton}</Button>
+            <Button onClick={() => handleAccept()} color="primary">{secondButton}</Button>
         </DialogActions>
     </Dialog>
         

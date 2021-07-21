@@ -6,8 +6,8 @@ import ItemListContainer from './components/ItemListContainer/ItemListContainer'
 import ItemDetailContainer from './components/ItemDetailContainer/ItemDetailContainer';
 import CartContainer from './components/CartContainer/CartContainer';
 import {CartContext} from './Context/CartContext'
+import DialogContainer from './components/DialogContainer/DialogContainer';
 
-// import Router from './components/Router/Router';
 
 const useStyles = makeStyles((theme) => ({
   container:{
@@ -19,11 +19,6 @@ const useStyles = makeStyles((theme) => ({
     backgroundSize: 'cover',
     backgroundRepeat: "repeat",
     minHeight: "100vh",
-    // display:"flex",
-    // justifyContent:"center",
-    // alignItems: "center",
-    // flexDirection: "column",
-    // width:"auto",
   },
 
 }));
@@ -55,6 +50,10 @@ function App() {
 
               <Route path="/cart">
                   <CartContainer/>
+              </Route>
+
+              <Route path="/dialog/:dialogType">
+                  <DialogContainer/>
               </Route>
           </Switch>
       </BrowserRouter>

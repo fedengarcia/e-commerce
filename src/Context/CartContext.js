@@ -8,6 +8,7 @@ export const ModeContext = createContext();
 export const CartContext = (props) => {
     const [items,setItem] = useState([]);
     const [newOrder,setNewOrder] = useState({});
+    const [itemTrashId,setItemTrashId] = useState(undefined);
 
 
     const saveBuy = (buyer) => {
@@ -84,7 +85,7 @@ export const CartContext = (props) => {
         return items;
     }
 
-    return <ModeContext.Provider value={{addItem, getItems, clear, isInCart, getQuantity, removeItem, getTotalPrice, saveBuy, newOrder}}>
+    return <ModeContext.Provider value={{addItem, getItems, clear, isInCart, getQuantity, removeItem, getTotalPrice, saveBuy, newOrder,setItemTrashId, itemTrashId}}>
         {props.children}
     </ModeContext.Provider>
 }

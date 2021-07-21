@@ -9,16 +9,16 @@ import {useHistory} from 'react-router-dom';
 
 const useStyle = makeStyles ((theme) => CartListStyle(theme));
 
-export default function CartList ({items, setOpenTrashDialog,setItemTrashId,setOpenCleanCartDialog, setOpenFormDialog}) {
+export default function CartList ({items}) {
     const classes = useStyle();
     const {getTotalPrice} = useContext(ModeContext);
     const history = useHistory();
 
 
-    const ItemsGrid = ({item,setOpenTrashDialog,setItemTrashId}) =>{
+    const ItemsGrid = ({item}) =>{
         return(
             <Grid item sx={12}>
-                <CartItem item={item} setOpenTrashDialog={setOpenTrashDialog} setItemTrashId={setItemTrashId}></CartItem>
+                <CartItem item={item}></CartItem>
             </Grid>
             );
     }
@@ -27,7 +27,7 @@ export default function CartList ({items, setOpenTrashDialog,setItemTrashId,setO
     const handleItems = (items) => {
         if (items.length > 0){
             return <>
-                {items.map((item) => <ItemsGrid item={item} setOpenTrashDialog={setOpenTrashDialog} setItemTrashId={setItemTrashId} key={item.item.id}/>)}
+                {items.map((item) => <ItemsGrid item={item} key={item.item.id}/>)}
                 <Grid item sx={12} style={{margin:'1em'}}>
                      {`Total: $${getTotalPrice()}`}
                 </Grid>
@@ -37,7 +37,7 @@ export default function CartList ({items, setOpenTrashDialog,setItemTrashId,setO
                     variant="contained"
                     size="large"
                     className = {classes.buttonStyle}
-                    onClick={setOpenFormDialog}
+                    onClick={() => history.push('/dialog/formDialog')}
                     >
                         Finalizar Compra
                     </Button>
@@ -48,7 +48,7 @@ export default function CartList ({items, setOpenTrashDialog,setItemTrashId,setO
                         variant="contained"
                         size="large"
                         className = {classes.buttonStyle}
-                        onClick = {setOpenCleanCartDialog}
+                        onClick = {() => history.push('/dialog/cleanCartDialog')}
                     >
                         Vaciar Carrito
                     </Button>
