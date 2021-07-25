@@ -2,6 +2,7 @@
 
 export const ItemStyle = (theme) => ({
     root: {
+        margin: '2em',
         width: '70%',
         animationName: 'slideInUp',
         animationDuration: '1s'
