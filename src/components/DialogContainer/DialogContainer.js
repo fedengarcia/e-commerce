@@ -11,11 +11,10 @@ export default function DialogContainer () {
     const [openConfirmBuyDialog,setOpenConfirmBuyDialog] = useState(false);
     const [openCleanCartDialog, setOpenCleanCartDialog] = useState (false);
 
-    const [itemTrashId, setItemTrashId] = useState(undefined);
     const [idCompra,setIdCompra] = useState(undefined);
 
 
-    const {removeItem,clear,newOrder} = useContext(ModeContext);
+    const {removeItem,clear,newOrder,itemTrashId} = useContext(ModeContext);
 
     const {dialogType} = useParams();
 
@@ -105,7 +104,6 @@ export default function DialogContainer () {
         {openFormDialog && renderFormDialog(openFormDialog,newOrder,idCompra)}
         {openConfirmBuyDialog && renderConfirmBuyDialog(openConfirmBuyDialog,idCompra)}
 
-        {/* {renderDialog(openTrashDialog,openCleanCartDialog,openFormDialog,itemTrashId,newOrder,openEndBuying,idCompra)} */}
     </>
 
 }

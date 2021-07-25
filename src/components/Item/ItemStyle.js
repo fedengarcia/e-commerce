@@ -3,10 +3,6 @@
 export const ItemStyle = (theme) => ({
     root: {
         width: '70%',
-        // transition: '1s',
-        // '&:hover':{
-        //     width:'75%'
-        // }
         animationName: 'slideInUp',
         animationDuration: '1s'
     },
@@ -16,7 +12,7 @@ export const ItemStyle = (theme) => ({
     },
     media: {
         height: 0,
-        paddingTop: '56.25%', // 16:9
+        paddingTop: '56.25%',
         margin: '1em',
         borderRadius: '1em'
     },
