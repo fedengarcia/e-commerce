@@ -20,7 +20,7 @@ export const CartContext = (props) => {
 
 
     const getTotalPrice = () =>{
-        var totalPrice = 0
+        let totalPrice = 0
         for (var index = 0; index < items.length; index++) {
             totalPrice = totalPrice + (items[index]['item']['precio'] * items[index]['quantity']);
         }
@@ -38,7 +38,7 @@ export const CartContext = (props) => {
     }
 
     const getQuantity = () => {
-        var quantity = 0;
+        let quantity = 0;
         for(var i = 0; i < items.length; i++) {
             quantity = items[i]["quantity"] + quantity;
         }
@@ -56,7 +56,7 @@ export const CartContext = (props) => {
     }
 
     const addItem = (item) => {
-        var result = getIndex(item.item.id);
+        let result = getIndex(item.item.id);
         if(result === -1){
             setItem(items => [...items,item])
         }else{

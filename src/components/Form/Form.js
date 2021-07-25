@@ -15,7 +15,7 @@ export default function Form () {
 
     useEffect(() => {
         saveBuy(buyerInfo);
-    }, []);
+    }, [buyerInfo]);
 
     const handleNameData = (e) => {
         setBuyerInfo({...buyerInfo,name: e.target.value})
@@ -35,10 +35,10 @@ export default function Form () {
 
 
     return <form className={classes.formContainer}>
-            <TextField className={classes.formInput} size="medium" color="secondary" required id="nameId"  placeholder="Nombre" type="input" onChange={handleNameData}/>
-            <TextField className={classes.formInput} size="medium" color="secondary" required id="apellidoId"  placeholder="Apellido" type="input" onChange={handleApellidoData}/>
-            <TextField className={classes.formInput} size="medium" color="secondary" required id="emailId"  placeholder="Email" type="input" onChange={handleEmailData}/>
-            <TextField className={classes.formInput} size="medium" color="secondary" required id="numberId"  placeholder="Numero de telefono" type="input" onChange={handlePhoneData}/>
+            <TextField className={classes.formInput} size="medium" autoComplete="off" color="secondary" required id="nameId"  placeholder="Nombre" type="input" onChange={handleNameData}/>
+            <TextField className={classes.formInput} size="medium" autoComplete="off" color="secondary" required id="apellidoId"  placeholder="Apellido" type="input" onChange={handleApellidoData}/>
+            <TextField className={classes.formInput} size="medium" autoComplete="off" color="secondary" required id="emailId"  placeholder="Email" type="input" onChange={handleEmailData}/>
+            <TextField className={classes.formInput} size="medium" autoComplete="off" color="secondary" required id="numberId"  placeholder="Numero de telefono" type="input" onChange={handlePhoneData}/>
         </form>
 }
     

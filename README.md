@@ -1,25 +1,15 @@
 ### HOW TO CONFIGURE IT
-Para configurar tu ecommerce para vender zapatillas, solo hace falta que se modifique el archivo data.js
-Este archivo es el encargado de exportar la data de nuestro ecommerce. Esta es leida a traves de una Promise en nuestros "Componentes Contenedores". 
-Se exporta un array de objetos, donde cada objeto debe detallar la siguiente informacion:
+In order to use this ecommerce for the sale of sneakers, you must create a database in Firebase and configure the necessary credentials within the firebase.js file.
+Also, the images corresponding to the items to be sold must be loaded into the latter.
+Keep in mind that each item must have if or if:
 
-"id" //El id sera el correspondiente a la posicion del array
+"Id": Generado automaticamente por Firebase
+"Price": int
+"Category": string
+"Description": string
+"Model": string
 
-"precio" //Indicar Precio
 
-"marca" //Nike, Jordan o Adiddas
-
-"categoria" // Indicar la actividad para la que se utilizaria la zapatilla
-
-"modelo" //Modelo de la zapatilla
-
-"urlImg" //La ruta de la imagen
-
-"cantidad" //Cantidad de productos disponibles
-
-"talle" // [] -> Con los alles disponibles
-
-"descripcion" // Una leve descripcion del producto.
 
 
 # Getting Started with Create React App
