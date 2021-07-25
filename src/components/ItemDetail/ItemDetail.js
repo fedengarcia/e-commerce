@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme) => ItemDetailStyle(theme));
 export default function ItemDetail (props) {
   const [finishButton, setFinishButton] = useState(false);
   const [amount, setAmount] = useState(0);
-  const [item, setItem] = useState(props);
+  const [item, setItem] = useState([]);
   const [imgRef,setImgRef] = useState(null);
   const [openCountAlertDialog, setOpenCountAlertDialog] = useState(false);
 
@@ -30,6 +30,7 @@ export default function ItemDetail (props) {
   const {addItem} = useContext(ModeContext);
 
   useEffect(() => {
+    setItem(props)
     if(props.urlImg){
       const storageRef = getStorageRef();
       const finalRef = storageRef.child(props.urlImg);
@@ -42,7 +43,7 @@ export default function ItemDetail (props) {
 
     }
 
-  }, [props.urlImg]);
+  }, [props]);
 
   const handleAddCart = () => {
     

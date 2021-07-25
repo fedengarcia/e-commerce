@@ -15,7 +15,7 @@ export default function Form () {
 
     useEffect(() => {
         saveBuy(buyerInfo);
-    }, [buyerInfo]);
+    }, [buyerInfo, saveBuy]);
 
 
     const handleNameData = (e) => {
