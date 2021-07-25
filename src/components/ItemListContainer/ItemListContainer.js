@@ -19,11 +19,11 @@ export default function ItemListContainer () {
         
         setLoading(true);
         const itemCollection = dataBase.collection("items");
-
+        var itemsRender;
         if(marca !== undefined){
-            var itemsRender = (itemCollection.where("marca", "==", marca).limit(20));
+            itemsRender = (itemCollection.where("marca", "==", marca).limit(20));
         }else{
-            var itemsRender = itemCollection;
+            itemsRender = itemCollection;
         }
       
       
