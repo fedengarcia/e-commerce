@@ -17,7 +17,7 @@ export const ItemDetailStyle = (theme) => ({
     },
     media: {
         height: 0,
-        paddingTop: '56.25%', // 16:9
+        paddingTop: '56.25%',
         margin: '1em',
         borderRadius: '1em'
     },

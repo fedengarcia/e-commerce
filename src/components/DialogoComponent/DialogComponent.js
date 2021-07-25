@@ -4,7 +4,6 @@ import { Button } from '@material-ui/core';
 import {dataBase} from '../../Firebase/firebase';
 import {useHistory} from 'react-router-dom';
 
-// const useStyles = makeStyles ((theme) => DialogComponentStyle(theme));
 
 export default function DialogComponent (props) {
     const history = useHistory();
@@ -69,7 +68,7 @@ export default function DialogComponent (props) {
             .catch((error) => {
                 console.error("Error adding document: ", error);
             });
-
+            
             
         }
         if(handleEndBuying){

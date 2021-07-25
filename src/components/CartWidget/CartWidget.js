@@ -1,13 +1,8 @@
 import React from 'react';
-
 import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
 import Badge from '@material-ui/core/Badge';
 import IconButton from '@material-ui/core/IconButton';
 import { useHistory } from 'react-router-dom';
-
-
-
-// const useStyles = makeStyles ((theme) => cartWidgetStyle(theme));
 
 const CartWidget = ({numProduct}) => {
   const history = useHistory();

@@ -2,10 +2,6 @@
   export const navBarStyle = (theme) => ({
     navBarIcon:{
       borderRadius: '1em',
-      // '&:hover':{
-      //   backgroundColor: '#D5A17F',
-      //   // color:'#D5A17F'
-      // }
     },
     grow: {
       flexGrow: 1,
@@ -47,9 +43,6 @@
       [theme.breakpoints.up('md')]: {
         display: 'flex',
       },
-      // '&:hover':{
-      //   backgroundColor: 'transparent',
-      // }
     },
     imgNavBar:{
       width: "2.5em",

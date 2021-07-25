@@ -18,7 +18,6 @@ import DialogComponent from '../DialogoComponent/DialogComponent';
 const useStyles = makeStyles((theme) => ItemDetailStyle(theme));
 
 export default function ItemDetail (props) {
-  //STATES
   const [finishButton, setFinishButton] = useState(false);
   const [amount, setAmount] = useState(0);
   const [item, setItem] = useState(props);

@@ -41,7 +41,6 @@ export default function ItemListContainer () {
         }).catch(err => {
             console.log("Ocurrio un error", err);
         })
-        // loadItemsListData(itemCollection,setItems,marca);
 
     }, [marca]);
    

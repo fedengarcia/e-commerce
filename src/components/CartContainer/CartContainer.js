@@ -10,7 +10,7 @@ const useStyle = makeStyles ((theme) => CartContainerStyle(theme));
 
 
 export default function CartContainer  () {
-    const {getItems,removeItem,clear,newOrder} = useContext(ModeContext);
+    const {getItems} = useContext(ModeContext);
     
 
     const items = getItems();

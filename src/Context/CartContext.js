@@ -1,7 +1,4 @@
 import React, {useState, createContext} from 'react';
-// import firebase from 'firebase/app';
-// import '@firebase/firestore';
-
 
 export const ModeContext = createContext();
 
@@ -57,9 +54,6 @@ export const CartContext = (props) => {
         }
         return -1; 
     }
-
-    // Spread operator, wrapper function (recommended)
-    // setItem(items => [...items,item])
 
     const addItem = (item) => {
         var result = getIndex(item.item.id);
