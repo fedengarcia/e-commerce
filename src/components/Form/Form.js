@@ -17,7 +17,6 @@ export default function Form () {
         saveBuy(buyerInfo);
     }, []);
 
-
     const handleNameData = (e) => {
         setBuyerInfo({...buyerInfo,name: e.target.value})
     }

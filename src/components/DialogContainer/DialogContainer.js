@@ -10,6 +10,7 @@ export default function DialogContainer () {
     const [openFormDialog, setOpenFormDialog] = useState (false);
     const [openConfirmBuyDialog,setOpenConfirmBuyDialog] = useState(false);
     const [openCleanCartDialog, setOpenCleanCartDialog] = useState (false);
+    const [openCountValidationDialog,setOpenCountValidationDialog] = useState(false);
     const [idCompra,setIdCompra] = useState(undefined);
 
     const {removeItem,clear,newOrder,itemTrashId} = useContext(ModeContext);
@@ -23,6 +24,9 @@ export default function DialogContainer () {
             }
             if(dialogType === "trashDialog"){
                 setOpenTrashDialog(true);
+            }
+            if(dialogType === "countValidationDialog"){
+                setOpenCountValidationDialog(true);
             }
             if(dialogType === "formDialog"){
                 setOpenFormDialog(true);
@@ -89,7 +93,7 @@ export default function DialogContainer () {
         open={openConfirmBuyDialog}
         openDialog={setOpenConfirmBuyDialog}
         closeDialog={()=> setOpenConfirmBuyDialog(false)}
-        handleFinish={()=> setOpenConfirmBuyDialog(false)}
+        handleAcceptFinishDialog={()=> setOpenConfirmBuyDialog(false)}
         title={idCompra === undefined ? "Procesando compra..." : "Compra Finalizada"}
         secondButton="Aceptar"
 
@@ -98,12 +102,26 @@ export default function DialogContainer () {
         </DialogComponent>
     }
 
+    const renderCountValidationDialog = (openCountValidationDialog) => {
+        return <DialogComponent
+        open={openCountValidationDialog}
+        openDialog={setOpenCountValidationDialog}
+        closeDialog={()=> setOpenCountValidationDialog(false)}
+        handleAcceptCountDialog={()=> setOpenCountValidationDialog(false)}
+        title="No indica cantidad"
+        secondButton="Aceptar"
+
+        >
+            Indique cuantas unidades desea comprar.
+        </DialogComponent>
+    }
     
     return <>
         {openTrashDialog && renderTrashDialog(openTrashDialog,itemTrashId)}
         {openCleanCartDialog && renderCleanCartDialog(openCleanCartDialog)}
         {openFormDialog && renderFormDialog(openFormDialog,newOrder)}
         {openConfirmBuyDialog && renderConfirmBuyDialog(openConfirmBuyDialog,idCompra)}
+        {openCountValidationDialog && renderCountValidationDialog(openCountValidationDialog)}
 
     </>
 

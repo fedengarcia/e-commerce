@@ -20,7 +20,8 @@ export default function DialogComponent (props) {
         clearCart, 
         newOrder,
         setIdCompra,
-        handleFinish
+        handleAcceptFinishDialog,
+        handleAcceptCountDialog,
         } = props;
 
 
@@ -64,7 +65,6 @@ export default function DialogComponent (props) {
                     });
                   }
 
-                // updateStock(newOrder);
             })
             .catch((error) => {
                 console.error("Error adding document: ", error);
@@ -72,9 +72,13 @@ export default function DialogComponent (props) {
             
             history.push('/dialog/endBuyDialog');
         }
-        if(handleFinish){
-            handleFinish();
+        if(handleAcceptFinishDialog){
+            handleAcceptFinishDialog();
             history.push('/cart');
+        }
+        if(handleAcceptCountDialog){
+            handleAcceptCountDialog();
+            history.push('/');
         }
         if(handleConfirm){
             handleConfirm();

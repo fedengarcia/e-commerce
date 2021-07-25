@@ -12,7 +12,6 @@ import ItemCount from '../ItemCount/ItemCount';
 import {ModeContext} from '../../Context/CartContext';
 import {useHistory} from 'react-router-dom';
 import {getStorageRef} from '../../Firebase/firebase';
-import DialogComponent from '../DialogoComponent/DialogComponent';
 
 
 const useStyles = makeStyles((theme) => ItemDetailStyle(theme));
@@ -22,7 +21,6 @@ export default function ItemDetail (props) {
   const [amount, setAmount] = useState(0);
   const [item, setItem] = useState([]);
   const [imgRef,setImgRef] = useState(null);
-  const [openCountAlertDialog, setOpenCountAlertDialog] = useState(false);
 
 
   const classes = useStyles();
@@ -69,13 +67,12 @@ export default function ItemDetail (props) {
         addItem(itemCart);
         history.push(`/cart`);
     }else{
-      setOpenCountAlertDialog(true);
       setFinishButton(false);
+      history.push('/dialog/countValidationDialog');
     }
     
   }
 
-  
   const handleCancel = () => {
     setFinishButton(false);
   }
@@ -124,20 +121,9 @@ export default function ItemDetail (props) {
  
 
 
-  const renderItemDetail = (openCountAlertDialog,openCleanCartDialog) => {
-    if(openCountAlertDialog){
-      return <DialogComponent
-      open={openCountAlertDialog}
-      openDialog={setOpenCountAlertDialog}
-      closeDialog={() => setOpenCountAlertDialog(false)}
-      handleConfirm={() => setOpenCountAlertDialog(false)}
-      firstButton="Aceptar"
-      >
-      
-      Se requiere comprar al menos un producto para poder continuar...
-    </DialogComponent>
-    }else{
-      return <Card className={classes.cardContainer}>
+  return (
+    <div className={classes.root}>
+      <Card className={classes.cardContainer}>
         {imgRef && <CardMedia
         className={classes.media}
         image={imgRef}
@@ -155,19 +141,13 @@ export default function ItemDetail (props) {
             <Typography variant="h6">{`Cantidad: ${props.stock}`}</Typography>
         </CardContent>
       
-      <div className={classes.actionContainer}>
-        {renderFinishBuying(props.stock,setAmount)}
-        <CardActions>
-          {renderAddCart(handleCancel,handleAddCart)}
-        </CardActions>
-      </div>
+        <div className={classes.actionContainer}>
+          {renderFinishBuying(props.stock,setAmount)}
+          <CardActions>
+            {renderAddCart(handleCancel,handleAddCart)}
+          </CardActions>
+        </div>
       </Card>
-    }
-}
-
-  return (
-    <div className={classes.root}>
-      {renderItemDetail(openCountAlertDialog)}
       
     </div>
   );
