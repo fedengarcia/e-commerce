@@ -27,6 +27,9 @@ export default function DialogContainer () {
             if(dialogType === "formDialog"){
                 setOpenFormDialog(true);
             }
+            if(dialogType === "endBuyDialog"){
+                setOpenConfirmBuyDialog(true);
+            }
         }
     }, [dialogType]);
 
@@ -62,7 +65,7 @@ export default function DialogContainer () {
 
     }
 
-    const renderFormDialog = (openFormDialog,newOrder,idCompra) => {
+    const renderFormDialog = (openFormDialog,newOrder) => {
         return <DialogComponent
         open={openFormDialog}
         openDialog={setOpenFormDialog}
@@ -86,7 +89,7 @@ export default function DialogContainer () {
         open={openConfirmBuyDialog}
         openDialog={setOpenConfirmBuyDialog}
         closeDialog={()=> setOpenConfirmBuyDialog(false)}
-        handleConfirm={()=> setOpenConfirmBuyDialog(false)}
+        handleFinish={()=> setOpenConfirmBuyDialog(false)}
         title={idCompra === undefined ? "Procesando compra..." : "Compra Finalizada"}
         secondButton="Aceptar"
 
@@ -99,7 +102,7 @@ export default function DialogContainer () {
     return <>
         {openTrashDialog && renderTrashDialog(openTrashDialog,itemTrashId)}
         {openCleanCartDialog && renderCleanCartDialog(openCleanCartDialog)}
-        {openFormDialog && renderFormDialog(openFormDialog,newOrder,idCompra)}
+        {openFormDialog && renderFormDialog(openFormDialog,newOrder)}
         {openConfirmBuyDialog && renderConfirmBuyDialog(openConfirmBuyDialog,idCompra)}
 
     </>

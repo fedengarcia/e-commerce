@@ -20,7 +20,8 @@ export default function DialogComponent (props) {
         clearCart, 
         newOrder,
         setIdCompra,
-        handleEndBuying} = props;
+        handleFinish
+        } = props;
 
 
     const handleClose = () => {
@@ -69,13 +70,15 @@ export default function DialogComponent (props) {
                 console.error("Error adding document: ", error);
             });
             
-            
+            history.push('/dialog/endBuyDialog');
         }
-        if(handleEndBuying){
-            handleEndBuying();
+        if(handleFinish){
+            handleFinish();
+            history.push('/cart');
         }
-        
-        handleConfirm();
+        if(handleConfirm){
+            handleConfirm();
+        }
     }
 
 
@@ -85,8 +88,8 @@ export default function DialogComponent (props) {
             {children}
         </DialogContent>
         <DialogActions style={{display:"flex", justifyContent:"center"}}>
-            <Button onClick={handleClose} color="primary">{firstButton}</Button>
-            <Button onClick={() => handleAccept()} color="primary">{secondButton}</Button>
+            {firstButton && <Button onClick={handleClose} color="primary">{firstButton}</Button>}
+            {secondButton && <Button onClick={() => handleAccept()} color="primary">{secondButton}</Button>}
         </DialogActions>
     </Dialog>
         
