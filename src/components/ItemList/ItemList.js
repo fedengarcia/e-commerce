@@ -36,7 +36,6 @@ export default function ItemList ({data}) {
             direction="row"
             justify="center"
             alignItems="center"
-            spacing={3}
         >
         
         {data.filter((item) => (data.indexOf(item) <= flagId)).map((item) => <ItemsGrid data={item} key={item.id}/>)}

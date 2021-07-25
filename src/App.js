@@ -15,8 +15,9 @@ const useStyles = makeStyles((theme) => ({
     margin: 0,
     boxSizing: "border-box",
     backgroundImage: `url(${imgBackground})`,
+    backgroundAttachment: "fixed",
+    backgroundSize: "contained",
     backgroundPosition: "center",
-    backgroundSize: 'cover',
     backgroundRepeat: "repeat",
     minHeight: "100vh",
   },
@@ -65,5 +66,3 @@ function App() {
 export default App;
 
 
-// El import va con {} cuando usamos export const
-// con export default, usamos directamente el nombre
