@@ -12,7 +12,6 @@ const useStyle = makeStyles ((theme) => CartContainerStyle(theme));
 export default function CartContainer  () {
     const {getItems} = useContext(ModeContext);
     
-
     const items = getItems();
     const classes = useStyle();
 

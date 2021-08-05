@@ -76,9 +76,6 @@ export default function CartList ({items}) {
     }
 
 
- 
-
-
     return(
         <Grid
             container

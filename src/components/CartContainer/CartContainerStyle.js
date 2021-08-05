@@ -6,7 +6,6 @@ export const CartContainerStyle = (theme) => ({
         aligItems: 'center',
         flexDirection: 'row',
         boxSizing: "border-box",
-
     },
 
 });

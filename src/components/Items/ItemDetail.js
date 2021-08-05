@@ -1,10 +1,10 @@
-import React, {useState,useContext, useEffect} from 'react';
+import React, {useState,useContext} from 'react';
 import {makeStyles, Card,CardHeader,CardMedia,CardContent,CardActions,Button, Typography} from '@material-ui/core';
 import {ItemStyle} from './ItemStyle';
 import ItemCount from '../ItemCount/ItemCount';
 import {ModeContext} from '../../Context/CartContext';
 import {useHistory} from 'react-router-dom';
-import {getStorageRef} from '../../Firebase/firebase';
+import useImgRef from '../useImgRef/useImgRef';
 
 
 const useItemDetailStyles = makeStyles((theme) => ItemStyle(theme));
@@ -13,25 +13,14 @@ const useItemDetailStyles = makeStyles((theme) => ItemStyle(theme));
 export default function ItemDetail (props) {
   const [finishButton, setFinishButton] = useState(false);
   const [amount, setAmount] = useState(0);
-  const [imgRef,setImgRef] = useState(null);
+  const imgRef = useImgRef(props.urlImg);
 
 
   const classes = useItemDetailStyles();
   const history = useHistory();
   const {addItem} = useContext(ModeContext);
 
-  useEffect(() => {
-    if(props.urlImg){
-      const storageRef = getStorageRef();
-      const finalRef = storageRef.child(props.urlImg);
-    
-      finalRef.getDownloadURL().then((URL) => {
-        setImgRef(URL);
-      })
 
-    }
-
-  }, [props]);
 
   const handleAddCart = (amount) => {
     if(amount > 0){

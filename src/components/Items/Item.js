@@ -1,8 +1,8 @@
-import React, {useState,useEffect} from 'react';
+import React from 'react';
 import {ItemStyle} from './ItemStyle';
 import {makeStyles, Card,CardHeader,CardMedia,CardContent,CardActions,Button, Typography} from '@material-ui/core';
 import {useHistory} from 'react-router-dom';
-import {getStorageRef} from '../../Firebase/firebase';
+import useImgRef from '../useImgRef/useImgRef';
 
 
 const useStyles = makeStyles((theme) => ItemStyle(theme));
@@ -11,22 +11,8 @@ export default function Item (props) {
 
   const classes = useStyles();
   const history = useHistory();
-  const [imgRef,setImgRef] = useState(null);
+  const imgRef = useImgRef(props.urlImg)
   
-  useEffect(() => {
-
-    if(props.urlImg){
-      const storageRef = getStorageRef();
-      const finalRef = storageRef.child(props.urlImg);
-    
-      finalRef.getDownloadURL().then((URL) => {
-        setImgRef(URL);
-      })
-
-    }
-
-  }, [props.urlImg]);
-
 
   return (
     <div className={classes.rootItem}>
