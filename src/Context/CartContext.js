@@ -21,10 +21,7 @@ export const CartContext = (props) => {
 
     const getTotalPrice = () =>{
         const totalPrice = items.reduce(function(accumulator, currentValue) {
-            console.log("ITEM -->", currentValue.item.descripcion)
-            console.log("ItemPrecio --->",currentValue.item.precio * currentValue.quantity )
-            console.log(accumulator)
-            return accumulator + currentValue.item.precio ;
+            return accumulator + (currentValue.item.precio * currentValue.quantity) ;
           },0);
 
         return totalPrice;
@@ -41,21 +38,16 @@ export const CartContext = (props) => {
     }
 
     const getQuantity = () => {
-        let quantity = 0;
-        for(var i = 0; i < items.length; i++) {
-            quantity = items[i]["quantity"] + quantity;
-        }
-        return quantity; 
+        const quantity = items.reduce(function(accumulator, currentValue) {
+            return accumulator + currentValue.quantity ;
+          },0);
+
+        return quantity;
     }
 
 
     const getIndex = (id) =>{
-        for(var i = 0; i < items.length; i++) {
-            if(items[i]["item"]["id"] === id) {
-                return i;
-            }
-        }
-        return -1; 
+        return items.findIndex(item => item.id === id);
     }
 
     const addItem = (item) => {
