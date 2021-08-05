@@ -21,9 +21,9 @@ export default function ItemList ({data}) {
             alignItems="center"
         >
         
-        {data.map((item) =>  <Grid item sx={12} md={4} sm={6}>
+        {data.map((item) =>  <Grid item sx={12} md={4} sm={6} key={item.id}>
                 <div className={classes.cardItem}>
-                    <Item {...item} key={item.id}></Item>
+                    <Item {...item} ></Item>
                 </div>    
             </Grid>)}
 

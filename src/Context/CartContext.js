@@ -20,21 +20,24 @@ export const CartContext = (props) => {
 
 
     const getTotalPrice = () =>{
-        let totalPrice = 0
-        for (var index = 0; index < items.length; index++) {
-            totalPrice = totalPrice + (items[index]['item']['precio'] * items[index]['quantity']);
-        }
+        const totalPrice = items.reduce(function(accumulator, currentValue) {
+            console.log("ITEM -->", currentValue.item.descripcion)
+            console.log("ItemPrecio --->",currentValue.item.precio * currentValue.quantity )
+            console.log(accumulator)
+            return accumulator + currentValue.item.precio ;
+          },0);
+
         return totalPrice;
     }
 
 
     const isInCart = (id) =>{
-        for(var i = 0; i < items.length; i++) {
-            if(items[i]["item"]["id"] === id) {
-                return true;
-            }
+        const result = items.filter(id => items.id === id);
+        if(result === []){
+            return false;
+        }else{
+            return true;
         }
-        return false; 
     }
 
     const getQuantity = () => {
