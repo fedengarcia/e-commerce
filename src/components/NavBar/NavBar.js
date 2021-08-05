@@ -5,14 +5,12 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
-import MenuItem from '@material-ui/core/MenuItem';
-import Menu from '@material-ui/core/Menu';
 import CartWidget from '../CartWidget/CartWidget';
 import {useHistory, NavLink} from 'react-router-dom';
 import navBarLogo from '../../img/logo.png';
 import menuIcon from '../../img/menuIcon.png';
 import {ModeContext} from '../../Context/CartContext';
-
+import MobileNavBar from './MobileNavBar';
 
 const useStyles = makeStyles((theme) => navBarStyle(theme));
 
@@ -25,11 +23,6 @@ const NavBar = () => {
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
 
-  const handleMobileMenuClose = () => {
-    setMobileMoreAnchorEl(null);
-  };
-
-
   const handleMenuOpen = (event) => {
     setMobileMoreAnchorEl(event.currentTarget);
   };
@@ -39,26 +32,7 @@ const NavBar = () => {
 
   const mobileMenuId = 'primary-search-account-menu-mobile';
   
-  const renderMobileMenu = (
 
-    <Menu
-      anchorEl={mobileMoreAnchorEl}
-      anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
-      id={mobileMenuId}
-      keepMounted
-      transformOrigin={{ vertical: 'top', horizontal: 'right' }}
-      open={isMobileMenuOpen}
-      onClose={handleMobileMenuClose}
-    >
-      
-    
-      <MenuItem><NavLink to="/category/Nike" className={classes.linkStyle}>Nike</NavLink></MenuItem>
-      <MenuItem><NavLink to="/category/Jordan" className={classes.linkStyle}>Jordan</NavLink></MenuItem>
-      <MenuItem><NavLink to="/category/Adiddas" className={classes.linkStyle}>Adiddas</NavLink></MenuItem>
-
-
-    </Menu>
-  );
 
   return (
     <div className={classes.grow}>
@@ -109,7 +83,7 @@ const NavBar = () => {
        
         </Toolbar>
       </AppBar>
-      {renderMobileMenu}
+      {MobileNavBar ({ setMobileMoreAnchorEl, mobileMoreAnchorEl, mobileMenuId, isMobileMenuOpen })}
     </div>
   );
 
