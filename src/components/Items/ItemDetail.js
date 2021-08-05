@@ -13,7 +13,6 @@ const useItemDetailStyles = makeStyles((theme) => ItemStyle(theme));
 export default function ItemDetail (props) {
   const [finishButton, setFinishButton] = useState(false);
   const [amount, setAmount] = useState(0);
-  const [item, setItem] = useState([]);
   const [imgRef,setImgRef] = useState(null);
 
 
@@ -22,16 +21,13 @@ export default function ItemDetail (props) {
   const {addItem} = useContext(ModeContext);
 
   useEffect(() => {
-    setItem(props)
     if(props.urlImg){
       const storageRef = getStorageRef();
       const finalRef = storageRef.child(props.urlImg);
     
       finalRef.getDownloadURL().then((URL) => {
         setImgRef(URL);
-      }).catch(err => {
-        console.log(err);
-      });
+      })
 
     }
 
@@ -50,16 +46,7 @@ export default function ItemDetail (props) {
   const handleEndBuying = (item,amount) => {
     if(amount > 0){
       const itemCart = {
-        "item": {
-          categoria:item.categoria,
-          descripcion: item.descripcion,
-          id:item.id,
-          marca:item.marca,
-          modelo:item.modelo,
-          precio:item.precio,
-          urlImg:item.urlImg,
-
-        },
+        item:item,
         "quantity": amount,
       }
         addItem(itemCart);
@@ -74,33 +61,24 @@ export default function ItemDetail (props) {
 
 
   const renderFinishBuying = (stock,setAmount) => {
-    if (finishButton === false){
-      return <ItemCount stock={stock} setAmount={setAmount}/>
-    }else{
+    if (finishButton){
       return <Button
       className={classes.button}
       variant="contained"
       size="large"
-      onClick={() => handleEndBuying(item,amount)}
+      onClick={() => handleEndBuying(props,amount)}
       >
         <Typography>Terminar mi compra</Typography>
       </Button>
+    }else{
+      return <ItemCount stock={stock} setAmount={setAmount}/>
     }
+
   }
 
 
   const renderAddCart = (handleCancel,handleAddCart,amount) => {
-    if (finishButton === false){
-      return <Button
-            className={classes.button}
-            variant="contained"
-            size="large"
-            onClick={() => handleAddCart(amount)}
-          >
-            <Typography>Agregar al carrito</Typography>
-          </Button>
-          
-    }else{
+    if (finishButton){
       return <Button
         className={classes.button}
         variant="contained"
@@ -109,7 +87,16 @@ export default function ItemDetail (props) {
         >
           <Typography>Cancelar</Typography>
         </Button>
-  
+    }else{
+      return <Button
+      className={classes.button}
+      variant="contained"
+      size="large"
+      onClick={() => handleAddCart(amount)}
+    >
+      <Typography>Agregar al carrito</Typography>
+    </Button>
+    
     }
   }
  
