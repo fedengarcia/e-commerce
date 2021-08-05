@@ -42,7 +42,7 @@ export default function Item (props) {
 
       <div>
       <CardHeader
-        title={`Zapatillas de " ${props.categoria} + " " + ${props.marca}`}
+        title={`Zapatillas de  ${props.categoria} ${props.marca}`}
         subheader={props.modelo} 
       />
       
