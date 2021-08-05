@@ -10,7 +10,7 @@ const useStyles = makeStyles((theme) => ItemDetailContainerStyle(theme));
 
 export default function ItemDetailContainer () {
     const classes = useStyles();
-    const [loading, setLoading] = useState(false);
+    const [loading, setLoading] = useState(true);
     const [item,setItem] = useState(undefined);
     const {id} = useParams();
 
@@ -20,9 +20,7 @@ export default function ItemDetailContainer () {
 
         itemCollection.get().then((querySnapshot) => {
             setItem({id: querySnapshot.id,...querySnapshot.data()});
-            setLoading(true);
-        }).catch(err => {
-            console.log("Ocurrio un error", err);
+            setLoading(false);
         })
 
 
@@ -32,9 +30,7 @@ export default function ItemDetailContainer () {
 
     return(
         <div className={classes.itemDetailContainer}>
-            {!loading && <span>Se esta cargando la pagina</span>}
-            {loading && <ItemDetail {...item}/>}
-
+            {loading === true ? <span>Cargando...</span> : <ItemDetail {...item}/>}
         </div>
     );
 }
