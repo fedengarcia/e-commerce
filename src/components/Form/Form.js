@@ -7,18 +7,26 @@ import {ModeContext} from '../../Context/CartContext'
 const useStyles = makeStyles((theme) => FormStyle(theme));
 
 
+
 export default function Form () {
     const classes = useStyles();
-    const [buyerInfo, setBuyerInfo] = useState({});
-    
+    const [buyerInfo, setBuyerInfo] = useState({
+        nombre: "",
+        apellido: "",
+        email:"",
+        phone:"",
+    });
+
     const {saveBuy} = useContext(ModeContext);
 
     useEffect(() => {
+        
         saveBuy(buyerInfo);
+        
     }, [buyerInfo]);
 
     const handleNameData = (e) => {
-        setBuyerInfo({...buyerInfo,name: e.target.value})
+        setBuyerInfo({...buyerInfo,nombre: e.target.value})
     }
 
     const handleApellidoData = (e) => {
@@ -35,11 +43,12 @@ export default function Form () {
 
 
     return <form className={classes.formContainer}>
-            <TextField className={classes.formInput} size="medium" autoComplete="off" color="secondary" required id="nameId"  placeholder="Nombre" type="input" onChange={handleNameData}/>
-            <TextField className={classes.formInput} size="medium" autoComplete="off" color="secondary" required id="apellidoId"  placeholder="Apellido" type="input" onChange={handleApellidoData}/>
-            <TextField className={classes.formInput} size="medium" autoComplete="off" color="secondary" required id="emailId"  placeholder="Email" type="input" onChange={handleEmailData}/>
-            <TextField className={classes.formInput} size="medium" autoComplete="off" color="secondary" required id="numberId"  placeholder="Numero de telefono" type="input" onChange={handlePhoneData}/>
+            <TextField className={classes.formInput} size="medium" autoComplete="off"  color="secondary" id="nameId"  placeholder="Nombre" type="input" onChange={handleNameData}/>
+            <TextField className={classes.formInput} size="medium" autoComplete="off"  color="secondary"  id="apellidoId"  placeholder="Apellido" type="input" onChange={handleApellidoData}/>
+            <TextField className={classes.formInput} size="medium" autoComplete="off"  color="secondary"  id="emailId"  placeholder="Email" type="input" onChange={handleEmailData}/>
+            <TextField className={classes.formInput} size="medium" autoComplete="off"  color="secondary"  id="numberId"  placeholder="Numero de telefono" type="input" onChange={handlePhoneData}/>
         </form>
+        
 }
     
 
