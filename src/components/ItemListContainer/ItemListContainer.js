@@ -47,6 +47,7 @@ export default function ItemListContainer () {
 
     return(
         <div className={classes.gridContainer}>
+            <div className={classes.titleContainer}><h2 className={classes.title}>{marca}</h2></div>
             {!loading && <span>Cargando...</span>}
             {loading && <ItemList data={items}/>}
         </div>

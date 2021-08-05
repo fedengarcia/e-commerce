@@ -9,8 +9,9 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 import CartWidget from '../CartWidget/CartWidget';
 import {useHistory} from 'react-router-dom';
-import navBarLogo from '../../img/logo.png'
-import {ModeContext} from '../../Context/CartContext'
+import navBarLogo from '../../img/logo.png';
+import menuIcon from '../../img/menuIcon.png';
+import {ModeContext} from '../../Context/CartContext';
 
 const useStyles = makeStyles((theme) => navBarStyle(theme));
 
@@ -92,7 +93,7 @@ const NavBar = () => {
             aria-controls={mobileMenuId}
             onClick={handleMenuOpen}
           >
-            <img src={navBarLogo} alt="logo" className={classes.imgNavBar}/>
+            <img src={menuIcon} alt="logo" className={classes.menuIcon}/>
 
           </IconButton>
         </div>

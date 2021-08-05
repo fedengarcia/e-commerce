@@ -46,5 +46,9 @@
     },
     imgNavBar:{
       width: "2.5em",
+    },
+    menuIcon:{
+      width: "1.5em",
+      color: 'white'
     }
   });
