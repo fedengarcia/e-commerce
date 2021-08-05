@@ -11,7 +11,7 @@ export const ShowEmptyCart = () => {
 
     return <>
     <Grid item sx={12}>
-        <h1 className={classes.titleEmptyCart}>El carrito esta vacio</h1>
+        <h1 className={classes.titlesCart}>El carrito esta vacio</h1>
     </Grid>
     
     <Grid item sx={12}>

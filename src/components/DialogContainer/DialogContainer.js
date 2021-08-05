@@ -1,9 +1,11 @@
 import React,{useState, useContext, useEffect} from 'react';
 import {ModeContext} from '../../Context/CartContext';
-import DialogComponent from '../DialogoComponent/DialogComponent';
 import Form from '../Form/Form';
 import {useParams} from 'react-router-dom';
-
+import DialogComponent from '../DialogoComponent/DialogComponent';
+import CountValidationDialog from '../DialogoComponent/CountValidationDialog';
+import TrashDialog from '../DialogoComponent/TrashDialog';
+import CleanCartDialog from '../DialogoComponent/CleanCartDialog';
 
 export default function DialogContainer () { 
     const [openTrashDialog, setOpenTrashDialog] = useState(false);
@@ -37,37 +39,7 @@ export default function DialogContainer () {
         }
     }, [dialogType]);
 
-    const renderTrashDialog = (openTrashDialog,itemTrashId) => {
-        return <DialogComponent
-            open={openTrashDialog}
-            openDialog={setOpenTrashDialog}
-            closeDialog={() => setOpenTrashDialog(false)}
-            handleConfirm={() => setOpenTrashDialog(false)}
-            title="Confirmar"
-            firstButton="Cancelar"
-            secondButton="Eliminar"
-            removeItem={() => removeItem(itemTrashId)}
-            >
-            Estas seguro que desea eliminarlo del carrito?
-            </DialogComponent>
-        
-    }
 
-    const renderCleanCartDialog = (openCleanCartDialog) => {
-        return <DialogComponent
-            open={openCleanCartDialog}
-            openDialog={setOpenCleanCartDialog}
-            closeDialog= {()=> setOpenCleanCartDialog(false)}
-            handleConfirm={()=> setOpenCleanCartDialog(false)}
-            title="Vaciar Carrito"
-            firstButton="Cancelar"
-            secondButton="Vaciar"
-            clearCart={() => clear()}
-            >
-              Estas seguro que deseas vaciar el carrito?
-            </DialogComponent>
-
-    }
 
     const renderFormDialog = (openFormDialog,newOrder) => {
         return <DialogComponent
@@ -102,26 +74,14 @@ export default function DialogContainer () {
         </DialogComponent>
     }
 
-    const renderCountValidationDialog = (openCountValidationDialog) => {
-        return <DialogComponent
-        open={openCountValidationDialog}
-        openDialog={setOpenCountValidationDialog}
-        closeDialog={()=> setOpenCountValidationDialog(false)}
-        handleAcceptCountDialog={()=> setOpenCountValidationDialog(false)}
-        title="No indica cantidad"
-        secondButton="Aceptar"
 
-        >
-            Indique cuantas unidades desea comprar.
-        </DialogComponent>
-    }
     
     return <>
-        {openTrashDialog && renderTrashDialog(openTrashDialog,itemTrashId)}
-        {openCleanCartDialog && renderCleanCartDialog(openCleanCartDialog)}
-        {openFormDialog && renderFormDialog(openFormDialog,newOrder)}
-        {openConfirmBuyDialog && renderConfirmBuyDialog(openConfirmBuyDialog,idCompra)}
-        {openCountValidationDialog && renderCountValidationDialog(openCountValidationDialog)}
+        {openTrashDialog && TrashDialog({openTrashDialog,itemTrashId,removeItem,setOpenTrashDialog})}
+        {openCleanCartDialog && CleanCartDialog({openCleanCartDialog,setOpenCleanCartDialog,clear})}
+        {openFormDialog && renderFormDialog({openFormDialog,newOrder})}
+        {openConfirmBuyDialog && renderConfirmBuyDialog({openConfirmBuyDialog,idCompra})}
+        {openCountValidationDialog && CountValidationDialog ({openCountValidationDialog,setOpenCountValidationDialog})}
 
     </>
 
