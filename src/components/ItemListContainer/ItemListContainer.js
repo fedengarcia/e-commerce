@@ -10,14 +10,14 @@ const useStyles = makeStyles((theme) => ItemListContainerStyle(theme));
 
 export default function ItemListContainer () {
     const classes = useStyles();
-    const [loading, setLoading] = useState(false);
+    const [loading, setLoading] = useState(true);
     const [items,setItems] = useState([]);
 
     const {marca} = useParams();
 
     useEffect(() => {  
         
-        setLoading(true);
+        
         const itemCollection = dataBase.collection("items");
         let itemsRender;
         if(marca !== undefined){
@@ -38,9 +38,8 @@ export default function ItemListContainer () {
             }
             
       
-        }).catch(err => {
-            console.log("Ocurrio un error", err);
         })
+        setLoading(false);
 
     }, [marca]);
    
@@ -48,8 +47,8 @@ export default function ItemListContainer () {
     return(
         <div className={classes.gridContainer}>
             <div className={classes.titleContainer}><h2 className={classes.title}>{marca}</h2></div>
-            {items.length === 0 ? <h1 className={classes.tittleError}>Error al cargar la pagina, verifica tu conexion a Internet</h1> : loading}
-            {loading === false ? <span>Cargando...</span> : <ItemList data={items}/>}
+            {loading === true ? <span>Cargando...</span> : <ItemList data={items}/>}
+
         </div>
     );
 }
