@@ -11,6 +11,7 @@ import Button from '@material-ui/core/Button';
 import {useHistory} from 'react-router-dom';
 import {getStorageRef} from '../../Firebase/firebase';
 
+
 const useStyles = makeStyles((theme) => ItemStyle(theme));
 
 export default function Item (props) {
@@ -37,7 +38,7 @@ export default function Item (props) {
 
 
   return (
-    <div className={classes.root}>
+    <div className={classes.rootItem}>
 
     <Card className={classes.cardContainer}>
 

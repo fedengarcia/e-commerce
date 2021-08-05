@@ -1,6 +1,6 @@
 import React, {useState,useContext, useEffect} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import {ItemDetailStyle} from './ItemDetailStyle';
+import {ItemStyle} from './ItemStyle';
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
 import CardMedia from '@material-ui/core/CardMedia';
@@ -14,7 +14,8 @@ import {useHistory} from 'react-router-dom';
 import {getStorageRef} from '../../Firebase/firebase';
 
 
-const useStyles = makeStyles((theme) => ItemDetailStyle(theme));
+const useItemDetailStyles = makeStyles((theme) => ItemStyle(theme));
+
 
 export default function ItemDetail (props) {
   const [finishButton, setFinishButton] = useState(false);
@@ -23,7 +24,7 @@ export default function ItemDetail (props) {
   const [imgRef,setImgRef] = useState(null);
 
 
-  const classes = useStyles();
+  const classes = useItemDetailStyles();
   const history = useHistory();
   const {addItem} = useContext(ModeContext);
 
@@ -122,7 +123,7 @@ export default function ItemDetail (props) {
 
 
   return (
-    <div className={classes.root}>
+    <div className={classes.rootItemDetail}>
       <Card className={classes.cardContainer}>
         {imgRef && <CardMedia
         className={classes.media}

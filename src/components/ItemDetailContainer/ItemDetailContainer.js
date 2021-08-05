@@ -1,6 +1,6 @@
 import React,{useState,useEffect} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import ItemDetail from '../ItemDetail/ItemDetail';
+import ItemDetail from '../Items/ItemDetail';
 import {ItemDetailContainerStyle} from './ItemDetailContainerStyle';
 import {useParams} from 'react-router-dom';
 import {dataBase} from '../../Firebase/firebase';
