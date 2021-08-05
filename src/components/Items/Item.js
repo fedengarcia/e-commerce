@@ -21,9 +21,7 @@ export default function Item (props) {
     
       finalRef.getDownloadURL().then((URL) => {
         setImgRef(URL);
-      }).catch(err => {
-        console.log(err);
-      });
+      })
 
     }
 
@@ -38,18 +36,18 @@ export default function Item (props) {
       {imgRef && <CardMedia
         className={classes.media}
         image = {imgRef}
-        title="Imagen del Producto"
-        alt="Imagen del producto"
+        title="Imagen del Producto en venta"
+        alt="Imagen del producto en venta"
       />}
 
       <div>
       <CardHeader
-        title={"Zapatillas de " + props.categoria + " " + props.marca}
+        title={`Zapatillas de " ${props.categoria} + " " + ${props.marca}`}
         subheader={props.modelo} 
       />
       
       <CardContent>
-          <Typography variant="h4">${parseFloat(props.precio)}</Typography>
+          <Typography variant="h4">{`${parseFloat(props.precio)}`}</Typography>
       </CardContent>
       <div className={classes.actionContainer}>
 
@@ -60,7 +58,7 @@ export default function Item (props) {
             size="large"
             onClick={() => history.push(`/item/${props.id}`)}
         >
-            <Typography>Ver detalle</Typography>
+            <Typography>{`Ver detalle`}</Typography>
         </Button>
       </CardActions>
       </div>
