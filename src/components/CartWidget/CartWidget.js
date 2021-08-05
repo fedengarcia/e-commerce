@@ -6,7 +6,7 @@ import { useHistory } from 'react-router-dom';
 
 const CartWidget = ({numProduct}) => {
   const history = useHistory();
-  
+
 
     return (
         <>
@@ -18,7 +18,7 @@ const CartWidget = ({numProduct}) => {
             color="inherit"
             onClick={() => history.push(`/cart`)}
             >
-          <Badge badgeContent={numProduct} color="secondary" >
+          <Badge badgeContent={numProduct} color="primary">
             <AddShoppingCartIcon style={{fontSize:"1.5em"}}/>
           </Badge>
           </IconButton>
