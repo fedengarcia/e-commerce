@@ -49,6 +49,5 @@
     },
     menuIcon:{
       width: "1.5em",
-      color: 'white'
     }
   });
