@@ -10,4 +10,12 @@ export const CartListStyle = (theme) => ({
     buttonStyle:{
         margin: '0.5em'
     },
+    linkStyle:{
+        textDecoration: "none",
+    },
+    titlesCart:{
+        fontWeight: 'normal',
+        lineHeight: '1em',
+        textShadow: '1px 1px 2px #082b34',
+    },
 })
