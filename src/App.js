@@ -1,65 +1,22 @@
-import NavBar from './components/NavBar/NavBar';
-import imgBackground from './img/crumpled-white-paperboard.jpg';
 import { makeStyles } from '@material-ui/core/styles';
-import {BrowserRouter,Switch,Route} from 'react-router-dom'
-import ItemListContainer from './components/ItemListContainer/ItemListContainer';
-import ItemDetailContainer from './components/ItemDetailContainer/ItemDetailContainer';
-import CartContainer from './components/CartContainer/CartContainer';
+import { AppStyle } from './AppStyle';
 import {CartContext} from './Context/CartContext'
-import DialogContainer from './components/DialogContainer/DialogContainer';
+import Router from './components/Router/Router';
 
 
-const useStyles = makeStyles((theme) => ({
-  container:{
-    padding: 0,
-    margin: 0,
-    boxSizing: "border-box",
-    backgroundImage: `url(${imgBackground})`,
-    backgroundAttachment: "fixed",
-    backgroundSize: "contained",
-    backgroundPosition: "center",
-    backgroundRepeat: "repeat",
-    minHeight: "100vh",
-  },
-
-}));
-
+const useStyles = makeStyles((theme) => AppStyle(theme));
 
 function App() {
   const classes = useStyles();
 
   return (
-    <div className={classes.container}>
+    <main className={classes.container}>
       
       <CartContext>
-        <BrowserRouter> 
-          <NavBar />
-          <Switch>
-              
-              <Route exact path="/">
-                  <ItemListContainer/>
-              </Route>
-
-              
-              <Route path="/item/:id">
-                    <ItemDetailContainer/>
-              </Route>
-              
-              <Route path="/category/:marca">
-                  <ItemListContainer/>
-              </Route>
-
-              <Route path="/cart">
-                  <CartContainer/>
-              </Route>
-
-              <Route path="/dialog/:dialogType">
-                  <DialogContainer/>
-              </Route>
-          </Switch>
-      </BrowserRouter>
-    </CartContext>
-    </div>
+        <Router/>
+        
+      </CartContext>
+    </main>
   );
 }
 
