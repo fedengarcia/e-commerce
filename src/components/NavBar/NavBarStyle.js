@@ -1,8 +1,5 @@
 
   export const navBarStyle = (theme) => ({
-    navBarIcon:{
-      borderRadius: '1em',
-    },
     grow: {
       flexGrow: 1,
       marginBottom: '2em',
@@ -19,7 +16,26 @@
         display: 'block',
       },
     },
-    
+    imgNavBar:{
+      width: "2.5em",
+    },
+    menuIcon:{
+      width: "1.5em",
+    },
+
+    linkStyle:{
+      margin: "1rem",
+      textDecoration: "none",
+      color: 'black',
+      fontWeight: 'normal',
+      lineHeight: '1em',
+      textShadow: '1px 1px 2px #082b34',
+      '&:hover':{
+        backgroundColor: 'whiteGrey',
+        opacity: '0.5',
+        borderRadius: '1em'
+      }
+    },
     
     sectionDesktop: {
       display: 'none',
@@ -44,10 +60,5 @@
         display: 'flex',
       },
     },
-    imgNavBar:{
-      width: "2.5em",
-    },
-    menuIcon:{
-      width: "1.5em",
-    }
+
   });

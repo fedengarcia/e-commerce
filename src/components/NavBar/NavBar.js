@@ -8,10 +8,11 @@ import Typography from '@material-ui/core/Typography';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 import CartWidget from '../CartWidget/CartWidget';
-import {useHistory} from 'react-router-dom';
+import {useHistory, NavLink} from 'react-router-dom';
 import navBarLogo from '../../img/logo.png';
 import menuIcon from '../../img/menuIcon.png';
 import {ModeContext} from '../../Context/CartContext';
+
 
 const useStyles = makeStyles((theme) => navBarStyle(theme));
 
@@ -28,10 +29,6 @@ const NavBar = () => {
     setMobileMoreAnchorEl(null);
   };
 
-  const handleMenuClose = (e) => {
-    handleMobileMenuClose();
-    history.push(`/category/${e}`)
-  };
 
   const handleMenuOpen = (event) => {
     setMobileMoreAnchorEl(event.currentTarget);
@@ -54,11 +51,10 @@ const NavBar = () => {
       onClose={handleMobileMenuClose}
     >
       
-      
-      <MenuItem onClick={() => handleMenuClose('Nike')}>Nike</MenuItem>
-      <MenuItem onClick={() => handleMenuClose('Jordan')}>Jordan</MenuItem>
-      <MenuItem onClick={() => handleMenuClose('Adiddas')}>Adiddas</MenuItem>
-      
+    
+      <MenuItem><NavLink to="/category/Nike" className={classes.linkStyle}>Nike</NavLink></MenuItem>
+      <MenuItem><NavLink to="/category/Jordan" className={classes.linkStyle}>Jordan</NavLink></MenuItem>
+      <MenuItem><NavLink to="/category/Adiddas" className={classes.linkStyle}>Adiddas</NavLink></MenuItem>
 
 
     </Menu>
@@ -99,46 +95,9 @@ const NavBar = () => {
         </div>
           {/* DESKTOP SECTION */}
           <div className={classes.sectionDesktop}>
-          
-            <IconButton
-              edge="end"
-              aria-label="account of current user"
-              aria-controls={menuId}
-              aria-haspopup="true"
-              color="inherit"
-              className={classes.navBarIcon}
-              onClick = {() => history.push('/category/Nike')}
-              >
-
-
-            <Typography className={classes.title}>Nike</Typography>
-            </IconButton>
-            <IconButton
-              edge="end"
-              aria-label="account of current user"
-              aria-controls={menuId}
-              aria-haspopup="true"
-              color="inherit"
-              className={classes.navBarIcon}
-              onClick = {() => history.push('/category/Jordan')}
-              >
-
-
-              <Typography className={classes.title}>Jordan</Typography>
-            </IconButton>
-            <IconButton
-              edge="end"
-              aria-label="account of current user"
-              aria-controls={menuId}
-              aria-haspopup="true"
-              color="inherit"
-              className={classes.navBarIcon}
-              onClick = {() => history.push('/category/Adiddas')}
-              >
-
-
-              <Typography className={classes.title}>Adiddas</Typography>
-            </IconButton>
+            <NavLink to="/category/Nike" className={classes.linkStyle}><Typography className={classes.title}>Nike</Typography></NavLink>
+            <NavLink to="/category/Jordan" className={classes.linkStyle}><Typography className={classes.title}>Jordan</Typography></NavLink>
+            <NavLink to="/category/Adiddas" className={classes.linkStyle}><Typography className={classes.title}>Adiddas</Typography></NavLink>
           </div>
           
 
