@@ -9,7 +9,6 @@ const CartWidget = ({numProduct}) => {
 
 
     return (
-        <>
         <IconButton
             edge="end"
             aria-label="account of current user"
@@ -22,7 +21,6 @@ const CartWidget = ({numProduct}) => {
             <AddShoppingCartIcon style={{fontSize:"1.5em"}}/>
           </Badge>
           </IconButton>
-        </>
     )
 }
 
