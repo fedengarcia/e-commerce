@@ -44,9 +44,13 @@ export default function ItemDetail (props) {
 
   }, [props]);
 
-  const handleAddCart = () => {
-    
-    setFinishButton(true);
+  const handleAddCart = (amount) => {
+    if(amount > 0){
+      setFinishButton(true);
+    }else{
+      setFinishButton(false);
+      history.push('/dialog/countValidationDialog');
+    }
   };
 
 
@@ -67,11 +71,7 @@ export default function ItemDetail (props) {
       }
         addItem(itemCart);
         history.push(`/cart`);
-    }else{
-      setFinishButton(false);
-      history.push('/dialog/countValidationDialog');
     }
-    
   }
 
   const handleCancel = () => {
@@ -96,13 +96,13 @@ export default function ItemDetail (props) {
   }
 
 
-  const renderAddCart = (handleCancel,handleAddCart) => {
+  const renderAddCart = (handleCancel,handleAddCart,amount) => {
     if (finishButton === false){
       return <Button
             className={classes.button}
             variant="contained"
             size="large"
-            onClick={handleAddCart}
+            onClick={() => handleAddCart(amount)}
           >
             <Typography>Agregar al carrito</Typography>
           </Button>
@@ -145,7 +145,7 @@ export default function ItemDetail (props) {
         <div className={classes.actionContainer}>
           {renderFinishBuying(props.stock,setAmount)}
           <CardActions>
-            {renderAddCart(handleCancel,handleAddCart)}
+            {renderAddCart(handleCancel,handleAddCart,amount)}
           </CardActions>
         </div>
       </Card>

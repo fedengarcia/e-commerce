@@ -2,7 +2,7 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import {ItemListStyle} from './ItemListStyle';
 import Grid from '@material-ui/core/Grid';
-import Item from '../Item/Item';
+import Item from '../Items/Item';
 
 
 
