@@ -12,17 +12,6 @@ const useStyles = makeStyles((theme) => ItemListStyle(theme));
 export default function ItemList ({data}) {
     const classes = useStyles();
 
-    const ItemsGrid = ({data}) =>{
-        return(
-            <Grid item sx={12} md={4} sm={6}>
-                <div className={classes.cardItem}>
-                    <Item {...data}></Item>
-                </div>    
-            </Grid>
-            );
-    }
-
-
     return(
 
         <Grid
@@ -32,8 +21,11 @@ export default function ItemList ({data}) {
             alignItems="center"
         >
         
-        {data.map((item) => <ItemsGrid data={item} key={item.id}/>)}
-        
+        {data.map((item) =>  <Grid item sx={12} md={4} sm={6}>
+                <div className={classes.cardItem}>
+                    <Item {...item} key={item.id}></Item>
+                </div>    
+            </Grid>)}
 
     
         </Grid> 

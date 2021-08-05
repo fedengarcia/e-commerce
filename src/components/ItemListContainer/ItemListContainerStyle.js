@@ -15,5 +15,14 @@ export const ItemListContainerStyle = (theme) => ({
         fontWeight: 'normal',
         lineHeight: '1em',
         textShadow: '1px 1px 2px #082b34',
+    },
+    tittleError:{
+        display: 'flex',
+        justifyContent: 'center',
+        aligItems: 'center',
+        fontWeight: 'normal',
+        lineHeight: '1em',
+        textShadow: '1px 1px 2px #082b34',
+        color:'red',
     }
 });

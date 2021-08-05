@@ -19,7 +19,7 @@ export default function ItemListContainer () {
         
         setLoading(true);
         const itemCollection = dataBase.collection("items");
-        var itemsRender;
+        let itemsRender;
         if(marca !== undefined){
             itemsRender = (itemCollection.where("marca", "==", marca).limit(20));
         }else{
@@ -27,16 +27,16 @@ export default function ItemListContainer () {
         }
       
       
-          itemsRender.get().then((querySnapshot) => {
-            if(querySnapshot === 0){
-                console.log("no results");
+        itemsRender.get().then((querySnapshot) => {
+            
+            if(querySnapshot !== 0){
+                const myItems = querySnapshot.docs.map(doc => {
+                    return {...doc.data(),id:doc.id}
+                })
+          
+                setItems(myItems);
             }
-      
-            const myItems = querySnapshot.docs.map(doc => {
-                return {...doc.data(),id:doc.id}
-            })
-      
-            setItems(myItems);
+            
       
         }).catch(err => {
             console.log("Ocurrio un error", err);
@@ -48,8 +48,8 @@ export default function ItemListContainer () {
     return(
         <div className={classes.gridContainer}>
             <div className={classes.titleContainer}><h2 className={classes.title}>{marca}</h2></div>
-            {!loading && <span>Cargando...</span>}
-            {loading && <ItemList data={items}/>}
+            {items.length === 0 ? <h1 className={classes.tittleError}>Error al cargar la pagina, verifica tu conexion a Internet</h1> : loading}
+            {loading === false ? <span>Cargando...</span> : <ItemList data={items}/>}
         </div>
     );
 }
