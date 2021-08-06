@@ -1,16 +1,16 @@
 import React,{useState, useContext, useEffect} from 'react';
 import {ModeContext} from '../../Context/CartContext';
 import {useParams} from 'react-router-dom';
-import DialogComponent from '../DialogoComponent/DialogComponent';
 import CountValidationDialog from '../DialogoComponent/CountValidationDialog';
 import TrashDialog from '../DialogoComponent/TrashDialog';
 import CleanCartDialog from '../DialogoComponent/CleanCartDialog';
 import FormDialogError from '../DialogoComponent/FormDialogError';
+import EndBuyDialog from '../DialogoComponent/EndBuyDialog';
 
 export default function DialogContainer () { 
     const [openTrashDialog, setOpenTrashDialog] = useState(false);
     const [openFormDialogError, setOpenFormDialogError] = useState (false);
-    const [openConfirmBuyDialog,setOpenConfirmBuyDialog] = useState(false);
+    const [openEndBuyDialog,setOpenEndBuyDialog] = useState(false);
     const [openCleanCartDialog, setOpenCleanCartDialog] = useState (false);
     const [openCountValidationDialog,setOpenCountValidationDialog] = useState(false);
     const [idCompra,setIdCompra] = useState(undefined);
@@ -28,30 +28,14 @@ export default function DialogContainer () {
             if(dialogType === "countValidationDialog"){
                 setOpenCountValidationDialog(true);
             }
-            if(dialogType === "formDialog"){
+            if(dialogType === "formDialogError"){
                 setOpenFormDialogError(true);
             }
             if(dialogType === "endBuyDialog"){
-                setOpenConfirmBuyDialog(true);
+                setOpenEndBuyDialog(true);
             }
         }
     }, [dialogType]);
-
-
-
-    const renderConfirmBuyDialog = (openConfirmBuyDialog,idCompra) => {
-        return <DialogComponent
-        open={openConfirmBuyDialog}
-        openDialog={setOpenConfirmBuyDialog}
-        closeDialog={()=> setOpenConfirmBuyDialog(false)}
-        handleAcceptFinishDialog={()=> setOpenConfirmBuyDialog(false)}
-        title={idCompra === undefined ? "Procesando compra..." : "Compra Finalizada"}
-        secondButton="Aceptar"
-
-        >
-            {idCompra && `Tu compra fue procesada con exito, tu ID de compra es: ${idCompra}`}
-        </DialogComponent>
-    }
 
 
     
@@ -60,7 +44,7 @@ export default function DialogContainer () {
         {openTrashDialog && TrashDialog({openTrashDialog,itemTrashId,removeItem,setOpenTrashDialog})}
         {openCleanCartDialog && CleanCartDialog({openCleanCartDialog,setOpenCleanCartDialog,clear})}
         {openFormDialogError && FormDialogError({openFormDialogError,setOpenFormDialogError})}
-        {openConfirmBuyDialog && renderConfirmBuyDialog({openConfirmBuyDialog,idCompra})}
+        {openEndBuyDialog && EndBuyDialog({openEndBuyDialog,setOpenEndBuyDialog,idCompra,clear})}
         {openCountValidationDialog && CountValidationDialog ({openCountValidationDialog,setOpenCountValidationDialog})}
 
     </>
