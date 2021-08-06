@@ -49,7 +49,7 @@ export default function Form () {
         } else if (!buyerInfo.email.includes("@")) {
             history.push('/dialog/formDialogError');
         }else{
-            console.log(buyerInfo);
+            saveBuy(buyerInfo);
             history.push('/dialog/endBuyDialog');
         }
     }

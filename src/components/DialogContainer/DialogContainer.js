@@ -13,8 +13,7 @@ export default function DialogContainer () {
     const [openEndBuyDialog,setOpenEndBuyDialog] = useState(false);
     const [openCleanCartDialog, setOpenCleanCartDialog] = useState (false);
     const [openCountValidationDialog,setOpenCountValidationDialog] = useState(false);
-    const [idCompra,setIdCompra] = useState(undefined);
-    const {removeItem,clear,itemTrashId} = useContext(ModeContext);
+    const {removeItem,clear,itemTrashId,idCompra} = useContext(ModeContext);
     const {dialogType} = useParams();
 
     useEffect(() => {
@@ -44,7 +43,7 @@ export default function DialogContainer () {
         {openTrashDialog && TrashDialog({openTrashDialog,itemTrashId,removeItem,setOpenTrashDialog})}
         {openCleanCartDialog && CleanCartDialog({openCleanCartDialog,setOpenCleanCartDialog,clear})}
         {openFormDialogError && FormDialogError({openFormDialogError,setOpenFormDialogError})}
-        {openEndBuyDialog && EndBuyDialog({openEndBuyDialog,setOpenEndBuyDialog,idCompra,clear})}
+        {openEndBuyDialog && EndBuyDialog({openEndBuyDialog,setOpenEndBuyDialog,clear,idCompra})}
         {openCountValidationDialog && CountValidationDialog ({openCountValidationDialog,setOpenCountValidationDialog})}
 
     </>

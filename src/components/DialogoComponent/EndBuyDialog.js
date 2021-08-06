@@ -2,7 +2,7 @@ import React from 'react'
 import DialogComponent from '../DialogoComponent/DialogComponent';
 
 
-const EndBuyDialog = ({openEndBuyDialog,setOpenEndBuyDialog,idCompra,clear}) => {
+const EndBuyDialog = ({openEndBuyDialog,setOpenEndBuyDialog,clear,idCompra}) => {
 
 
 

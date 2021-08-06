@@ -1,12 +1,12 @@
 import React, {useState, createContext} from 'react';
+import {dataBase} from '../Firebase/firebase';
 
 export const ModeContext = createContext();
 
 export const CartContext = (props) => {
     const [items,setItem] = useState([]);
-    const [newOrder,setNewOrder] = useState({});
     const [itemTrashId,setItemTrashId] = useState(undefined);
-
+    const [idCompra,setIdCompra] = useState(undefined);
 
     const saveBuy = (buyer) => {
         const order = {
@@ -15,9 +15,23 @@ export const CartContext = (props) => {
             date: new Date().toLocaleString() + "",
             price: getTotalPrice(),
         }
-        setNewOrder(order);
+        dataBase.collection("orders").add(order).then((docRef) => {
+            setIdCompra(docRef.id);
+            for (let index = 0; index < order.items.length; index++) {
+                const id = order.items[index].item.id
+                const quantity = order.items[index].quantity
+                
+                const item = dataBase.collection("items").doc(id);
+            
+                item.get().then((doc) => {
+                    if (doc.exists) {
+                        const item_stock = doc.data().stock;
+                        item.update({stock: item_stock - quantity});
+                    }
+                })
+              }
+        })
     }
-
 
     const getTotalPrice = () =>{
         const totalPrice = items.reduce(function(accumulator, currentValue) {
@@ -74,7 +88,7 @@ export const CartContext = (props) => {
         return items;
     }
 
-    return <ModeContext.Provider value={{addItem, getItems, clear, isInCart, getQuantity, removeItem, getTotalPrice, saveBuy, newOrder,setItemTrashId, itemTrashId}}>
+    return <ModeContext.Provider value={{addItem, getItems, clear, isInCart, getQuantity, removeItem, getTotalPrice, saveBuy,setItemTrashId, itemTrashId, idCompra}}>
         {props.children}
     </ModeContext.Provider>
 }
