@@ -5,6 +5,7 @@ import ItemListContainer from '../ItemListContainer/ItemListContainer';
 import ItemDetailContainer from '../ItemDetailContainer/ItemDetailContainer';
 import DialogContainer from '../DialogContainer/DialogContainer';
 import CartContainer from '../CartContainer/CartContainer';
+import FormContainer from '../FormContainer/FormContainer';
 
 
 const Router = () => {
@@ -32,6 +33,10 @@ const Router = () => {
 
             <Route path="/dialog/:dialogType">
                 <DialogContainer/>
+            </Route>
+
+            <Route path="/Form">
+                <FormContainer/>
             </Route>
         </Switch>
     </BrowserRouter>)

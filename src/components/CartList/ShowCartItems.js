@@ -30,7 +30,7 @@ export const ShowCartItems = ({items}) => {
         </Grid>
 
         <Grid item sx={12}>
-            <Link to="/dialog/formDialog" className={classes.linkStyle}><Button
+            <Link to="/Form" className={classes.linkStyle}><Button
             variant="contained"
             size="large"
             className = {classes.buttonStyle}

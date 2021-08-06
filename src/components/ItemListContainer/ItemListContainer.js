@@ -46,7 +46,7 @@ export default function ItemListContainer () {
 
     return(
         <div className={classes.gridContainer}>
-            <div className={classes.titleContainer}><h2 className={classes.title}>{marca}</h2></div>
+            <div className={classes.titleContainer}><h2>{marca}</h2></div>
             {loading === true ? <span>Cargando...</span> : <ItemList data={items}/>}
 
         </div>

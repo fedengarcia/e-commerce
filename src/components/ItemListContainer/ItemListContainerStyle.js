@@ -10,11 +10,11 @@ export const ItemListContainerStyle = (theme) => ({
         display: 'flex',
         justifyContent: 'center',
         aligItems: 'center',
-    },
-    title:{
-        fontWeight: 'normal',
-        lineHeight: '1em',
-        textShadow: '1px 1px 2px #082b34',
+        '& > h2':{
+            fontWeight: 'normal',
+            lineHeight: '1em',
+            textShadow: '1px 1px 2px #082b34',
+        }
     },
     tittleError:{
         display: 'flex',
